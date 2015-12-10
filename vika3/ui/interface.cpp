@@ -55,7 +55,7 @@ void Interface::printList(){
     cin >> input;
     if(input == 1){
         vector<Pioneer> list;
-        list = pioService.printList();
+        list = pioService.getList();
         for(unsigned int i = 0; i < list.size(); i++){
             pioTemp = list[i];
             cout << pioTemp;

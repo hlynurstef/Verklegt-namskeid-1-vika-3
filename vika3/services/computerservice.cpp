@@ -34,3 +34,9 @@ void ComputerService::deleteSingleComp(string name){
 void ComputerService::deleteAllComputers(){
     data.deleteAllComputers();
 }
+
+vector<Computer> ComputerService::getList()
+{
+    vector<Computer> list = data.getComputerList();
+    return list;
+}

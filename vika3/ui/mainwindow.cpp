@@ -1,14 +1,70 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    displayAllPioneers();
+    displayAllComputers();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::displayAllPioneers()
+{
+    vector<Pioneer> pioneers = pioneerService.getList();
+    displayPioneers(pioneers);
+}
+
+void MainWindow::displayAllComputers()
+{
+    vector<Computer> computers = computerService.getList();
+    displayComputers(computers);
+}
+
+void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
+{
+    ui->list_pioneers->clear();
+
+    for(unsigned int i = 0; i < pioneers.size(); i++){
+        Pioneer currentPioneer = pioneers[i];
+
+        ui->list_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
+    }
+}
+
+void MainWindow::displayComputers(std::vector<Computer> computers)
+{
+    ui->list_computers->clear();
+
+    for(unsigned int i = 0; i < computers.size(); i++){
+        Computer currentComputer = computers[i];
+
+        ui->list_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
+    }
+}
+
+void MainWindow::on_input_search_pioneers_textChanged()
+{
+    string userInput = ui->input_search_pioneers->text().toStdString();
+
+    // TO DO: change search function to take in name of column to search for instead of integer
+    vector<Pioneer> pioneers = pioneerService.search(userInput, 1);
+    displayPioneers(pioneers);
+}
+
+void MainWindow::on_input_search_computers_textChanged()
+{
+    string userInput = ui->input_search_computers->text().toStdString();
+
+    // TO DO: change search function to take in name of column to search for instead of integer
+    vector<Computer> computers = computerService.search(userInput, 1);
+    displayComputers(computers);
 }

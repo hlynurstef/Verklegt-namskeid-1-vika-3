@@ -21,7 +21,7 @@ public:
         // Adds Pioneer object into tempList vector, then sends that vector to data layer to be added to SQL database
     string toLower(string name);
         // Puts all names to lowercase
-    vector<Pioneer> printList();
+    vector<Pioneer> getList();
         // Fetches list from connection
     vector<Pioneer> search(string str, int input);
         // Gets search word input from interface, sends word to service,

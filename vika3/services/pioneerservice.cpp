@@ -22,7 +22,7 @@ string PioneerService::toLower(string name){
     return name;
 }
 
-vector<Pioneer> PioneerService::printList(){
+vector<Pioneer> PioneerService::getList(){
     vector<Pioneer> list;
     list = data.getPioneerList();
     return list;

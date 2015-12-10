@@ -22,6 +22,8 @@ public:
         // Sends a name of the computer to delete into ComputerConnection
     void deleteAllComputers();
         // Sends a message to ComputerConnection to delete all computers
+    vector<Computer> getList();
+        // Returns entire list of computers
 private:
     Computer temp;                      // Temporary object to be used in various situations
     vector<Computer> tempList2;
