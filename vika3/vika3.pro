@@ -13,7 +13,7 @@ TARGET = vika3
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
+SOURCES += main.cpp\
            data_types/pioneer.cpp \
            data_types/computer.cpp \
            ui/interface.cpp \
