@@ -1,11 +1,11 @@
-#include <iostream>
-#include "ui/interface.h"
+#include "mainwindow.h"
+#include <QApplication>
 
-using namespace std;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
-int main(){
-    Interface start;
-    start.userInput();
-
-    return 0;
+    return a.exec();
 }
