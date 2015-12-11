@@ -27,8 +27,8 @@ vector<Computer> ComputerService::printQuery(string built, string type, string s
     return tempList2;
 }
 
-void ComputerService::deleteSingleComp(string name){
-    data.deleteSingleComp(name);
+bool ComputerService::removeComputer(Computer comp){
+    return data.removeComputer(comp);
 }
 
 void ComputerService::deleteAllComputers(){

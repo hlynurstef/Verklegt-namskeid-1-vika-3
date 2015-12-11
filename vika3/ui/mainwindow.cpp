@@ -78,6 +78,8 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         ui->list_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
     }
+
+    currentlyDisplayedComputers = computers;
 }
 
 void MainWindow::on_input_search_pioneers_textChanged()
@@ -187,6 +189,31 @@ void MainWindow::on_button_remove_pioneer_clicked()
         displayAllPioneers();
 
         ui->button_remove_pioneer->setEnabled(false);
+
+    }
+    else{
+        //some error
+    }
+}
+
+void MainWindow::on_list_computers_clicked(const QModelIndex &index)
+{
+    ui->button_remove_computer->setEnabled(true);
+}
+
+void MainWindow::on_button_remove_computer_clicked()
+{
+    int currentlySelectedComputerIndex = ui->list_computers->currentIndex().row();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
+    bool success = computerService.removeComputer(currentlySelectedComputer);
+
+    if(success){
+        ui->input_search_computers->setText("");
+        displayAllComputers();
+
+        ui->button_remove_computer->setEnabled(false);
 
     }
     else{

@@ -42,6 +42,10 @@ private slots:
 
     void on_button_remove_pioneer_clicked();
 
+    void on_list_computers_clicked(const QModelIndex &index);
+
+    void on_button_remove_computer_clicked();
+
 private:
     std::string getCurrentOrderByPioneers();
     std::string getCurrentOrderByComputers();
@@ -53,6 +57,7 @@ private:
     PioneerService pioneerService;
     ComputerService computerService;
     std::vector<Pioneer> currentlyDisplayedPioneers;
+    std::vector<Computer> currentlyDisplayedComputers;
 };
 
 #endif // MAINWINDOW_H

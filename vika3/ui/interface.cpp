@@ -928,7 +928,7 @@ void Interface::deleteComp(){
         case 1:
             cout << "Please input the name of the computer you want to delete: ";
             cin >> name;
-            compService.deleteSingleComp(name);
+            //compService.deleteSingleComp(name);
             cout << "Computer has been deleted." << endl;
             cout << string(LEFT_MARGIN, ' ') << "Press enter to continue . . . ";
             cin.sync();

@@ -35,6 +35,8 @@ public:
         // Deletes a single computer from table
     void deleteAllComputers();
         // Deletes the entire table
+    bool removeComputer(Computer comp);
+        // removes one computer from database
 
 private:
     vector<Computer> computers;     // Vector that holds onto all information on runtime

@@ -214,7 +214,10 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_computers_remove">
+           <widget class="QPushButton" name="button_remove_computer">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="statusTip">
              <string>Remove selected Computer</string>
             </property>
