@@ -30,6 +30,14 @@ private slots:
     void on_dropdown_computers_filter_type_currentIndexChanged(int index);
     void on_dropdown_computers_filter_built_currentIndexChanged(int index);
 
+    void on_list_pioneers_clicked(const QModelIndex &index);
+
+    void on_pushButton_pioneers_remove_clicked();
+
+    void on_list_computers_clicked(const QModelIndex &index);
+
+    void on_pushButton_computers_remove_clicked();
+
 private:
     std::string getCurrentOrderByPioneers();
     std::string getCurrentDirectionPioneers();
@@ -47,10 +55,11 @@ private:
     void displayAllComputers();
     void displayPioneers(std::vector<Pioneer> pioneers);
     void displayComputers(std::vector<Computer> computers);
-
     Ui::MainWindow *ui;
     PioneerService pioneerService;
     ComputerService computerService;
+    std::vector<Pioneer> currentlyDisplayedPioneers;
+    std::vector<Computer> currentlyDisplayedComputers;
 };
 
 #endif // MAINWINDOW_H

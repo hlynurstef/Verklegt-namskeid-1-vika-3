@@ -884,7 +884,7 @@ void Interface::deletePio(){
         case 1:
             cout << "Please input the full name of the pioneer you want to delete: ";
             cin >> name;
-            pioService.deleteSinglePio(name);
+            //pioService.deleteSinglePio(name);
             cout << "Pioneer has been deleted." << endl;
             cout << string(LEFT_MARGIN, ' ') << "Press enter to continue . . . ";
             cin.sync();
@@ -928,7 +928,7 @@ void Interface::deleteComp(){
         case 1:
             cout << "Please input the name of the computer you want to delete: ";
             cin >> name;
-            compService.deleteSingleComp(name);
+            //compService.deleteSingleComp(name);
             cout << "Computer has been deleted." << endl;
             cout << string(LEFT_MARGIN, ' ') << "Press enter to continue . . . ";
             cin.sync();

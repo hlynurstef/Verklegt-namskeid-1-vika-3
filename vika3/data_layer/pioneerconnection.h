@@ -29,7 +29,7 @@ public:
         // Returns pioneers vector but with the name in descending order
     string convertToString(int year);
         // Converts integers to strings
-    void deleteSinglePio(string name);
+    bool removePioneer(Pioneer pio);
         // Deletes a single pioneer from table
     void deleteAllPioneers();
         // Deletes the entire table

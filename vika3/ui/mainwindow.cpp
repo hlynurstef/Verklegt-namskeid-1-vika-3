@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "utilities/constants.h"
+#include "moreinfocomputer.h"
+#include "moreinfopioneer.h"
+
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -69,6 +72,8 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
 
         ui->list_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
     }
+
+    currentlyDisplayedPioneers = pioneers;
 }
 
 void MainWindow::displayComputers(std::vector<Computer> computers)
@@ -80,6 +85,8 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         ui->list_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
     }
+
+    currentlyDisplayedComputers = computers;
 }
 
 void MainWindow::on_input_search_pioneers_textChanged()
@@ -281,10 +288,10 @@ string MainWindow::getCurrentVitalStatusPioneers()
         return "";
     }
     else if(vitalStats == "Alive"){
-        return constants::IS_NOT_NULL;
+        return constants::IS_NULL;
     }
     else if(vitalStats == "Deceased"){
-        return constants::IS_NULL;
+        return constants::IS_NOT_NULL;
     }
     else{
         return "";
@@ -303,5 +310,55 @@ string MainWindow::getCurrentSearchByPioneers()
     }
     else{
         return constants::NAME;
+    }
+}
+
+void MainWindow::on_list_pioneers_clicked(const QModelIndex &index)
+{
+    ui->pushButton_pioneers_remove->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_pioneers_remove_clicked()
+{
+    int currentlySelectedPioneerIndex = ui->list_pioneers->currentIndex().row();
+
+    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+
+    bool success = pioneerService.removePioneer(currentlySelectedPioneer);
+
+    if(success){
+        ui->input_search_pioneers->setText("");
+        displayAllPioneers();
+
+        ui->pushButton_pioneers_remove->setEnabled(false);
+
+    }
+    else{
+        //some error
+    }
+}
+
+void MainWindow::on_list_computers_clicked(const QModelIndex &index)
+{
+    ui->pushButton_computers_remove->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_computers_remove_clicked()
+{
+    int currentlySelectedComputerIndex = ui->list_computers->currentIndex().row();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
+    bool success = computerService.removeComputer(currentlySelectedComputer);
+
+    if(success){
+        ui->input_search_computers->setText("");
+        displayAllComputers();
+
+        ui->pushButton_computers_remove->setEnabled(false);
+
+    }
+    else{
+        //some error
     }
 }

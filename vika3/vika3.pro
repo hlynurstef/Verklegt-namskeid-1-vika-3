@@ -23,7 +23,9 @@ SOURCES += main.cpp\
            data_layer/relationconnection.cpp \
            services/relationservice.cpp \
            data_types/relation.cpp \
-           ui/mainwindow.cpp
+           ui/mainwindow.cpp \
+    ui/moreinfopioneer.cpp \
+    ui/moreinfocomputer.cpp
 
 HEADERS += \
            data_types/pioneer.h \
@@ -36,6 +38,11 @@ HEADERS += \
            data_layer/relationconnection.h \
            services/relationservice.h \
            data_types/relation.h \
-           ui/mainwindow.h
+           ui/mainwindow.h \
+    ui/moreinfopioneer.h \
+    ui/moreinfocomputer.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    ui/moreinfopioneer.ui \
+    ui/moreinfocomputer.ui
+    ui
