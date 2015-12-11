@@ -197,6 +197,7 @@ bool PioneerConnection::removePioneer(Pioneer pio){
     sqlQuery << "DELETE FROM Pioneers WHERE id = " << pio.getId();
 
     bool success = query.exec(QString::fromStdString(sqlQuery.str()));
+    pioneers.clear();
 
     return success;
 }
