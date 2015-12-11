@@ -302,11 +302,14 @@
      <x>0</x>
      <y>0</y>
      <width>727</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="movable">
+    <bool>false</bool>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -319,7 +322,4 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "utilities/constants.h"
+#include "moreinfocomputer.h"
+#include "moreinfopioneer.h"
+
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
