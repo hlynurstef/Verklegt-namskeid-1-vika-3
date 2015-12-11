@@ -39,8 +39,8 @@ vector<Pioneer> PioneerService::printQuery(string sex, string dYear, string sort
     return tempList;
 }
 
-void PioneerService::deleteSinglePio(string name){
-    data.deleteSinglePio(name);
+bool PioneerService::removePioneer(Pioneer pio){
+    return data.removePioneer(pio);
 }
 
 void PioneerService::deleteAllPioneers(){

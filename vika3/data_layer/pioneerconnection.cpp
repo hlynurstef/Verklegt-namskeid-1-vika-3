@@ -189,10 +189,16 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, int input){
 // ---------------------------------------------------------------------
 //                           DELETE FUNCTIONS
 // ---------------------------------------------------------------------
-void PioneerConnection::deleteSinglePio(string name){
-    query.prepare(QString("DELETE FROM pioneers WHERE name LIKE '%'||:word||'%';"));
-    query.bindValue(":word", QString::fromStdString(name));
-    query.exec();
+bool PioneerConnection::removePioneer(Pioneer pio){
+
+    //QSqlQuery query(db);
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM Students WHERE id = " << pio.getId();
+
+    bool success = query.exec(QString::fromStdString(sqlQuery.str()));
+
+    return success;
 }
 
 void PioneerConnection::deleteAllPioneers(){

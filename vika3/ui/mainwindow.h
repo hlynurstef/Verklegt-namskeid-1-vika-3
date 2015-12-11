@@ -45,10 +45,13 @@ private:
     void displayAllComputers();
     void displayPioneers(std::vector<Pioneer> pioneers);
     void displayComputers(std::vector<Computer> computers);
+    void on_pushButton_pioneers_remove_clicked();
+    void on_list_pioneers_clicked(const QModelIndex &index);
 
     Ui::MainWindow *ui;
     PioneerService pioneerService;
     ComputerService computerService;
+    std::vector<Pioneer> currentyDisplayedPioneers;
 };
 
 #endif // MAINWINDOW_H
