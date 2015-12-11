@@ -21,26 +21,28 @@ public:
 private slots:
     void on_input_search_pioneers_textChanged();
     void on_input_search_computers_textChanged();
-
     void on_dropdown_pioneers_order_by_currentIndexChanged(int index);
-
     void on_dropdown_computers_order_by_currentIndexChanged(int index);
-
     void on_dropdown_pioneers_order_direction_currentIndexChanged(int index);
-
     void on_dropdown_computers_order_direction_currentIndexChanged(int index);
-
     void on_dropdown_pioneers_filter_gender_currentIndexChanged(int index);
-
     void on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index);
-
     void on_dropdown_computers_filter_type_currentIndexChanged(int index);
-
     void on_dropdown_computers_filter_built_currentIndexChanged(int index);
 
 private:
     std::string getCurrentOrderByPioneers();
+    std::string getCurrentDirectionPioneers();
+    std::string getCurrentGenderPioneers();
+    std::string getCurrentVitalStatusPioneers();
+    std::string getCurrentSearchByPioneers();
+
     std::string getCurrentOrderByComputers();
+    std::string getCurrentDirectionComputers();
+    std::string getCurrentTypeComputers();
+    std::string getCurrentBuiltComputers();
+    std::string getCurrentSearchByComputers();
+
     void displayAllPioneers();
     void displayAllComputers();
     void displayPioneers(std::vector<Pioneer> pioneers);

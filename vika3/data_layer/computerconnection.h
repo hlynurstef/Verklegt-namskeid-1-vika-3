@@ -29,7 +29,7 @@ public:
         // Returns computers vector but with the name in ascending order
     vector<Computer> printQuery(string built, string type, string orderCol, string order);
         // Gets input from Print menu in interface and returns what the user wants to see printed
-    vector<Computer> searchComp(string searchWord, int input);
+    vector<Computer> searchComp(string searchWord, string searchBy, string built, string type, string orderBy, string direction);
         // Searches through database for a name of computer that matches a search word
     void deleteSingleComp(string name);
         // Deletes a single computer from table

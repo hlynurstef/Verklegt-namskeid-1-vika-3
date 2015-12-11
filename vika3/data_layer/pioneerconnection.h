@@ -40,7 +40,7 @@ public:
 
     vector<Pioneer> printQueryPioneers(string sex, string dYear, string orderCol, string order);
         // Gets input from Print menu in interface and returns what the user wants to see printed
-    vector<Pioneer> searchPio(string searchWord, int input);
+    vector<Pioneer> searchPio(string searchWord, string searchBy, string sex, string vitalStatus, string orderBy, string direction);
         // Searches through database for a name of pioneer that matches a search word
 
 private:

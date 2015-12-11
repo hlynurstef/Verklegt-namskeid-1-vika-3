@@ -1,6 +1,8 @@
 #include "pioneerconnection.h"
+#include "utilities/constants.h"
 #include <cstdlib>
 #include <limits>
+#include <QDebug>
 
 PioneerConnection::PioneerConnection(){
 
@@ -146,27 +148,24 @@ vector<Pioneer> PioneerConnection::printQueryPioneers(string sex, string dYear, 
 // ---------------------------------------------------------------------
 //                            SEARCH FUNCTIONS
 // ---------------------------------------------------------------------
-vector<Pioneer> PioneerConnection::searchPio(string searchWord, int input){
+vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy, string sex, string vitalStatus, string orderBy, string direction){
     vector<Pioneer> searchTemp;
 
-    if(input == 1){
-        // Search by name
-        query.prepare(QString("SELECT * FROM pioneers WHERE name LIKE '%'||:word||'%';"));
+    if(sex == "" && vitalStatus == ""){			// If user doesn't choose any filters / wants entire list
+            query.prepare(QString("SELECT * FROM pioneers WHERE " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
-    else if(input == 2){
-        // Search by year of birth
-        query.prepare(QString("SELECT * FROM pioneers WHERE bYear LIKE '%'||:word||'%';"));
+    else if(sex != "" && vitalStatus == ""){		// If user chooses to filter only by sex
+        query.prepare(QString("SELECT * FROM pioneers WHERE sex = :sex AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
-    else if(input == 3){
-        // Search by year of death
-        query.prepare(QString("SELECT * FROM pioneers WHERE dYear LIKE '%'||:word||'%';"));
+    else if(sex == "" && vitalStatus != ""){		// If user chooses to filter only by alive/deceased
+        query.prepare(QString("SELECT * FROM pioneers WHERE dYear " + QString::fromStdString(vitalStatus) + " AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
-    else if(input == 4){
-        // Search by description
-        query.prepare(QString("SELECT * FROM pioneers WHERE description LIKE '%'||:word||'%';"));
+    else if (sex != "" && vitalStatus != ""){		// If user chooses to filter by both sex and alive/deceased
+        query.prepare(QString("SELECT * FROM pioneers WHERE sex = :sex AND dYear " + QString::fromStdString(vitalStatus) + " AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
 
     query.bindValue(":word", QString::fromStdString(searchWord));
+    query.bindValue(":sex", QString::fromStdString(sex));
     query.exec();
 
     while(query.next()){

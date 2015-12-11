@@ -28,9 +28,9 @@ vector<Pioneer> PioneerService::getList(){
     return list;
 }
 
-vector<Pioneer> PioneerService::search(string str, int input){
+vector<Pioneer> PioneerService::search(string searchWord, string searchBy, string sex, string vitalStatus, string orderBy, string direction){
     vector<Pioneer> searchResults;
-    searchResults = data.searchPio(str, input);
+    searchResults = data.searchPio(searchWord, searchBy, sex, vitalStatus, orderBy, direction);
     return searchResults;
 }
 

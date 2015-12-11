@@ -16,8 +16,6 @@ TEMPLATE = app
 SOURCES += main.cpp\
            data_types/pioneer.cpp \
            data_types/computer.cpp \
-           ui/interface.cpp \
-           ui/menuscreen.cpp \
            services/pioneerservice.cpp \
            services/computerservice.cpp \
            data_layer/pioneerconnection.cpp \
@@ -30,8 +28,6 @@ SOURCES += main.cpp\
 HEADERS += \
            data_types/pioneer.h \
            data_types/computer.h \
-           ui/interface.h \
-           ui/menuscreen.h \
            utilities/constants.h \
            services/pioneerservice.h \
            services/computerservice.h \

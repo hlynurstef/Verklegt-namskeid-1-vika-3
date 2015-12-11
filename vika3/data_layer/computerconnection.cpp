@@ -1,4 +1,5 @@
 #include "computerconnection.h"
+#include <QDebug>
 
 ComputerConnection::ComputerConnection()
 {
@@ -103,7 +104,7 @@ vector<Computer> ComputerConnection::printQuery(string built, string type, strin
     else if(built == "" && type != ""){		// If user chooses to filter only by computer type
         query2.prepare(QString("SELECT * FROM Computers WHERE computer_type = :type ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
-    else if (built != "" && type != ""){		// If user chooses to filter by both if computer was built and computer type
+    else if (built != "" && type != ""){	// If user chooses to filter by both if computer was built and computer type
         query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND computer_type = :type ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     query2.bindValue(":built",QString::fromStdString(built));
@@ -125,22 +126,30 @@ vector<Computer> ComputerConnection::printQuery(string built, string type, strin
     return list;
 }
 
-vector<Computer> ComputerConnection::searchComp(string searchWord, int input){
+vector<Computer> ComputerConnection::searchComp(string searchWord, string searchBy, string built, string type, string orderBy, string direction){
     vector<Computer> searchTempComp;
 
-    if(input == 1){
-        // Search by name
-        query2.prepare(QString("SELECT * FROM Computers WHERE computer_name LIKE '%'||:word||'%';"));
+    if(built == "" && type == ""){                              // If user doesn't choose any filters / wants entire list
+            query2.prepare(QString("SELECT * FROM Computers WHERE " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
-    else if(input == 2){
-        // Search by build year
-        query2.prepare(QString("SELECT * FROM Computers WHERE build_year LIKE '%'||:word||'%';"));
+    else if(built != "" && type == ""){                         // If user chooses to filter only by if the computer was built or not
+        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
-    else if(input == 3){
-        // Search by description
-        query2.prepare(QString("SELECT * FROM Computers WHERE description LIKE '%'||:word||'%';"));
+    else if(built == "" && type != "" && type != "other"){		// If user chooses to filter only by computer type
+        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type = :type AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+    }
+    else if (built != "" && type != "" && type != "other"){     // If user chooses to filter by both if computer was built and computer type
+        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND computer_type = :type AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+    }
+    else if(built == "" && type == "other"){
+        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type not in (" + QString::fromStdString("'mechanical', ") + QString::fromStdString("'electronic', ") + QString::fromStdString("'transistor'") + ") AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+    }
+    else if(built != "" && type == "other"){
+        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type not in (" + QString::fromStdString("mechanical, ") + QString::fromStdString("electronic") + ") AND was_built = :built AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     query2.bindValue(":word", QString::fromStdString(searchWord));
+    query2.bindValue(":built",QString::fromStdString(built));
+    query2.bindValue(":type",QString::fromStdString(type));
     query2.exec();
 
     while(query2.next()){

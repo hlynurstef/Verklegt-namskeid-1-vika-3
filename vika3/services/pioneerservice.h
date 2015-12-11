@@ -23,7 +23,7 @@ public:
         // Puts all names to lowercase
     vector<Pioneer> getList();
         // Fetches list from connection
-    vector<Pioneer> search(string str, int input);
+    vector<Pioneer> search(string searchWord, string searchBy, string sex, string vitalStats, string orderBy, string direction);
         // Gets search word input from interface, sends word to service,
         // receives a vector with search results from service and sends vector to interface
     vector<Pioneer> printQuery(string sex, string dYear, string sortBy, string direction);

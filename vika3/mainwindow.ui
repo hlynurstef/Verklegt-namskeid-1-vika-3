@@ -6,35 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
-    <height>591</height>
+    <width>653</width>
+    <height>396</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_15">
+     <layout class="QVBoxLayout" name="verticalLayout_8">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_12">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <widget class="QLabel" name="label_search_pioneers">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search Pioneers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="input_search_pioneers">
-          <property name="statusTip">
-           <string>Type here to search Pioneers</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_search_pioneers">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search Pioneers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="input_search_pioneers">
+            <property name="statusTip">
+             <string>Type here to search Pioneers</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QListWidget" name="list_pioneers">
             <property name="minimumSize">
@@ -45,107 +45,136 @@
             </property>
            </widget>
           </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_11">
-            <item>
-             <widget class="QPushButton" name="pushButton_pioneers_more_info">
-              <property name="statusTip">
-               <string>See more info about selected Pioneer</string>
-              </property>
-              <property name="text">
-               <string>More Info</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_pioneers_edit">
-              <property name="statusTip">
-               <string>Edit selected Pioneer</string>
-              </property>
-              <property name="text">
-               <string>Edit</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_pioneers_remove">
-              <property name="statusTip">
-               <string>Remove selected Pioneer</string>
-              </property>
-              <property name="text">
-               <string>Remove</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_pioneers_add_new_entry">
-              <property name="statusTip">
-               <string>Add new Pioneer entry</string>
-              </property>
-              <property name="text">
-               <string>Add New Entry</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="dropdown_pioneers_order_by">
-              <property name="toolTip">
-               <string/>
-              </property>
-              <property name="statusTip">
-               <string>Order by</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="dropdown_pioneers_order_direction">
-              <property name="statusTip">
-               <string>Order direction</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Filter:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="dropdown_pioneers_filter_gender">
-              <property name="statusTip">
-               <string>Filter Pioneers by gender</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="dropdown_pioneers_filter_vital_status">
-              <property name="statusTip">
-               <string>Filter Pioneers by vital status</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <widget class="QLabel" name="label_pioneers_search_by">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dropdown_pioneers_search_by">
+            <property name="statusTip">
+             <string>Search Pioneers by Name or Birth Year</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_pioneers_sort_by">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dropdown_pioneers_order_by">
+            <property name="toolTip">
+             <string/>
+            </property>
+            <property name="statusTip">
+             <string>Sort by Name or Birth Year</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dropdown_pioneers_order_direction">
+            <property name="statusTip">
+             <string>Sorting direction</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_pioneers_filter">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Filter:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dropdown_pioneers_filter_gender">
+            <property name="statusTip">
+             <string>Filter Pioneers by gender</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dropdown_pioneers_filter_vital_status">
+            <property name="statusTip">
+             <string>Filter Pioneers by vital status</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_pioneers_add_new_entry">
+            <property name="statusTip">
+             <string>Add new Pioneer entry</string>
+            </property>
+            <property name="text">
+             <string>Add New Pioneer</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QLabel" name="label_pioneers_options">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Options:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton_pioneers_more_info">
+            <property name="statusTip">
+             <string>See more info about selected Pioneer</string>
+            </property>
+            <property name="text">
+             <string>More Info</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_pioneers_edit">
+            <property name="statusTip">
+             <string>Edit selected Pioneer</string>
+            </property>
+            <property name="text">
+             <string>Edit Selected</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_pioneers_remove">
+            <property name="statusTip">
+             <string>Remove selected Pioneer</string>
+            </property>
+            <property name="text">
+             <string>Remove Selected</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -161,77 +190,55 @@
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_13">
+     <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
-       <widget class="QLabel" name="label_search_computers">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="input_search_computers">
-        <property name="statusTip">
-         <string>Type here to search Computers</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QListWidget" name="list_computers">
-          <property name="minimumSize">
-           <size>
-            <width>201</width>
-            <height>215</height>
-           </size>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_search_computers">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="input_search_computers">
+            <property name="statusTip">
+             <string>Type here to search Computers</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="list_computers">
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QPushButton" name="pushButton_computers_more_info">
-            <property name="statusTip">
-             <string>See more info about selected Computer</string>
-            </property>
+           <widget class="QLabel" name="label_computers_search_by">
             <property name="text">
-             <string>More Info</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_computers_edit">
+           <widget class="QComboBox" name="dropdown_computers_search_by">
             <property name="statusTip">
-             <string>Edit selected Computer</string>
-            </property>
-            <property name="text">
-             <string>Edit</string>
+             <string>Search Computers by Name or Build Year</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_computers_remove">
-            <property name="statusTip">
-             <string>Remove selected Computer</string>
-            </property>
-            <property name="text">
-             <string>Remove</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_computers_add_new_entry">
-            <property name="statusTip">
-             <string>Add new Computer entry</string>
-            </property>
-            <property name="text">
-             <string>Add New Entry</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="label_computers_sort_by">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -240,7 +247,7 @@
           <item>
            <widget class="QComboBox" name="dropdown_computers_order_by">
             <property name="statusTip">
-             <string>Order by</string>
+             <string>Sort Computers by Name or Build Year</string>
             </property>
            </widget>
           </item>
@@ -250,12 +257,12 @@
              <string/>
             </property>
             <property name="statusTip">
-             <string>Order direction</string>
+             <string>Sorting direction</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="label_computers_filter">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Filter:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -288,6 +295,61 @@
             </property>
            </spacer>
           </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_computers_add_new_entry">
+            <property name="statusTip">
+             <string>Add new Computer entry</string>
+            </property>
+            <property name="text">
+             <string>Add New Computer</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_computers_options">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Options:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="pushButton_computers_more_info">
+            <property name="statusTip">
+             <string>See more info about selected Computer</string>
+            </property>
+            <property name="text">
+             <string>More Info</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_computers_edit">
+            <property name="statusTip">
+             <string>Edit selected Computer</string>
+            </property>
+            <property name="text">
+             <string>Edit Selected</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_computers_remove">
+            <property name="statusTip">
+             <string>Remove selected Computer</string>
+            </property>
+            <property name="text">
+             <string>Remove Selected</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -301,7 +363,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>727</width>
+     <width>653</width>
      <height>21</height>
     </rect>
    </property>

@@ -15,7 +15,7 @@ class ComputerService
 public:
     ComputerService();
     void addComputers(Computer comp, int count);
-    vector<Computer> search(string str, int input);
+    vector<Computer> search(string searchWord, string searchBy, string built, string type, string orderBy, string direction);
     vector<Computer> printQuery(string built, string type, string sortBy, string direction);
         // Gets query results from user and sends to ComputerConnection that returns vector corresponding to query from user
     void deleteSingleComp(string name);

@@ -16,9 +16,9 @@ void ComputerService::addComputers(Computer comp, int count){
     data.addToCompTable(tempList2);       // call to database to add list to database
 }
 
-vector<Computer> ComputerService::search(string str, int input){
+vector<Computer> ComputerService::search(string searchWord, string searchBy, string built, string type, string orderBy, string direction){
     vector<Computer> searchResultsC;
-    searchResultsC = data.searchComp(str, input);
+    searchResultsC = data.searchComp(searchWord, searchBy, built, type, orderBy, direction);
     return searchResultsC;
 }
 
