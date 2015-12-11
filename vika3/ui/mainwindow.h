@@ -20,7 +20,6 @@ public:
 
 private slots:
     void on_input_search_pioneers_textChanged();
-
     void on_input_search_computers_textChanged();
 
 private:
