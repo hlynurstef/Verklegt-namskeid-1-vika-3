@@ -51,7 +51,7 @@ private:
     Ui::MainWindow *ui;
     PioneerService pioneerService;
     ComputerService computerService;
-    std::vector<Pioneer> currentyDisplayedPioneers;
+    std::vector<Pioneer> currentlyDisplayedPioneers;
 };
 
 #endif // MAINWINDOW_H

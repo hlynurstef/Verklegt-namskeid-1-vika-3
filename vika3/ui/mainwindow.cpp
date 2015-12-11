@@ -65,6 +65,8 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
 
         ui->list_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
     }
+
+    currentlyDisplayedPioneers = pioneers;
 }
 
 void MainWindow::displayComputers(std::vector<Computer> computers)
@@ -167,11 +169,16 @@ void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int inde
 
 }
 
+void MainWindow::on_list_pioneers_clicked(const QModelIndex &index)
+{
+    ui->pushButton_pioneers_remove->setEnabled(true);
+}
+
 void MainWindow::on_pushButton_pioneers_remove_clicked()
 {
     int currentlySelectedPioneerIndex = ui->list_pioneers->currentIndex().row();
 
-    Pioneer currentlySelectedPioneer = currentyDisplayedPioneers.at(currentlySelectedPioneerIndex);
+    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers.at(currentlySelectedPioneerIndex);
 
     bool success = pioneerService.removePioneer(currentlySelectedPioneer);
 
@@ -179,9 +186,4 @@ void MainWindow::on_pushButton_pioneers_remove_clicked()
     displayAllPioneers();
 
     ui->pushButton_pioneers_remove->setEnabled(false);
-}
-
-void MainWindow::on_list_pioneers_clicked(const QModelIndex &index)
-{
-    ui->pushButton_pioneers_remove->setEnabled(true);
 }
