@@ -32,11 +32,11 @@ private slots:
 
     void on_list_pioneers_clicked(const QModelIndex &index);
 
-    void on_pushButton_pioneers_remove_clicked();
+    void on_button_pioneer_remove_clicked();
 
     void on_list_computers_clicked(const QModelIndex &index);
 
-    void on_pushButton_computers_remove_clicked();
+    void on_button_computer_remove_clicked();
 
 private:
     std::string getCurrentOrderByPioneers();

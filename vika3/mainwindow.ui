@@ -167,7 +167,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_pioneers_remove">
+           <widget class="QPushButton" name="button_pioneer_remove">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -344,7 +344,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_computers_remove">
+           <widget class="QPushButton" name="button_computer_remove">
             <property name="enabled">
              <bool>false</bool>
             </property>

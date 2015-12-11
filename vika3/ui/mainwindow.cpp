@@ -315,10 +315,10 @@ string MainWindow::getCurrentSearchByPioneers()
 
 void MainWindow::on_list_pioneers_clicked(const QModelIndex &index)
 {
-    ui->pushButton_pioneers_remove->setEnabled(true);
+    ui->button_pioneer_remove->setEnabled(true);
 }
 
-void MainWindow::on_pushButton_pioneers_remove_clicked()
+void MainWindow::on_button_pioneer_remove_clicked()
 {
     int currentlySelectedPioneerIndex = ui->list_pioneers->currentIndex().row();
 
@@ -330,7 +330,7 @@ void MainWindow::on_pushButton_pioneers_remove_clicked()
         ui->input_search_pioneers->setText("");
         displayAllPioneers();
 
-        ui->pushButton_pioneers_remove->setEnabled(false);
+        ui->button_pioneer_remove->setEnabled(false);
 
     }
     else{
@@ -340,10 +340,10 @@ void MainWindow::on_pushButton_pioneers_remove_clicked()
 
 void MainWindow::on_list_computers_clicked(const QModelIndex &index)
 {
-    ui->pushButton_computers_remove->setEnabled(true);
+    ui->button_computer_remove->setEnabled(true);
 }
 
-void MainWindow::on_pushButton_computers_remove_clicked()
+void MainWindow::on_button_computer_remove_clicked()
 {
     int currentlySelectedComputerIndex = ui->list_computers->currentIndex().row();
 
@@ -355,7 +355,7 @@ void MainWindow::on_pushButton_computers_remove_clicked()
         ui->input_search_computers->setText("");
         displayAllComputers();
 
-        ui->pushButton_computers_remove->setEnabled(false);
+        ui->button_computer_remove->setEnabled(false);
 
     }
     else{
