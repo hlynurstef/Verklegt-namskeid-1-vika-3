@@ -68,7 +68,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_pioneers_remove">
+             <widget class="QPushButton" name="button_remove_pioneer">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="statusTip">
                <string>Remove selected Pioneer</string>
               </property>
@@ -302,7 +305,7 @@
      <x>0</x>
      <y>0</y>
      <width>727</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -319,7 +322,4 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

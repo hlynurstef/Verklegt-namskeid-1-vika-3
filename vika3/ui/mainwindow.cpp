@@ -171,19 +171,25 @@ void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int inde
 
 void MainWindow::on_list_pioneers_clicked(const QModelIndex &index)
 {
-    ui->pushButton_pioneers_remove->setEnabled(true);
+    ui->button_remove_pioneer->setEnabled(true);
 }
 
-void MainWindow::on_pushButton_pioneers_remove_clicked()
+void MainWindow::on_button_remove_pioneer_clicked()
 {
     int currentlySelectedPioneerIndex = ui->list_pioneers->currentIndex().row();
 
-    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers.at(currentlySelectedPioneerIndex);
+    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
 
     bool success = pioneerService.removePioneer(currentlySelectedPioneer);
 
-    ui->input_search_pioneers->setText("");
-    displayAllPioneers();
+    if(success){
+        ui->input_search_pioneers->setText("");
+        displayAllPioneers();
 
-    ui->pushButton_pioneers_remove->setEnabled(false);
+        ui->button_remove_pioneer->setEnabled(false);
+
+    }
+    else{
+        //some error
+    }
 }
