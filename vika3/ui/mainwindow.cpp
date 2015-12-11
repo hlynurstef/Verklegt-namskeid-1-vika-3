@@ -9,14 +9,31 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Pioneer dropdown lists:
     ui->dropdown_pioneers_order_by->addItem("Name");
     ui->dropdown_pioneers_order_by->addItem("Birth Year");
-    ui->dropdown_computers_order_by->addItem("Name");
-    ui->dropdown_computers_order_by->addItem("Build Year");
     ui->dropdown_pioneers_order_direction->addItem("Ascending");
     ui->dropdown_pioneers_order_direction->addItem("Descending");
+    ui->dropdown_pioneers_filter_gender->addItem("No filter");
+    ui->dropdown_pioneers_filter_gender->addItem("Female");
+    ui->dropdown_pioneers_filter_gender->addItem("Male");
+    ui->dropdown_pioneers_filter_vital_status->addItem("No filter");
+    ui->dropdown_pioneers_filter_vital_status->addItem("Alive");
+    ui->dropdown_pioneers_filter_vital_status->addItem("Deceased");
+
+    // Computer dropdown lists:
+    ui->dropdown_computers_order_by->addItem("Name");
+    ui->dropdown_computers_order_by->addItem("Build Year");
     ui->dropdown_computers_order_direction->addItem("Ascending");
     ui->dropdown_computers_order_direction->addItem("Descending");
+    ui->dropdown_computers_filter_type->addItem("No filter");
+    ui->dropdown_computers_filter_type->addItem("Mechanical");
+    ui->dropdown_computers_filter_type->addItem("Electrical");
+    ui->dropdown_computers_filter_type->addItem("Transistor");
+    ui->dropdown_computers_filter_type->addItem("Other");
+    ui->dropdown_computers_filter_built->addItem("No filter");
+    ui->dropdown_computers_filter_built->addItem("Was built");
+    ui->dropdown_computers_filter_built->addItem("Was not built");
 
     displayAllPioneers();
     displayAllComputers();
@@ -128,4 +145,24 @@ string MainWindow::getCurrentOrderByComputers()
     else{
         return constants::COMP_NAME;
     }
+}
+
+void MainWindow::on_dropdown_pioneers_filter_gender_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_dropdown_computers_filter_type_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int index)
+{
+
 }

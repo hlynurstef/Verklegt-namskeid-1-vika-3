@@ -30,6 +30,14 @@ private slots:
 
     void on_dropdown_computers_order_direction_currentIndexChanged(int index);
 
+    void on_dropdown_pioneers_filter_gender_currentIndexChanged(int index);
+
+    void on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index);
+
+    void on_dropdown_computers_filter_type_currentIndexChanged(int index);
+
+    void on_dropdown_computers_filter_built_currentIndexChanged(int index);
+
 private:
     std::string getCurrentOrderByPioneers();
     std::string getCurrentOrderByComputers();
