@@ -7,27 +7,31 @@
     <x>0</x>
     <y>0</y>
     <width>622</width>
-    <height>599</height>
+    <height>521</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_7">
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_21">
+     <layout class="QVBoxLayout" name="verticalLayout_15">
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_12">
         <item>
          <widget class="QLabel" name="label_search_pioneers">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Search Pioneers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search Pioneers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="input_search_pioneers"/>
+         <widget class="QLineEdit" name="input_search_pioneers">
+          <property name="statusTip">
+           <string>Type here to search Pioneers</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -36,7 +40,7 @@
             <property name="minimumSize">
              <size>
               <width>200</width>
-              <height>192</height>
+              <height>216</height>
              </size>
             </property>
            </widget>
@@ -45,6 +49,9 @@
            <layout class="QVBoxLayout" name="verticalLayout_11">
             <item>
              <widget class="QPushButton" name="pushButton_pioneers_more_info">
+              <property name="statusTip">
+               <string>See more info about selected Pioneer</string>
+              </property>
               <property name="text">
                <string>More Info</string>
               </property>
@@ -52,6 +59,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_pioneers_edit">
+              <property name="statusTip">
+               <string>Edit selected Pioneer</string>
+              </property>
               <property name="text">
                <string>Edit</string>
               </property>
@@ -59,6 +69,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_pioneers_remove">
+              <property name="statusTip">
+               <string>Remove selected Pioneer</string>
+              </property>
               <property name="text">
                <string>Remove</string>
               </property>
@@ -66,8 +79,35 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_pioneers_add_new_entry">
+              <property name="statusTip">
+               <string>Add new Pioneer entry</string>
+              </property>
               <property name="text">
                <string>Add New Entry</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="dropdown_pioneers_order_by">
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="statusTip">
+               <string>Order by</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="dropdown_pioneers_order_direction">
+              <property name="statusTip">
+               <string>Order direction</string>
               </property>
              </widget>
             </item>
@@ -89,19 +129,6 @@
          </layout>
         </item>
        </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -232,80 +259,6 @@
         </item>
        </layout>
       </item>
-      <item>
-       <spacer name="verticalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>13</width>
-          <height>28</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_18">
-        <item>
-         <widget class="QLabel" name="label_pioneers_sorting">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort Pioneers:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QGroupBox" name="groupBox_pioneers_sort_by">
-            <property name="title">
-             <string>Sort By</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_17">
-             <item>
-              <widget class="QRadioButton" name="radioButton_pioneers_sort_by_name">
-               <property name="text">
-                <string>Name</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_pioneers_sort_by_yob">
-               <property name="text">
-                <string>Year of birth</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_pioneers_direction">
-            <property name="title">
-             <string>Direction</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_16">
-             <item>
-              <widget class="QRadioButton" name="radioButton_pioneers_direction_ascending">
-               <property name="text">
-                <string>Ascending</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_pioneers_direction_descending">
-               <property name="text">
-                <string>Descending</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
      </layout>
     </item>
     <item>
@@ -316,18 +269,22 @@
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_20">
+     <layout class="QVBoxLayout" name="verticalLayout_14">
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_13">
         <item>
          <widget class="QLabel" name="label_search_computers">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Search Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Search Computers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="input_search_computers"/>
+         <widget class="QLineEdit" name="input_search_computers">
+          <property name="statusTip">
+           <string>Type here to search Computers</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -336,7 +293,7 @@
             <property name="minimumSize">
              <size>
               <width>201</width>
-              <height>192</height>
+              <height>215</height>
              </size>
             </property>
            </widget>
@@ -345,6 +302,9 @@
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
              <widget class="QPushButton" name="pushButton_computers_more_info">
+              <property name="statusTip">
+               <string>See more info about selected Computer</string>
+              </property>
               <property name="text">
                <string>More Info</string>
               </property>
@@ -352,6 +312,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_computers_edit">
+              <property name="statusTip">
+               <string>Edit selected Computer</string>
+              </property>
               <property name="text">
                <string>Edit</string>
               </property>
@@ -359,6 +322,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_computers_remove">
+              <property name="statusTip">
+               <string>Remove selected Computer</string>
+              </property>
               <property name="text">
                <string>Remove</string>
               </property>
@@ -366,8 +332,35 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_computers_add_new_entry">
+              <property name="statusTip">
+               <string>Add new Computer entry</string>
+              </property>
               <property name="text">
                <string>Add New Entry</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort by:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="dropdown_computers_order_by">
+              <property name="statusTip">
+               <string>Order by</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="dropdown_computers_order_direction">
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="statusTip">
+               <string>Order direction</string>
               </property>
              </widget>
             </item>
@@ -389,19 +382,6 @@
          </layout>
         </item>
        </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -547,80 +527,6 @@
              </widget>
             </item>
            </layout>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>18</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_19">
-        <item>
-         <widget class="QLabel" name="label_computers_sorting">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Sort Computers:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QGroupBox" name="groupBox_computers_sort_by">
-            <property name="title">
-             <string>Sort By</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_15">
-             <item>
-              <widget class="QRadioButton" name="radioButton_computers_sort_by_name">
-               <property name="text">
-                <string>Name</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_computers_sort_by_build_year">
-               <property name="text">
-                <string>Build Year</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_computers_direction">
-            <property name="title">
-             <string>Direction</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_14">
-             <item>
-              <widget class="QRadioButton" name="radioButton_computers_direction_ascending">
-               <property name="text">
-                <string>Ascending</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_computer_direction_descending">
-               <property name="text">
-                <string>Descending</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
           </item>
          </layout>
         </item>

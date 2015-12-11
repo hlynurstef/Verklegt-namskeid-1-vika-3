@@ -25,8 +25,8 @@ ui_*.h
 Makefile*
 *-build-*
 
-/verklegt-v1/verklegt-v1.pro.user
-/verklegt-v1/verklegt-v1.pro.user.*
+/vika3/vika3.pro.user
+/vika3/vika3.pro.user.*
 
 # QtCreator
 
@@ -39,4 +39,4 @@ Makefile*
 
 # Build folders
 
-/build-verklegt-v1-Desktop_Qt_5_5_1_MinGW_32bit-Debug/*
+/build-vika3-Desktop_Qt_5_5_1_MinGW_32bit-Debug/*

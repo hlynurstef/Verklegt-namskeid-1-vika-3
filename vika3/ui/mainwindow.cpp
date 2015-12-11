@@ -8,6 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->dropdown_pioneers_order_by->addItem("Name");
+    ui->dropdown_pioneers_order_by->addItem("Birth Year");
+    ui->dropdown_computers_order_by->addItem("Name");
+    ui->dropdown_computers_order_by->addItem("Build Year");
+    ui->dropdown_pioneers_order_direction->addItem("Ascending");
+    ui->dropdown_pioneers_order_direction->addItem("Descending");
+    ui->dropdown_computers_order_direction->addItem("Ascending");
+    ui->dropdown_computers_order_direction->addItem("Descending");
+
     displayAllPioneers();
     displayAllComputers();
 }
@@ -67,4 +76,24 @@ void MainWindow::on_input_search_computers_textChanged()
     // TO DO: change search function to take in name of column to search for instead of integer
     vector<Computer> computers = computerService.search(userInput, 1);
     displayComputers(computers);
+}
+
+void MainWindow::on_dropdown_pioneers_order_by_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_dropdown_computers_order_by_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_dropdown_pioneers_order_direction_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_dropdown_computers_order_direction_currentIndexChanged(int index)
+{
+
 }

@@ -22,6 +22,14 @@ private slots:
     void on_input_search_pioneers_textChanged();
     void on_input_search_computers_textChanged();
 
+    void on_dropdown_pioneers_order_by_currentIndexChanged(int index);
+
+    void on_dropdown_computers_order_by_currentIndexChanged(int index);
+
+    void on_dropdown_pioneers_order_direction_currentIndexChanged(int index);
+
+    void on_dropdown_computers_order_direction_currentIndexChanged(int index);
+
 private:
     void displayAllPioneers();
     void displayAllComputers();
