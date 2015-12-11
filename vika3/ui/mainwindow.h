@@ -31,6 +31,8 @@ private slots:
     void on_dropdown_computers_order_direction_currentIndexChanged(int index);
 
 private:
+    std::string getCurrentOrderByPioneers();
+    std::string getCurrentOrderByComputers();
     void displayAllPioneers();
     void displayAllComputers();
     void displayPioneers(std::vector<Pioneer> pioneers);

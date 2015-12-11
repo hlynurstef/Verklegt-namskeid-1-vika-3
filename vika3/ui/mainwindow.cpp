@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "utilities/constants.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -96,4 +97,35 @@ void MainWindow::on_dropdown_pioneers_order_direction_currentIndexChanged(int in
 void MainWindow::on_dropdown_computers_order_direction_currentIndexChanged(int index)
 {
 
+}
+
+string MainWindow::getCurrentOrderByPioneers()
+{
+    string orderBy = ui->dropdown_pioneers_order_by->currentText().toStdString();
+
+    if(orderBy == "Name"){
+        return constants::NAME;
+    }
+    else if(orderBy == "Birth Year"){
+        return constants::BIRTH_YEAR;
+    }
+    else{
+        return constants::NAME;
+    }
+
+}
+
+string MainWindow::getCurrentOrderByComputers()
+{
+    string orderBy = ui->dropdown_computers_order_by->currentText().toStdString();
+
+    if(orderBy == "Name"){
+        return constants::COMP_NAME;
+    }
+    else if(orderBy == "Build Year"){
+        return constants::BUILD_YEAR;
+    }
+    else{
+        return constants::COMP_NAME;
+    }
 }
