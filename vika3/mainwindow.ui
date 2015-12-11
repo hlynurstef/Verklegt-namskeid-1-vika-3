@@ -68,7 +68,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_pioneers_remove">
+             <widget class="QPushButton" name="button_remove_pioneer">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="statusTip">
                <string>Remove selected Pioneer</string>
               </property>
@@ -211,7 +214,10 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_computers_remove">
+           <widget class="QPushButton" name="button_remove_computer">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="statusTip">
              <string>Remove selected Computer</string>
             </property>

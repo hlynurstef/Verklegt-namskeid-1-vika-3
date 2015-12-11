@@ -24,6 +24,7 @@ public:
         // Sends a message to ComputerConnection to delete all computers
     vector<Computer> getList();
         // Returns entire list of computers
+    bool removeComputer(Computer comp);
 private:
     Computer temp;                      // Temporary object to be used in various situations
     vector<Computer> tempList2;
