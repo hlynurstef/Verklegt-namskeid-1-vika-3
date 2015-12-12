@@ -362,3 +362,24 @@ void MainWindow::on_button_computer_remove_clicked()
         //some error
     }
 }
+
+
+void MainWindow::on_pushButton_pioneers_add_new_entry_clicked()
+{
+    AddPioneer addPio;
+    int returnValue = addPio.exec();
+
+    if (returnValue == 1)
+    {
+        ui->dropdown_pioneers_filter_gender->clear();
+        ui->dropdown_pioneers_filter_vital_status->clear();
+        displayAllPioneers();
+
+        ui->statusBar->showMessage("Pioneer has been added", 2000);
+    }
+    else
+    {
+        // some error message
+    }
+
+}

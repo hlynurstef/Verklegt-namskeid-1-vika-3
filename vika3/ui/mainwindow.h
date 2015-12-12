@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "services/pioneerservice.h"
 #include "services/computerservice.h"
+#include "addpioneer.h"
 #include <vector>
 
 namespace Ui {
@@ -37,6 +38,8 @@ private slots:
     void on_list_computers_clicked(const QModelIndex &index);
 
     void on_button_computer_remove_clicked();
+
+    void on_pushButton_pioneers_add_new_entry_clicked();
 
 private:
     std::string getCurrentOrderByPioneers();
