@@ -65,12 +65,17 @@ void MainWindow::displayAllComputers()
 
 void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
 {
-    ui->list_pioneers->clear();
+    ui->table_pioneers->clearContents();
+    ui->table_pioneers->setRowCount(pioneers.size());
 
-    for(unsigned int i = 0; i < pioneers.size(); i++){
-        Pioneer currentPioneer = pioneers[i];
+    for(unsigned int row = 0; row < pioneers.size(); row++){
+        Pioneer currentPioneer = pioneers[row];
 
-        ui->list_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
+        QString name = QString::fromStdString(currentPioneer.getName());
+        QString birthYear = QString::number(currentPioneer.getByear());
+
+        ui->table_pioneers->setItem(row, 0, new QTableWidgetItem(name));
+        ui->table_pioneers->setItem(row, 1, new QTableWidgetItem(birthYear));
     }
 
     currentlyDisplayedPioneers = pioneers;
@@ -78,12 +83,23 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
 
 void MainWindow::displayComputers(std::vector<Computer> computers)
 {
-    ui->list_computers->clear();
+    ui->table_computers->clearContents();
+    ui->table_computers->setRowCount(computers.size());
 
-    for(unsigned int i = 0; i < computers.size(); i++){
-        Computer currentComputer = computers[i];
+    for(unsigned int row = 0; row < computers.size(); row++){
+        Computer currentComputer = computers[row];
+        QString buildYear;
 
-        ui->list_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
+        QString name = QString::fromStdString(currentComputer.getComputerName());
+        if(currentComputer.getBuildYear() == 0){
+            buildYear = QString::fromStdString("Not built");
+        }
+        else{
+            buildYear = QString::number(currentComputer.getBuildYear());
+        }
+
+        ui->table_computers->setItem(row, 0, new QTableWidgetItem(name));
+        ui->table_computers->setItem(row, 1, new QTableWidgetItem(buildYear));
     }
 
     currentlyDisplayedComputers = computers;
@@ -313,14 +329,9 @@ string MainWindow::getCurrentSearchByPioneers()
     }
 }
 
-void MainWindow::on_list_pioneers_clicked(const QModelIndex &index)
-{
-    ui->button_pioneer_remove->setEnabled(true);
-}
-
 void MainWindow::on_button_pioneer_remove_clicked()
 {
-    int currentlySelectedPioneerIndex = ui->list_pioneers->currentIndex().row();
+    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
 
     Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
 
@@ -338,14 +349,9 @@ void MainWindow::on_button_pioneer_remove_clicked()
     }
 }
 
-void MainWindow::on_list_computers_clicked(const QModelIndex &index)
-{
-    ui->button_computer_remove->setEnabled(true);
-}
-
 void MainWindow::on_button_computer_remove_clicked()
 {
-    int currentlySelectedComputerIndex = ui->list_computers->currentIndex().row();
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
 
     Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
@@ -361,4 +367,14 @@ void MainWindow::on_button_computer_remove_clicked()
     else{
         //some error
     }
+}
+
+void MainWindow::on_table_pioneers_clicked(const QModelIndex &index)
+{
+    ui->button_pioneer_remove->setEnabled(true);
+}
+
+void MainWindow::on_table_computers_clicked(const QModelIndex &index)
+{
+    ui->button_computer_remove->setEnabled(true);
 }

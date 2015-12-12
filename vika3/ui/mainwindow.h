@@ -29,14 +29,11 @@ private slots:
     void on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index);
     void on_dropdown_computers_filter_type_currentIndexChanged(int index);
     void on_dropdown_computers_filter_built_currentIndexChanged(int index);
-
-    void on_list_pioneers_clicked(const QModelIndex &index);
-
     void on_button_pioneer_remove_clicked();
-
-    void on_list_computers_clicked(const QModelIndex &index);
-
     void on_button_computer_remove_clicked();
+    void on_table_pioneers_clicked(const QModelIndex &index);
+
+    void on_table_computers_clicked(const QModelIndex &index);
 
 private:
     std::string getCurrentOrderByPioneers();
