@@ -50,6 +50,11 @@
         <string>Description</string>
        </property>
       </row>
+      <row>
+       <property name="text">
+        <string>Relation</string>
+       </property>
+      </row>
      </widget>
     </item>
    </layout>
@@ -65,7 +70,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_close">
       <property name="text">
        <string>Close</string>
       </property>

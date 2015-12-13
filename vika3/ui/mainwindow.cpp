@@ -425,6 +425,14 @@ void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 void MainWindow::on_pushButton_pioneers_more_info_clicked()
 {   
     MoreInfoPioneer temp;
+    int returnValue = temp.exec();
+
+}
+
+void MainWindow::on_pushButton_computers_more_info_clicked()
+{
+    MoreInfoComputer temp;
+    temp.setModal(true);
     temp.exec();
 }
 
@@ -435,6 +443,15 @@ Pioneer MainWindow::returnCurrentlySelectedPioneer(){
     Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
 
     return currentlySelectedPioneer;
+}
+
+Computer MainWindow::returnCurrentlySelectedComputer(){
+
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
+    return currentlySelectedComputer;
 }
 
 void MainWindow::on_pushButton_computers_add_new_entry_clicked()
@@ -455,3 +472,5 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked()
         // some error message
     }
 }
+
+

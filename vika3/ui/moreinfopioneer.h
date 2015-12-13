@@ -1,6 +1,7 @@
 #ifndef MOREINFOPIONEER_H
 #define MOREINFOPIONEER_H
 #include "data_types/pioneer.h"
+#include "services/pioneerservice.h"
 #include "ui/mainwindow.h"
 
 #include <QDialog>

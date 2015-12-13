@@ -6,6 +6,7 @@
 #include "services/computerservice.h"
 #include "addpioneer.h"
 #include "addcomputer.h"
+
 #include <vector>
 
 namespace Ui {
@@ -20,6 +21,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     Pioneer returnCurrentlySelectedPioneer();
+    Computer returnCurrentlySelectedComputer();
 
 private slots:
     void on_input_search_pioneers_textChanged();
@@ -43,6 +45,8 @@ private slots:
     void on_pushButton_computers_add_new_entry_clicked();
 
     void on_pushButton_pioneers_more_info_clicked();
+
+    void on_pushButton_computers_more_info_clicked();
 
 private:
     std::string getCurrentOrderByPioneers();
