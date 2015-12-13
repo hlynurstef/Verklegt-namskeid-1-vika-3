@@ -347,6 +347,7 @@ void MainWindow::on_button_pioneer_remove_clicked()
             displayAllPioneers();
 
             ui->button_pioneer_remove->setEnabled(false);
+            ui->pushButton_pioneers_more_info->setEnabled(false);
 
         }
         else{
@@ -377,6 +378,7 @@ void MainWindow::on_button_computer_remove_clicked()
             displayAllComputers();
 
             ui->button_computer_remove->setEnabled(false);
+            ui->pushButton_computers_more_info->setEnabled(false);
 
         }
         else{
@@ -386,7 +388,6 @@ void MainWindow::on_button_computer_remove_clicked()
     else{
         return;
     }
-
 }
 
 
@@ -412,11 +413,19 @@ void MainWindow::on_pushButton_pioneers_add_new_entry_clicked()
 void MainWindow::on_table_pioneers_clicked(const QModelIndex &index)
 {
     ui->button_pioneer_remove->setEnabled(true);
+    ui->pushButton_pioneers_more_info->setEnabled(true);
 }
 
 void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 {
     ui->button_computer_remove->setEnabled(true);
+    ui->pushButton_computers_more_info->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_pioneers_more_info_clicked()
+{
+    MoreInfoPioneer temp;
+    temp.exec();
 }
 
 void MainWindow::on_pushButton_computers_add_new_entry_clicked()
