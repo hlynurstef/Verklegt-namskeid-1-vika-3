@@ -19,6 +19,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Pioneer returnCurrentlySelectedPioneer();
 
     vector<Computer> returnAllComputers();
 private slots:
@@ -42,6 +43,8 @@ private slots:
         //Opens a new window for adding new pioneers
     void on_pushButton_computers_add_new_entry_clicked();
         //Opens a new window for adding new computer
+
+    void on_pushButton_pioneers_more_info_clicked();
 
 private:
     std::string getCurrentOrderByPioneers();
