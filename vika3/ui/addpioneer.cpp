@@ -38,8 +38,8 @@ void AddPioneer::on_button_add_pioneer_clicked()
         return;
     }
 
-    int byear = stoi(birthyear.c_str());
-    int dyear = stoi(deathyear.c_str());
+    int byear = atoi(birthyear.c_str());
+    int dyear = atoi(deathyear.c_str());
     Pioneer pio(name, sex, byear, dyear, description);
 
     pioService.addPioneers(pio, 1);
