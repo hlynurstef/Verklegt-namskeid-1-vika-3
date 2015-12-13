@@ -19,7 +19,9 @@ public:
     ~addComputer();
 
     bool errorCheck(string name, string type, string wasItBuilt, string buildYear, string description);
-
+        // Checks if there are errors in input
+    void emptyLines();
+        // Clears all lines as soon as the window is opened
 private slots:
     void on_button_add_computer_clicked();
 

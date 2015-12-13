@@ -1,6 +1,7 @@
 #include "addcomputer.h"
 #include "ui_addcomputer.h"
 #include <QMessageBox>
+#include <QStatusBar>
 
 addComputer::addComputer(QWidget *parent) :
     QDialog(parent),
@@ -17,10 +18,7 @@ addComputer::~addComputer()
 void addComputer::on_button_add_computer_clicked()
 {
     // Empty error messages
-    ui->label_name_error->setText("");
-    ui->label_type_error->setText("");
-    ui->label_build_error->setText("");
-    ui->label_description_error->setText("");
+    emptyLines();
 
     // Fill variables with values in input lines
     string name = ui->input_name->text().toStdString();
@@ -42,9 +40,23 @@ void addComputer::on_button_add_computer_clicked()
 
     Computer comp(name, bYear, type, wasItBuilt, description);
 
+    int answer = QMessageBox::question(this, "Warning", "Are you sure you want to add to list?");
 
-    this->done(1);
+    if(answer = QMessageBox::No){
+        return;
+    }
+    else{
+        this->done(1);
+    }
 }
+
+void addComputer::emptyLines(){
+    ui->label_name_error->setText("");
+    ui->label_type_error->setText("");
+    ui->label_build_error->setText("");
+    ui->label_description_error->setText("");
+}
+
 bool addComputer::errorCheck(string name, string type, string wasItBuilt, string buildYear, string description){
     bool error = false;
 
@@ -52,10 +64,9 @@ bool addComputer::errorCheck(string name, string type, string wasItBuilt, string
         ui->label_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
         error = true;
     }
-    if(type != "mechanical" || type != "Mechanical" || type != "electronic" || type != "Electronic" || type != "transistor" || type != "Transistor"){
-        //QMessageBox::warning();
-        //Test this out when I have figured out all errors
+    if(type != "mechanical" && type != "Mechanical" && type != "electronic" && type != "Electronic" && type != "transistor" && type != "Transistor"){
         ui->label_type_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
+        // ui->statusBar->showMessage("Correct type inputs are: Mechanical, Electronic or Transistor", 2000);
         error = true;
     }
     if(type.empty()){

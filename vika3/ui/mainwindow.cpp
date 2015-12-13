@@ -391,8 +391,7 @@ void MainWindow::on_button_computer_remove_clicked()
 }
 
 
-void MainWindow::on_pushButton_pioneers_add_new_entry_clicked()
-{
+void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     AddPioneer addPio;
     int returnValue = addPio.exec();
 
@@ -425,6 +424,14 @@ void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 void MainWindow::on_pushButton_pioneers_more_info_clicked()
 {   
     MoreInfoPioneer temp;
+    int returnValue = temp.exec();
+
+}
+
+void MainWindow::on_pushButton_computers_more_info_clicked()
+{
+    MoreInfoComputer temp;
+    temp.setModal(true);
     temp.exec();
 }
 
@@ -437,8 +444,19 @@ Pioneer MainWindow::returnCurrentlySelectedPioneer(){
     return currentlySelectedPioneer;
 }
 
-void MainWindow::on_pushButton_computers_add_new_entry_clicked()
-{
+
+Computer MainWindow::returnCurrentlySelectedComputer(){
+
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
+    return currentlySelectedComputer;
+}
+
+
+void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
+
     addComputer addComp;
     int returnValue = addComp.exec();
 
@@ -462,3 +480,9 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
     editComp.setModal(true);
     editComp.exec();
 }
+
+vector<Computer> MainWindow::returnAllComputers(){
+    vector<Computer> allComp = computerService.getList();
+    return allComp;
+}
+

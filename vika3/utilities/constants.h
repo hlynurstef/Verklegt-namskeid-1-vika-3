@@ -8,7 +8,7 @@ using namespace std;
 /**
  * This file contains constants that this application uses
  */
-
+/*
 const char TL_CORNER = 201;
 const char BL_CORNER = 200;
 const char TR_CORNER = 187;
@@ -18,7 +18,7 @@ const char V_LINE = 186;
 const char L_JOIN = 204;
 const char R_JOIN = 185;
 const int LEFT_MARGIN = 20;
-
+*/
 namespace constants {
 
     // Following constants are used when asking user how to print the list:

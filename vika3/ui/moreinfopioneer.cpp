@@ -24,7 +24,7 @@ void MoreInfoPioneer::displayPioneer(){
     ui->show_single_pioneer->setLineWidth(5);
 
     QString name = QString::fromStdString(pioneer.getName());
-    QString sex = QString::number(pioneer.getByear());
+    QString sex = QString::fromStdString(pioneer.getSex());
     QString birthYear = QString::number(pioneer.getByear());
     QString deathYear = QString::number(pioneer.getByear());
     QString description = QString::number(pioneer.getByear());
