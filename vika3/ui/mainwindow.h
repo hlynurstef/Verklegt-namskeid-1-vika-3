@@ -6,6 +6,7 @@
 #include "services/computerservice.h"
 #include "addpioneer.h"
 #include "addcomputer.h"
+#include "editcomputer.h"
 #include <vector>
 
 namespace Ui {
@@ -43,6 +44,8 @@ private slots:
     void on_pushButton_computers_add_new_entry_clicked();
 
     void on_pushButton_pioneers_more_info_clicked();
+
+    void on_pushButton_pioneers_edit_clicked();
 
 private:
     std::string getCurrentOrderByPioneers();
