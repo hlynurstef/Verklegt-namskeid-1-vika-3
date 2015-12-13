@@ -5,6 +5,7 @@
 #include "services/pioneerservice.h"
 #include "services/computerservice.h"
 #include "addpioneer.h"
+#include "addcomputer.h"
 #include <vector>
 
 namespace Ui {

@@ -430,5 +430,19 @@ void MainWindow::on_pushButton_pioneers_more_info_clicked()
 
 void MainWindow::on_pushButton_computers_add_new_entry_clicked()
 {
+    addComputer addComp;
+    int returnValue = addComp.exec();
 
+    if (returnValue == 1)
+    {
+        ui->dropdown_pioneers_filter_gender->clear();
+        ui->dropdown_pioneers_filter_vital_status->clear();
+        displayAllPioneers();
+
+        ui->statusBar->showMessage("Computer has been added", 2000);
+    }
+    else
+    {
+        // some error message
+    }
 }
