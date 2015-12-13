@@ -23,6 +23,7 @@ public:
     Pioneer returnCurrentlySelectedPioneer();
     Computer returnCurrentlySelectedComputer();
 
+    vector<Computer> returnAllComputers();
 private slots:
     void on_input_search_pioneers_textChanged();
     void on_input_search_computers_textChanged();
@@ -41,8 +42,9 @@ private slots:
     void on_table_computers_clicked(const QModelIndex &index);
 
     void on_pushButton_pioneers_add_new_entry_clicked();
-
+        //Opens a new window for adding new pioneers
     void on_pushButton_computers_add_new_entry_clicked();
+        //Opens a new window for adding new computer
 
     void on_pushButton_pioneers_more_info_clicked();
 
@@ -65,6 +67,7 @@ private:
     void displayAllComputers();
     void displayPioneers(std::vector<Pioneer> pioneers);
     void displayComputers(std::vector<Computer> computers);
+
     Ui::MainWindow *ui;
     PioneerService pioneerService;
     ComputerService computerService;

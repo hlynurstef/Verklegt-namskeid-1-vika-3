@@ -3,9 +3,11 @@
 #include <string>
 #include <vector>
 #include "services/pioneerservice.h"
+#include "services/relationservice.h"
 #include "data_types/pioneer.h"
 
 #include <QDialog>
+#include <QMainWindow>
 
 namespace Ui {
 class AddPioneer;
@@ -20,6 +22,8 @@ public:
     ~AddPioneer();
 
     bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
+    void emptyLines();
+    void displayComputers(vector<Computer> allComp);
 private slots:
     void on_button_add_pioneer_clicked();
 

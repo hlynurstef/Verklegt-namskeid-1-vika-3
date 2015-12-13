@@ -13,14 +13,13 @@ AddPioneer::~AddPioneer()
     delete ui;
 }
 
-
 void AddPioneer::on_button_add_pioneer_clicked()
 {
-    // Empty error messages
-    ui->label_name_error->setText("");
-    ui->label_sex_error->setText("");
-    ui->label_byear_error->setText("");
-    ui->label_description_error->setText("");
+    // Empty all lines
+    emptyLines();
+
+    // Display list of all computers
+    // vector<Computer> allComp = returnAllComputers();
 
     // Fill variables with values in input lines
     string name = ui->input_name->text().toStdString();
@@ -46,6 +45,14 @@ void AddPioneer::on_button_add_pioneer_clicked()
 
     this->done(1);
 }
+
+void AddPioneer::emptyLines(){
+    ui->label_name_error->setText("");
+    ui->label_sex_error->setText("");
+    ui->label_byear_error->setText("");
+    ui->label_description_error->setText("");
+}
+
 bool AddPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
     bool error = false;
 
@@ -53,7 +60,7 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
         ui->label_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
         error = true;
     }
-    if(sex != "male" || sex != "Male" || sex != "female" || sex != "Female"){
+    if(sex != "male" && sex != "Male" && sex != "female" && sex != "Female"){
         ui->label_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
         error = true;
     }
@@ -74,4 +81,15 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
         return true;
     }
     return false;
+}
+
+void AddPioneer::displayComputers(vector<Computer> allComp){
+    ui->list_unrelated_computers->clear();
+
+    Computer current;
+
+    for(unsigned int i = 0; i < allComp.size(); i++){
+        current = allComp[i];
+        ui->list_unrelated_computers->addItem(QString::fromStdString(current.getComputerName()));
+    }
 }
