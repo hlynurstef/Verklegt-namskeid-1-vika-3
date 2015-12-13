@@ -144,16 +144,6 @@
     <string>Add Pioneer</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_description">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>130</y>
-     <width>361</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_name_error">
    <property name="geometry">
     <rect>
@@ -204,6 +194,16 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="input_description">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>361</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>
