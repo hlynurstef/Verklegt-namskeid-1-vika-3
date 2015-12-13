@@ -38,6 +38,8 @@ private slots:
 
     void on_pushButton_pioneers_add_new_entry_clicked();
 
+    void on_pushButton_computers_add_new_entry_clicked();
+
 private:
     std::string getCurrentOrderByPioneers();
     std::string getCurrentDirectionPioneers();

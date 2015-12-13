@@ -398,3 +398,8 @@ void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 {
     ui->button_computer_remove->setEnabled(true);
 }
+
+void MainWindow::on_pushButton_computers_add_new_entry_clicked()
+{
+
+}

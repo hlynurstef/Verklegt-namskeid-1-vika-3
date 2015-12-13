@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>addComputer</class>
- <widget name="addComputer" class="QDialog">
+ <widget class="QDialog" name="addComputer">
   <property name="geometry">
    <rect>
     <x>0</x>
