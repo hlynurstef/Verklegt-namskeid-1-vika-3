@@ -423,9 +423,18 @@ void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 }
 
 void MainWindow::on_pushButton_pioneers_more_info_clicked()
-{
+{   
     MoreInfoPioneer temp;
     temp.exec();
+}
+
+Pioneer MainWindow::returnCurrentlySelectedPioneer(){
+
+    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+
+    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+
+    return currentlySelectedPioneer;
 }
 
 void MainWindow::on_pushButton_computers_add_new_entry_clicked()

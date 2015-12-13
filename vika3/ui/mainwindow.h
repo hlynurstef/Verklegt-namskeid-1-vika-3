@@ -19,6 +19,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Pioneer returnCurrentlySelectedPioneer();
 
 private slots:
     void on_input_search_pioneers_textChanged();
