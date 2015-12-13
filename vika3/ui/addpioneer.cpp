@@ -19,7 +19,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
     emptyLines();
 
     // Display list of all computers
-    // vector<Computer> allComp = returnAllComputers();
+    vector<Computer> allComp = mainwindow.returnAllComputers();
 
     // Fill variables with values in input lines
     string name = ui->input_name->text().toStdString();

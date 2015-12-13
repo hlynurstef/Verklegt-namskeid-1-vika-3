@@ -5,6 +5,7 @@
 #include "services/pioneerservice.h"
 #include "services/relationservice.h"
 #include "data_types/pioneer.h"
+#include "ui/mainwindow.h"
 
 #include <QDialog>
 #include <QMainWindow>
@@ -30,6 +31,7 @@ private slots:
 private:
     Ui::AddPioneer *ui;
     PioneerService pioService;
+    MainWindow mainwindow;
 };
 
 #endif // ADDPIONEER_H
