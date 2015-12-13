@@ -390,8 +390,7 @@ void MainWindow::on_button_computer_remove_clicked()
 }
 
 
-void MainWindow::on_pushButton_pioneers_add_new_entry_clicked()
-{
+void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     AddPioneer addPio;
     int returnValue = addPio.exec();
 
@@ -419,8 +418,7 @@ void MainWindow::on_table_computers_clicked(const QModelIndex &index)
     ui->button_computer_remove->setEnabled(true);
 }
 
-void MainWindow::on_pushButton_computers_add_new_entry_clicked()
-{
+void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     addComputer addComp;
     int returnValue = addComp.exec();
 
@@ -436,4 +434,9 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked()
     {
         // some error message
     }
+}
+
+vector<Computer> MainWindow::returnAllComputers(){
+    vector<Computer> allComp = computerService.getList();
+    return allComp;
 }

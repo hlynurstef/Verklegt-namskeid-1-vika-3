@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,12 +67,12 @@
     <rect>
      <x>20</x>
      <y>0</y>
-     <width>91</width>
+     <width>101</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;h3&gt;Add Pioneer &lt;/h2&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;Add Computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_add_computer">
@@ -207,6 +207,14 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>input_name</tabstop>
+  <tabstop>input_type</tabstop>
+  <tabstop>input_was_it_built</tabstop>
+  <tabstop>input_build_year</tabstop>
+  <tabstop>input_description</tabstop>
+  <tabstop>button_add_computer</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
