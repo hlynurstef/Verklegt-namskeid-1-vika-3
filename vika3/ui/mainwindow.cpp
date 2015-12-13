@@ -5,6 +5,7 @@
 #include "moreinfopioneer.h"
 
 #include <QDebug>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -331,42 +332,61 @@ string MainWindow::getCurrentSearchByPioneers()
 
 void MainWindow::on_button_pioneer_remove_clicked()
 {
-    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
-    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+    if (reply == QMessageBox::Yes){
+        int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
 
-    bool success = pioneerService.removePioneer(currentlySelectedPioneer);
+        Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
 
-    if(success){
-        ui->input_search_pioneers->setText("");
-        displayAllPioneers();
+        bool success = pioneerService.removePioneer(currentlySelectedPioneer);
 
-        ui->button_pioneer_remove->setEnabled(false);
+        if(success){
+            ui->input_search_pioneers->setText("");
+            displayAllPioneers();
 
+            ui->button_pioneer_remove->setEnabled(false);
+
+        }
+        else{
+            //some error
+        }
     }
     else{
-        //some error
+        return;
     }
+
+
 }
 
 void MainWindow::on_button_computer_remove_clicked()
 {
-    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
-    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+    if (reply == QMessageBox::Yes){
+        int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
 
-    bool success = computerService.removeComputer(currentlySelectedComputer);
+        Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
-    if(success){
-        ui->input_search_computers->setText("");
-        displayAllComputers();
+        bool success = computerService.removeComputer(currentlySelectedComputer);
 
-        ui->button_computer_remove->setEnabled(false);
+        if(success){
+            ui->input_search_computers->setText("");
+            displayAllComputers();
 
+            ui->button_computer_remove->setEnabled(false);
+
+        }
+        else{
+            //some error
+        }
     }
     else{
-        //some error
+        return;
     }
+
 }
 
 
