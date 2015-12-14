@@ -165,6 +165,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="button_remove_relation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Remove Selected Relation</string>
            </property>
@@ -189,7 +192,10 @@
           <widget class="QListWidget" name="list_unrelated_computers"/>
          </item>
          <item>
-          <widget class="QPushButton" name="button_add_relations">
+          <widget class="QPushButton" name="button_add_relation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Add Selected to Relation</string>
            </property>

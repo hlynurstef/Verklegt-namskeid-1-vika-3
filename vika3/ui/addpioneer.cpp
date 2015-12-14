@@ -83,12 +83,56 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
     return false;
 }
 
-void AddPioneer::setUnrelatedComputers(vector<Computer> currentlyDisplayedComputers){
+void AddPioneer::displayUnrelatedComputers(vector<Computer> unrelatedComputers){
     ui->list_unrelated_computers->clear();
 
-    for(unsigned int i = 0; i < currentlyDisplayedComputers.size(); i++){
-        Computer currentComputer = currentlyDisplayedComputers[i];
+    for(unsigned int i = 0; i < unrelatedComputers.size(); i++){
+        Computer currentComputer = unrelatedComputers[i];
 
         ui->list_unrelated_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
     }
+    unrelatedComputersList = unrelatedComputers;
+}
+
+void AddPioneer::displayRelatedComputers(vector<Computer> relatedComputers){
+    ui->list_related_computers->clear();
+
+    for(unsigned int i = 0; i < relatedComputers.size(); i++){
+        Computer currentComputer = relatedComputers[i];
+
+        ui->list_related_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
+    }
+    relatedComputersList = relatedComputers;
+}
+
+void AddPioneer::on_list_unrelated_computers_clicked(){
+    ui->button_add_relation->setEnabled(true);
+}
+
+void AddPioneer::on_list_related_computers_clicked(const QModelIndex &index){
+    ui->button_remove_relation->setEnabled(true);
+}
+
+void AddPioneer::on_button_add_relation_clicked(){
+    int currentlySelectedComputerIndex = ui->list_unrelated_computers->currentIndex().row();
+
+    Computer selectedComputer = unrelatedComputersList[currentlySelectedComputerIndex];
+    relatedComputersList.push_back(selectedComputer);
+    unrelatedComputersList.erase(unrelatedComputersList.begin() + currentlySelectedComputerIndex);
+    displayUnrelatedComputers(unrelatedComputersList);
+    displayRelatedComputers(relatedComputersList);
+
+    ui->button_add_relation->setEnabled(false);
+}
+
+void AddPioneer::on_button_remove_relation_clicked(){
+    int currentlySelectedComputerIndex = ui->list_related_computers->currentIndex().row();
+
+    Computer selectedComputer = relatedComputersList[currentlySelectedComputerIndex];
+    unrelatedComputersList.push_back(selectedComputer);
+    relatedComputersList.erase(relatedComputersList.begin() + currentlySelectedComputerIndex);
+    displayRelatedComputers(relatedComputersList);
+    displayUnrelatedComputers(unrelatedComputersList);
+
+    ui->button_remove_relation->setEnabled(false);
 }

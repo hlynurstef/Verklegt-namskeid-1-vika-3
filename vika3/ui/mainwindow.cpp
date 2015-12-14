@@ -364,7 +364,7 @@ void MainWindow::on_button_computer_remove_clicked(){
 
 void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     AddPioneer addPio;
-    addPio.setUnrelatedComputers(currentlyDisplayedComputers);
+    addPio.displayUnrelatedComputers(currentlyDisplayedComputers);
     int returnValue = addPio.exec();
 
     if (returnValue == 1)
