@@ -1,10 +1,11 @@
 #ifndef EDITCOMPUTER_H
 #define EDITCOMPUTER_H
-
-#include <QDialog>
 #include "data_types/computer.h"
 #include "services/computerservice.h"
-#include <QFile>
+#include "ui/mainwindow.h"
+#include <QDialog>
+
+
 namespace Ui {
 class editComputer;
 }
@@ -17,11 +18,15 @@ public:
     explicit editComputer(QWidget *parent = 0);
     ~editComputer();
 
+    void displayComputer();
+
 private slots:
     void on_pushButton_editcomputer_clicked();
 
 private:
     Ui::editComputer *ui;
+    Computer computer;
+    MainWindow mainwindow;
 };
 
 #endif // EDITCOMPUTER_H

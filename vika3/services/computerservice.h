@@ -1,6 +1,6 @@
 #ifndef COMPUTERSERVICE_H
 #define COMPUTERSERVICE_H
-#include "data_types/computer.h"
+//#include "data_types/computer.h"
 #include "data_layer/computerconnection.h"
 //#include "ui/interface.h"
 #include <fstream>

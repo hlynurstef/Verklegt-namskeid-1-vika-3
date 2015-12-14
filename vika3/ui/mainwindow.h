@@ -6,7 +6,6 @@
 #include "services/computerservice.h"
 #include "addpioneer.h"
 #include "addcomputer.h"
-#include "editcomputer.h"
 #include "editpioneer.h"
 #include <vector>
 

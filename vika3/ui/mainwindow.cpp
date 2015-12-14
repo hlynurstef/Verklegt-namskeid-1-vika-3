@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "utilities/constants.h"
 #include "moreinfocomputer.h"
+#include "editcomputer.h"
 #include "moreinfopioneer.h"
 
 #include <QDebug>
