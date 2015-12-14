@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>435</width>
-    <height>374</height>
+    <width>503</width>
+    <height>507</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,134 +17,234 @@
    <iconset resource="resources.qrc">
     <normaloff>:/icons/Images/add_pio.png</normaloff>:/icons/Images/add_pio.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_11">
+   <item>
     <widget class="QLabel" name="label_add_pio">
      <property name="text">
       <string>&lt;h3&gt;Add Pioneer &lt;/h2&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_name">
-     <property name="text">
-      <string>Name: </string>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_pioneer_name">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Name: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_pioneer_name_error">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="input_pioneer_name"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_pioneer_sex">
+             <property name="text">
+              <string>Sex:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_pioneer_sex_error">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="input_pioneer_sex"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label_pioneer_birth_year">
+             <property name="text">
+              <string>Birth Year:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_pioneer_byear_error">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="input_pioneer_bYear"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label_pioneer_death_year">
+           <property name="text">
+            <string>Death Year:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="input_pioneer_dYear"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QLabel" name="label_name_error">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_pioneer_description">
+       <property name="text">
+        <string>Description:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_pioneer_description_error">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="1" column="3" colspan="2">
-    <widget class="QLabel" name="label_birth_year">
-     <property name="text">
-      <string>Birth Year:</string>
-     </property>
-    </widget>
+   <item>
+    <widget class="QTextEdit" name="input_pioneer_description"/>
    </item>
-   <item row="1" column="5">
-    <widget class="QLabel" name="label_byear_error">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="QLabel" name="label_pioneer_related">
+         <property name="text">
+          <string>Related to:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QListWidget" name="list_related_computers"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_pioneer_remove_relation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Remove Selected Relation</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <widget class="QLabel" name="label_pioneer_not_related">
+         <property name="text">
+          <string>Not Related to:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QListWidget" name="list_unrelated_computers"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_pioneer_add_relation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Add Selected to Relation</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QLineEdit" name="input_name"/>
-   </item>
-   <item row="2" column="3" colspan="3">
-    <widget class="QLineEdit" name="input_bYear"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_sex">
-     <property name="text">
-      <string>Sex:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QLabel" name="label_sex_error">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3" colspan="2">
-    <widget class="QLabel" name="label__death_year">
-     <property name="text">
-      <string>Death Year:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="3">
-    <widget class="QLineEdit" name="input_sex"/>
-   </item>
-   <item row="4" column="3" colspan="3">
-    <widget class="QLineEdit" name="input_dYear"/>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_description">
-     <property name="text">
-      <string>Description:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="5">
-    <widget class="QLabel" name="label_description_error">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="6">
-    <widget class="QLineEdit" name="input_description"/>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_relations">
-     <property name="text">
-      <string>Relations:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" rowspan="2" colspan="2">
-    <widget class="QListWidget" name="list_unrelated_computers"/>
-   </item>
-   <item row="8" column="2" colspan="2">
-    <widget class="QPushButton" name="button_add_relations">
-     <property name="text">
-      <string>Add Relation</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="4" rowspan="2" colspan="2">
-    <widget class="QListWidget" name="list_related_computers"/>
-   </item>
-   <item row="9" column="2" colspan="2">
-    <widget class="QPushButton" name="button_remove_relation">
-     <property name="text">
-      <string>Remove Relation</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="2" colspan="2">
-    <widget class="QPushButton" name="button_add_pioneer">
-     <property name="text">
-      <string>Add Pioneer</string>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_add_pioneer">
+       <property name="text">
+        <string>Add Pioneer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_add_pioneer_cancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>input_name</tabstop>
-  <tabstop>input_sex</tabstop>
-  <tabstop>input_bYear</tabstop>
-  <tabstop>input_dYear</tabstop>
-  <tabstop>input_description</tabstop>
+  <tabstop>input_pioneer_name</tabstop>
+  <tabstop>input_pioneer_sex</tabstop>
+  <tabstop>input_pioneer_bYear</tabstop>
+  <tabstop>input_pioneer_dYear</tabstop>
   <tabstop>button_add_pioneer</tabstop>
  </tabstops>
  <resources>

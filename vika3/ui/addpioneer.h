@@ -24,14 +24,25 @@ public:
 
     bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
     void emptyLines();
-    void displayComputers(vector<Computer> allComp);
+    void displayUnrelatedComputers(vector<Computer> unrelatedComputers);
+        // Prints vector of computers in the unrelated computers list
+    void displayRelatedComputers(vector<Computer> relatedComputers);
+        // Prints vector of computers in the unrelated computers list
 private slots:
     void on_button_add_pioneer_clicked();
+    void on_list_unrelated_computers_clicked();
+    void on_button_add_relation_clicked();
+    void on_button_remove_relation_clicked();
+    void on_list_related_computers_clicked();
+
+    void on_button_add_pioneer_cancel_clicked();
 
 private:
     Ui::AddPioneer *ui;
     PioneerService pioService;
     //MainWindow mainwindow;
+    vector<Computer> unrelatedComputersList;    // This vector holds onto every computer that is currently displayed on main window
+    vector<Computer> relatedComputersList;      // This vector holds onto every computer related to Pioneer
 };
 
 #endif // ADDPIONEER_H

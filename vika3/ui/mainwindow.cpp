@@ -115,35 +115,35 @@ void MainWindow::on_input_search_computers_textChanged(){
     displayComputers(computers);
 }
 
-void MainWindow::on_dropdown_pioneers_order_by_currentIndexChanged(int index){
+void MainWindow::on_dropdown_pioneers_order_by_currentIndexChanged(int /* unused */){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_pioneers_order_direction_currentIndexChanged(int index){
+void MainWindow::on_dropdown_pioneers_order_direction_currentIndexChanged(int /* unused */){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_pioneers_filter_gender_currentIndexChanged(int index){
+void MainWindow::on_dropdown_pioneers_filter_gender_currentIndexChanged(int /* unused */){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index){
+void MainWindow::on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int /* unused */){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_order_by_currentIndexChanged(int index){
+void MainWindow::on_dropdown_computers_order_by_currentIndexChanged(int /* unused */){
     on_input_search_computers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_order_direction_currentIndexChanged(int index){
+void MainWindow::on_dropdown_computers_order_direction_currentIndexChanged(int /* unused */){
     on_input_search_computers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_filter_type_currentIndexChanged(int index){
+void MainWindow::on_dropdown_computers_filter_type_currentIndexChanged(int /* unused */){
     on_input_search_computers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int index){
+void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int /* unused */){
     on_input_search_computers_textChanged();
 }
 
@@ -364,6 +364,7 @@ void MainWindow::on_button_computer_remove_clicked(){
 
 void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     AddPioneer addPio;
+    addPio.displayUnrelatedComputers(currentlyDisplayedComputers);
     int returnValue = addPio.exec();
 
     if (returnValue == 1)
@@ -376,17 +377,17 @@ void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     }
     else
     {
-        // some error message
+        ui->statusBar->showMessage("No pioneer was added", 2000);
     }
 }
 
-void MainWindow::on_table_pioneers_clicked(const QModelIndex &index){
+void MainWindow::on_table_pioneers_clicked(){
     ui->button_pioneer_remove->setEnabled(true);
     ui->pushButton_pioneers_more_info->setEnabled(true);
     ui->pushButton_pioneers_edit->setEnabled(true);
 }
 
-void MainWindow::on_table_computers_clicked(const QModelIndex &index){
+void MainWindow::on_table_computers_clicked(const QModelIndex &/* unused */){
     ui->button_computer_remove->setEnabled(true);
     ui->pushButton_computers_more_info->setEnabled(true);
     ui->pushButton_computers_edit->setEnabled(true);
@@ -460,7 +461,7 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     }
     else
     {
-        // some error message
+        ui->statusBar->showMessage("No computer was added", 2000);
     }
 }
 

@@ -21,11 +21,11 @@ void addComputer::on_button_add_computer_clicked()
     emptyLines();
 
     // Fill variables with values in input lines
-    string name = ui->input_name->text().toStdString();
-    string type = ui->input_type->text().toStdString();
-    string wasItBuilt = ui->input_was_it_built->text().toStdString();
-    string buildYear= ui->input_build_year->text().toStdString();
-    string description = ui->input_description->text().toStdString();
+    string name = ui->input_computer_name->text().toStdString();
+    string type = ui->input_computer_type->text().toStdString();
+    string wasItBuilt = ui->input_computer_was_it_built->text().toStdString();
+    string buildYear= ui->input_computer_build_year->text().toStdString();
+    string description = ui->input_computer_description->toPlainText().toStdString();
 
     if(buildYear.empty()){
         buildYear= "0";
@@ -51,38 +51,43 @@ void addComputer::on_button_add_computer_clicked()
 }
 
 void addComputer::emptyLines(){
-    ui->label_name_error->setText("");
-    ui->label_type_error->setText("");
-    ui->label_build_error->setText("");
-    ui->label_description_error->setText("");
+    ui->label_computer_name_error->setText("");
+    ui->label_computer_type_error->setText("");
+    ui->label_computer_build_error->setText("");
+    ui->label_computer_description_error->setText("");
 }
 
 bool addComputer::errorCheck(string name, string type, string wasItBuilt, string buildYear, string description){
     bool error = false;
 
     if(name.empty()){
-        ui->label_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
+        ui->label_computer_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
         error = true;
     }
     if(type != "mechanical" && type != "Mechanical" && type != "electronic" && type != "Electronic" && type != "transistor" && type != "Transistor"){
-        ui->label_type_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
+        ui->label_computer_type_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
         // ui->statusBar->showMessage("Correct type inputs are: Mechanical, Electronic or Transistor", 2000);
         error = true;
     }
     if(type.empty()){
-        ui->label_type_error->setText("<span style ='color: #ff0000'>Input type</span>");
+        ui->label_computer_type_error->setText("<span style ='color: #ff0000'>Input type</span>");
         error = true;
     }
     if(wasItBuilt.empty()){
-        ui->label_build_error->setText("<span style ='color: #ff0000'>Input y/n</span>");
+        ui->label_computer_build_error->setText("<span style ='color: #ff0000'>Input y/n</span>");
         error = true;
     }
     if(description.empty()){
-        ui->label_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+        ui->label_computer_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
     }
 
     if(error == true){
         return true;
     }
     return false;
+}
+
+void addComputer::on_button_computer_cancel_clicked()
+{
+    this->done(0);
 }

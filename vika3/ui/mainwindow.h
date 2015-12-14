@@ -32,21 +32,21 @@ private slots:
         // Searches for matches as soon as the search string has changed "search as you type"
     void on_input_search_computers_textChanged();
         // Searches for matches as soon as the search string has changed "search as you type"
-    void on_dropdown_pioneers_order_by_currentIndexChanged(int index);
+    void on_dropdown_pioneers_order_by_currentIndexChanged(int);
         // Orders list by a specific column when user chooses from dropdown list
-    void on_dropdown_computers_order_by_currentIndexChanged(int index);
+    void on_dropdown_computers_order_by_currentIndexChanged(int);
         // Orders list by a specific column when user chooses from dropdown list
-    void on_dropdown_pioneers_order_direction_currentIndexChanged(int index);
+    void on_dropdown_pioneers_order_direction_currentIndexChanged(int);
         // Orders list in ascending or descending fashion when user chooses from dropdown list
-    void on_dropdown_computers_order_direction_currentIndexChanged(int index);
+    void on_dropdown_computers_order_direction_currentIndexChanged(int);
         // Orders list in ascending or descending fashion when user chooses from dropdown list
-    void on_dropdown_pioneers_filter_gender_currentIndexChanged(int index);
+    void on_dropdown_pioneers_filter_gender_currentIndexChanged(int);
         // Filters pioneers list by gender when user chooses from dropdown list
-    void on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index);
+    void on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int);
         // Filters pioneers by alive or deceased (or no filter) when user chooses from dropdown list
-    void on_dropdown_computers_filter_type_currentIndexChanged(int index);
+    void on_dropdown_computers_filter_type_currentIndexChanged(int);
         // Filters computers by type when user chooses from dropdown list
-    void on_dropdown_computers_filter_built_currentIndexChanged(int index);
+    void on_dropdown_computers_filter_built_currentIndexChanged(int);
         // Filters computers by if the computer was built or not when user chooses from dropdown list
 
     void on_button_pioneer_remove_clicked();
@@ -54,9 +54,9 @@ private slots:
     void on_button_computer_remove_clicked();
         // Removes selected computer from list when Remove button is clicked
 
-    void on_table_pioneers_clicked(const QModelIndex &index);
+    void on_table_pioneers_clicked();
         // Enables the "More Info" and "Remove Selected" buttons when an entry is clicked in table
-    void on_table_computers_clicked(const QModelIndex &index);
+    void on_table_computers_clicked(const QModelIndex &);
         // Enables the "More Info" and "Remove Selected" buttons when an entry is clicked in table
 
     void on_pushButton_pioneers_add_new_entry_clicked();

@@ -22,11 +22,11 @@ void AddPioneer::on_button_add_pioneer_clicked()
     //vector<Computer> allComp = returnAllComputers();
 
     // Fill variables with values in input lines
-    string name = ui->input_name->text().toStdString();
-    string sex = ui->input_sex->text().toStdString();
-    string birthyear = ui->input_bYear->text().toStdString();
-    string deathyear = ui->input_dYear->text().toStdString();
-    string description = ui->input_description->text().toStdString();
+    string name = ui->input_pioneer_name->text().toStdString();
+    string sex = ui->input_pioneer_sex->text().toStdString();
+    string birthyear = ui->input_pioneer_bYear->text().toStdString();
+    string deathyear = ui->input_pioneer_dYear->text().toStdString();
+    string description = ui->input_pioneer_description->toPlainText().toStdString();
 
     if(deathyear.empty()){
         deathyear = "0";
@@ -47,34 +47,34 @@ void AddPioneer::on_button_add_pioneer_clicked()
 }
 
 void AddPioneer::emptyLines(){
-    ui->label_name_error->setText("");
-    ui->label_sex_error->setText("");
-    ui->label_byear_error->setText("");
-    ui->label_description_error->setText("");
+    ui->label_pioneer_name_error->setText("");
+    ui->label_pioneer_sex_error->setText("");
+    ui->label_pioneer_byear_error->setText("");
+    ui->label_pioneer_description_error->setText("");
 }
 
 bool AddPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
     bool error = false;
 
     if(name.empty()){
-        ui->label_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
+        ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
         error = true;
     }
     if(sex != "male" && sex != "Male" && sex != "female" && sex != "Female"){
-        ui->label_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
+        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
         error = true;
     }
     if(sex.empty()){
-        ui->label_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
+        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
         error = true;
     }
 
     if(birthyear.empty()){
-        ui->label_byear_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
+        ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
         error = true;
     }
     if(description.empty()){
-        ui->label_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+        ui->label_pioneer_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
     }
 
     if(error == true){
@@ -83,13 +83,61 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
     return false;
 }
 
-void AddPioneer::displayComputers(vector<Computer> allComp){
+void AddPioneer::displayUnrelatedComputers(vector<Computer> unrelatedComputers){
     ui->list_unrelated_computers->clear();
 
-    Computer current;
+    for(unsigned int i = 0; i < unrelatedComputers.size(); i++){
+        Computer currentComputer = unrelatedComputers[i];
 
-    for(unsigned int i = 0; i < allComp.size(); i++){
-        current = allComp[i];
-        ui->list_unrelated_computers->addItem(QString::fromStdString(current.getComputerName()));
+        ui->list_unrelated_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
     }
+    unrelatedComputersList = unrelatedComputers;
+}
+
+void AddPioneer::displayRelatedComputers(vector<Computer> relatedComputers){
+    ui->list_related_computers->clear();
+
+    for(unsigned int i = 0; i < relatedComputers.size(); i++){
+        Computer currentComputer = relatedComputers[i];
+
+        ui->list_related_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
+    }
+    relatedComputersList = relatedComputers;
+}
+
+void AddPioneer::on_list_unrelated_computers_clicked(){
+    ui->button_pioneer_add_relation->setEnabled(true);
+}
+
+void AddPioneer::on_list_related_computers_clicked(){
+    ui->button_pioneer_remove_relation->setEnabled(true);
+}
+
+void AddPioneer::on_button_add_relation_clicked(){
+    int currentlySelectedComputerIndex = ui->list_unrelated_computers->currentIndex().row();
+
+    Computer selectedComputer = unrelatedComputersList[currentlySelectedComputerIndex];
+    relatedComputersList.push_back(selectedComputer);
+    unrelatedComputersList.erase(unrelatedComputersList.begin() + currentlySelectedComputerIndex);
+    displayUnrelatedComputers(unrelatedComputersList);
+    displayRelatedComputers(relatedComputersList);
+
+    ui->button_pioneer_add_relation->setEnabled(false);
+}
+
+void AddPioneer::on_button_remove_relation_clicked(){
+    int currentlySelectedComputerIndex = ui->list_related_computers->currentIndex().row();
+
+    Computer selectedComputer = relatedComputersList[currentlySelectedComputerIndex];
+    unrelatedComputersList.push_back(selectedComputer);
+    relatedComputersList.erase(relatedComputersList.begin() + currentlySelectedComputerIndex);
+    displayRelatedComputers(relatedComputersList);
+    displayUnrelatedComputers(unrelatedComputersList);
+
+    ui->button_pioneer_remove_relation->setEnabled(false);
+}
+
+void AddPioneer::on_button_add_pioneer_cancel_clicked()
+{
+    this->done(0);
 }

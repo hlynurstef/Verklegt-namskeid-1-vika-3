@@ -25,6 +25,8 @@ public:
 private slots:
     void on_button_add_computer_clicked();
 
+    void on_button_computer_cancel_clicked();
+
 private:
     Ui::addComputer *ui;
     Computer compService;
