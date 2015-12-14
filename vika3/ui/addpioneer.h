@@ -39,6 +39,7 @@ private slots:
 private:
     Ui::AddPioneer *ui;
     PioneerService pioService;
+    RelationService relationService;
     //MainWindow mainwindow;
     vector<Computer> unrelatedComputersList;    // This vector holds onto every computer that is currently displayed on main window
     vector<Computer> relatedComputersList;      // This vector holds onto every computer related to Pioneer

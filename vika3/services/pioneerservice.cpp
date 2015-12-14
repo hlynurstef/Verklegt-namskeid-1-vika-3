@@ -46,3 +46,9 @@ bool PioneerService::removePioneer(Pioneer pio){
 void PioneerService::deleteAllPioneers(){
     data.deleteAllPioneers();
 }
+
+int PioneerService::getHighestId(){
+    int highestId = data.getHighestId();
+
+    return highestId;
+}

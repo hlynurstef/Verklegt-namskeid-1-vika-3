@@ -214,3 +214,13 @@ bool PioneerConnection::removePioneer(Pioneer pio){
 void PioneerConnection::deleteAllPioneers(){
     query.exec("DELETE FROM pioneers");
 }
+
+int PioneerConnection::getHighestId(){
+    query.exec("SELECT MAX(id) FROM Pioneers");
+    int highestId;
+
+    while(query.next()){
+        highestId = query.value("MAX(id)").toUInt();
+    }
+    return highestId;
+}

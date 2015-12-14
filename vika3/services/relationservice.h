@@ -9,7 +9,7 @@
 class RelationService
 {
 public:
-    void addRelations(Pioneer pio, Computer comp);
+    void addRelations(int pioneerId, int computerId);
         // Sends one pioneer and one computer that should link together to RelationConnection
     vector<Relation> displayRelations();
         // Sends relations from database to interface. Interface then prints out relations

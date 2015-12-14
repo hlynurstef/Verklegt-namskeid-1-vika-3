@@ -42,6 +42,12 @@ void AddPioneer::on_button_add_pioneer_clicked()
     Pioneer pio(name, sex, byear, dyear, description);
 
     pioService.addPioneers(pio, 1);
+    int idOfAddedPioneer = pioService.getHighestId();
+
+    for(unsigned int i = 0; i < relatedComputersList.size(); i++){
+        Computer currentComputer = relatedComputersList[i];
+        relationService.addRelations(idOfAddedPioneer, currentComputer.getId());
+    }
 
     this->done(1);
 }

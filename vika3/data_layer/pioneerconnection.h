@@ -33,6 +33,8 @@ public:
         // Deletes a single pioneer from table
     void deleteAllPioneers();
         // Deletes the entire table
+    int getHighestId();
+        // Returns highest id in Pioneers table (most recently added entry)
 
     // ---------------------------------------------------------------------
     //                        PRINT QUERY FUNCTIONS:
