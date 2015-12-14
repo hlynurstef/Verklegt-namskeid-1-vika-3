@@ -468,7 +468,12 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
 
 void MainWindow::on_pushButton_pioneers_edit_clicked()
 {
+    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+    currentlySelectedPio = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+
     editPioneer editPio;
+
+    editPio.setPioneer(currentlySelectedPio);
     editPio.setModal(true);
     editPio.exec();
 }

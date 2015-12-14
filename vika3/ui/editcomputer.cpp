@@ -20,11 +20,11 @@ editComputer::~editComputer()
 void editComputer::setComputer(Computer comp){
 
     // Printing info
-    ui->lineEdit_name->setText(QString::fromStdString(computer.getComputerName()));
-    ui->lineEdit_type->setText(QString::fromStdString(computer.getComputerType()));
-    ui->lineEdit_wasbuilt->setText(QString::fromStdString(computer.getWasItBuilt()));
-    ui->lineEdit_buildyear->setText(QString::number(computer.getBuildYear()));
-    ui->lineEdit_description->setText(QString::fromStdString(computer.getComputerDescription()));
+    ui->lineEdit_name->setText(QString::fromStdString(comp.getComputerName()));
+    ui->lineEdit_type->setText(QString::fromStdString(comp.getComputerType()));
+    ui->lineEdit_wasbuilt->setText(QString::fromStdString(comp.getWasItBuilt()));
+    ui->lineEdit_buildyear->setText(QString::number(comp.getBuildYear()));
+    ui->lineEdit_description->setText(QString::fromStdString(comp.getComputerDescription()));
 }
 
 
