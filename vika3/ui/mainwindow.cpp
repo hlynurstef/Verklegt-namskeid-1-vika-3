@@ -422,7 +422,11 @@ void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 }
 
 void MainWindow::on_pushButton_pioneers_more_info_clicked()
-{   
+{
+    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+
+    currentlySelectedPio = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+
     MoreInfoPioneer temp;
     int returnValue = temp.exec();
 
@@ -430,6 +434,10 @@ void MainWindow::on_pushButton_pioneers_more_info_clicked()
 
 void MainWindow::on_pushButton_computers_more_info_clicked()
 {
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+
+    currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
     MoreInfoComputer temp;
     temp.setModal(true);
     temp.exec();
@@ -437,21 +445,13 @@ void MainWindow::on_pushButton_computers_more_info_clicked()
 
 Pioneer MainWindow::returnCurrentlySelectedPioneer(){
 
-    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
-
-    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
-
-    return currentlySelectedPioneer;
+    return currentlySelectedPio;
 }
 
 
 Computer MainWindow::returnCurrentlySelectedComputer(){
 
-    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
-
-    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
-
-    return currentlySelectedComputer;
+    return currentlySelectedComp;
 }
 
 

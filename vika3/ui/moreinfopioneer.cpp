@@ -19,7 +19,8 @@ MoreInfoPioneer::~MoreInfoPioneer()
 
 void MoreInfoPioneer::displayPioneer(){
     //Getting the info from selected pioneer
-    pioneer = mainwindow.returnCurrentlySelectedPioneer();
+    MainWindow temp;
+    pioneer = temp.returnCurrentlySelectedPioneer();
 
     //Printing out info
     ui->show_single_pioneer->clearContents();
@@ -28,8 +29,8 @@ void MoreInfoPioneer::displayPioneer(){
     QString name = QString::fromStdString(pioneer.getName());
     QString sex = QString::fromStdString(pioneer.getSex());
     QString birthYear = QString::number(pioneer.getByear());
-    QString deathYear = QString::number(pioneer.getByear());
-    QString description = QString::number(pioneer.getByear());
+    QString deathYear = QString::number(pioneer.getDyear());
+    QString description = QString::fromStdString(pioneer.getDescription());
 
     ui->show_single_pioneer->setItem(0, 0, new QTableWidgetItem(name));
     ui->show_single_pioneer->setItem(1, 0, new QTableWidgetItem(sex));

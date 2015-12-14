@@ -25,7 +25,7 @@ private slots:
 private:
     Ui::MoreInfoPioneer *ui;
     Pioneer pioneer;
-    MainWindow mainwindow;
+    //MainWindow mainwindow;
 };
 
 #endif // MOREINFOPIONEER_H

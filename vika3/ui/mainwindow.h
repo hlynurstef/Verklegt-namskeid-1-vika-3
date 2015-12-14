@@ -111,6 +111,8 @@ private:
     ComputerService computerService;                        // ComputerService object
     std::vector<Pioneer> currentlyDisplayedPioneers;        // Vector that holds onto every pioneer that is currently being displayed on screen
     std::vector<Computer> currentlyDisplayedComputers;      // Vector that holds onto every computer that is currently being displayed on screen
+    Pioneer currentlySelectedPio;
+    Computer currentlySelectedComp;
 };
 
 #endif // MAINWINDOW_H
