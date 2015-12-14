@@ -24,54 +24,7 @@
     <normaloff>:/icons/Images/information.png</normaloff>:/icons/Images/information.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="1">
-    <widget class="QLabel" name="label_buildYear">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="label_type">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLabel" name="label_built">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="built">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Built: </string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="type">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Type: </string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_name">
      <property name="font">
       <font>
@@ -86,14 +39,47 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QLabel" name="label_description">
+   <item row="1" column="0" alignment="Qt::AlignLeft">
+    <widget class="QLabel" name="type">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Type: </string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="label_type">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0" alignment="Qt::AlignLeft">
+    <widget class="QLabel" name="built">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Built: </string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_built">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" alignment="Qt::AlignLeft">
     <widget class="QLabel" name="buildYear">
      <property name="font">
       <font>
@@ -106,7 +92,14 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_buildYear">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" alignment="Qt::AlignLeft">
     <widget class="QLabel" name="description">
      <property name="font">
       <font>
@@ -120,6 +113,9 @@
     </widget>
    </item>
    <item row="5" column="0">
+    <widget class="QTextBrowser" name="label_description"/>
+   </item>
+   <item row="6" column="0">
     <widget class="QLabel" name="relation">
      <property name="font">
       <font>
@@ -132,12 +128,19 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="6" column="1">
     <widget class="QLabel" name="label_relation">
      <property name="text">
       <string/>
      </property>
     </widget>
+   </item>
+   <item row="7" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item alignment="Qt::AlignTop">
+      <widget class="QTextBrowser" name="label_relation_2"/>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

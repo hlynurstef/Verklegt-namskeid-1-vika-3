@@ -410,11 +410,14 @@ void MainWindow::on_pushButton_computers_more_info_clicked(){
     currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
     MoreInfoComputer temp;
+
+    temp.setComputer(currentlySelectedComp);
     temp.setModal(true);
     temp.exec();
 }
 
 Pioneer MainWindow::returnCurrentlySelectedPioneer(){
+
     QString name = QString::fromStdString(currentlySelectedPio.getName());
     QString sex = QString::fromStdString(currentlySelectedPio.getSex());
     QString birthYear = QString::number(currentlySelectedPio.getByear());
@@ -431,6 +434,12 @@ Pioneer MainWindow::returnCurrentlySelectedPioneer(){
 
 
 Computer MainWindow::returnCurrentlySelectedComputer(){
+
+    QString name = QString::fromStdString(currentlySelectedComp.getComputerName());
+    QString type = QString::fromStdString(currentlySelectedComp.getComputerType());
+    QString wasbuilt = QString::fromStdString(currentlySelectedComp.getWasItBuilt());
+    QString dbuildyear = QString::number(currentlySelectedComp.getBuildYear());
+    QString description = QString::fromStdString(currentlySelectedComp.getComputerDescription());
 
     return currentlySelectedComp;
 }
