@@ -181,6 +181,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_pioneers_edit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="statusTip">
              <string>Edit selected Pioneer</string>
             </property>
@@ -377,6 +380,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_computers_edit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="statusTip">
              <string>Edit selected Computer</string>
             </property>
