@@ -22,14 +22,29 @@ public:
         // Checks if there are errors in input
     void emptyLines();
         // Clears all lines as soon as the window is opened
+    void displayUnrelatedPioneers(vector<Pioneer> unrelatedPioneers);
+        // Prints vector of pioneers in the unrelated pioneers list
+    void displayRelatedPioneers(vector<Pioneer> relatedPioneers);
+        // Prints vector of pioneers in the related pioneers list
+
 private slots:
     void on_button_add_computer_clicked();
 
     void on_button_computer_cancel_clicked();
 
+    void on_list_related_pioneers_clicked(const QModelIndex &);
+
+    void on_list_unrelated_pioneers_clicked(const QModelIndex &);
+
+    void on_button_add_relation_clicked();
+
+    void on_button_remove_relation_clicked();
+
 private:
     Ui::addComputer *ui;
     Computer compService;
+    vector<Pioneer> unrelatedPioneersList;    // This vector holds onto every computer that is currently displayed on main window
+    vector<Pioneer> relatedPioneersList;      // This vector holds onto every computer related to Pioneer
 };
 
 #endif // ADDCOMPUTER_H

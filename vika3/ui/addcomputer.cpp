@@ -87,7 +87,62 @@ bool addComputer::errorCheck(string name, string type, string wasItBuilt, string
     return false;
 }
 
-void addComputer::on_button_computer_cancel_clicked()
-{
+void addComputer::displayUnrelatedPioneers(vector<Pioneer> unrelatedPioneers){
+    ui->list_unrelated_pioneers->clear();
+
+    for(unsigned int i = 0; i < unrelatedPioneers.size(); i++){
+        Pioneer currentPioneer = unrelatedPioneers[i];
+
+        ui->list_unrelated_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
+    }
+
+    unrelatedPioneersList = unrelatedPioneers;
+}
+
+void addComputer::displayRelatedPioneers(vector<Pioneer> relatedPioneers){
+    ui->list_related_pioneers->clear();
+
+    for(unsigned int i = 0; i < relatedPioneers.size(); i++){
+        Pioneer currentPioneer = relatedPioneers[i];
+
+        ui->list_related_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
+    }
+
+    relatedPioneersList = relatedPioneers;
+}
+
+void addComputer::on_list_unrelated_pioneers_clicked(const QModelIndex &/* unused */){
+    ui->button_add_relation->setEnabled(true);
+}
+
+void addComputer::on_list_related_pioneers_clicked(const QModelIndex &/* unused */){
+    ui->button_remove_relation->setEnabled(true);
+}
+
+void addComputer::on_button_add_relation_clicked(){
+    int currentlySelectedPioneerIndex = ui->list_unrelated_pioneers->currentIndex().row();
+
+    Pioneer selectedPioneer = unrelatedPioneersList[currentlySelectedPioneerIndex];
+    relatedPioneersList.push_back(selectedPioneer);
+    unrelatedPioneersList.erase(unrelatedPioneersList.begin() + currentlySelectedPioneerIndex);
+    displayUnrelatedPioneers(unrelatedPioneersList);
+    displayRelatedPioneers(relatedPioneersList);
+
+    ui->button_add_relation->setEnabled(false);
+}
+
+void addComputer::on_button_remove_relation_clicked(){
+    int currentlySelectedPioneerIndex = ui->list_related_pioneers->currentIndex().row();
+
+    Pioneer selectedPioneer = relatedPioneersList[currentlySelectedPioneerIndex];
+    unrelatedPioneersList.push_back(selectedPioneer);
+    relatedPioneersList.erase(relatedPioneersList.begin() + currentlySelectedPioneerIndex);
+    displayRelatedPioneers(relatedPioneersList);
+    displayUnrelatedPioneers(unrelatedPioneersList);
+
+    ui->button_remove_relation->setEnabled(false);
+}
+
+void addComputer::on_button_computer_cancel_clicked(){
     this->done(0);
 }

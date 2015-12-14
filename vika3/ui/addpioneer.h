@@ -30,11 +30,10 @@ public:
         // Prints vector of computers in the unrelated computers list
 private slots:
     void on_button_add_pioneer_clicked();
-    void on_list_unrelated_computers_clicked();
-    void on_button_add_relation_clicked();
-    void on_button_remove_relation_clicked();
-    void on_list_related_computers_clicked();
-
+    void on_list_unrelated_computers_clicked(const QModelIndex &);
+    void on_list_related_computers_clicked(const QModelIndex &);
+    void on_button_pioneer_add_relation_clicked();
+    void on_button_pioneer_remove_relation_clicked();
     void on_button_add_pioneer_cancel_clicked();
 
 private:
