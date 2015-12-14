@@ -57,3 +57,6 @@ FORMS    += mainwindow.ui \
     ui/addcomputer.ui \
     ui/editcomputer.ui \
     ui/editpioneer.ui
+
+RESOURCES += \
+    ui/resources.qrc
