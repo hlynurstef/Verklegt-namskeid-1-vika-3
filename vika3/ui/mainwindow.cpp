@@ -476,9 +476,9 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
 
 void MainWindow::on_pushButton_pioneers_edit_clicked()
 {
-    editComputer editComp;
-    editComp.setModal(true);
-    editComp.exec();
+    editPioneer editPio;
+    editPio.setModal(true);
+    editPio.exec();
 }
 
 vector<Computer> MainWindow::returnAllComputers(){
@@ -489,7 +489,7 @@ vector<Computer> MainWindow::returnAllComputers(){
 
 void MainWindow::on_pushButton_computers_edit_clicked()
 {
-    editPioneer editPio;
-    editPio.setModal(true);
-    editPio.exec();
+    editComputer editComp;
+    editComp.setModal(true);
+    editComp.exec();
 }
