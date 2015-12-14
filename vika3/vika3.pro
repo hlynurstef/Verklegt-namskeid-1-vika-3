@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     ui/moreinfocomputer.cpp \
     ui/addpioneer.cpp \
     ui/addcomputer.cpp \
-    ui/editcomputer.cpp
+    ui/editcomputer.cpp \
+    ui/editpioneer.cpp
 
 HEADERS += \
            data_types/pioneer.h \
@@ -46,11 +47,13 @@ HEADERS += \
     ui/moreinfocomputer.h \
     ui/addpioneer.h \
     ui/addcomputer.h \
-    ui/editcomputer.h
+    ui/editcomputer.h \
+    ui/editpioneer.h
 
 FORMS    += mainwindow.ui \
     ui/moreinfopioneer.ui \
     ui/moreinfocomputer.ui \
     ui/addpioneer.ui \
     ui/addcomputer.ui \
-    ui/editcomputer.ui
+    ui/editcomputer.ui \
+    ui/editpioneer.ui
