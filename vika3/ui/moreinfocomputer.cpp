@@ -21,12 +21,12 @@ MoreInfoComputer::~MoreInfoComputer()
 
 void MoreInfoComputer::displayInfo(){
 
-   /* // Getting info from selected computer
+    // Getting info from selected computer
     computer = mainwindow.returnCurrentlySelectedComputer();
 
     // Printing info
-    ui->label_name->setText(QString::fromStdString(computer.getComputerName()));
-*/
+    //ui->label_name->setText(QString::fromStdString(computer.getComputerName()));
+
 }
 
 
