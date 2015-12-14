@@ -23,6 +23,8 @@ public:
     ~MainWindow();
     Pioneer returnCurrentlySelectedPioneer();
     Computer returnCurrentlySelectedComputer();
+    void disableButtonsForPioneer();
+    void disableButtonsForComputer();
 
     vector<Computer> returnAllComputers();
 private slots:
