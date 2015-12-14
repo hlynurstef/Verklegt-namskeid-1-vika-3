@@ -86,3 +86,8 @@ bool addComputer::errorCheck(string name, string type, string wasItBuilt, string
     }
     return false;
 }
+
+void addComputer::on_button_computer_cancel_clicked()
+{
+    this->done(0);
+}

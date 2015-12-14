@@ -19,7 +19,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
     emptyLines();
 
     // Display list of all computers
-    // vector<Computer> allComp = returnAllComputers();
+    //vector<Computer> allComp = returnAllComputers();
 
     // Fill variables with values in input lines
     string name = ui->input_pioneer_name->text().toStdString();
@@ -135,4 +135,9 @@ void AddPioneer::on_button_remove_relation_clicked(){
     displayUnrelatedComputers(unrelatedComputersList);
 
     ui->button_pioneer_remove_relation->setEnabled(false);
+}
+
+void AddPioneer::on_button_add_pioneer_cancel_clicked()
+{
+    this->done(0);
 }

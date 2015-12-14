@@ -378,7 +378,7 @@ void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     }
     else
     {
-        // some error message
+        ui->statusBar->showMessage("No pioneer was added", 2000);
     }
 }
 
@@ -462,7 +462,7 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     }
     else
     {
-        // some error message
+        ui->statusBar->showMessage("No computer was added", 2000);
     }
 }
 
