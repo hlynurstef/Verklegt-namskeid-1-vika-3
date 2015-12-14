@@ -4,10 +4,21 @@
 ComputerConnection::ComputerConnection()
 {
     QSqlDatabase db2;
-    db2 = QSqlDatabase::addDatabase("QSQLITE", "name2");
+    QString connectionName = "name2";
     QString dbName = "computer_science_db.sqlite";
-    db2.setDatabaseName(dbName);
-    db2.open();
+
+    if(QSqlDatabase::contains(connectionName))
+        {
+            db2 = QSqlDatabase::database(connectionName);
+        }
+        else
+        {
+            db2 = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+            db2.setDatabaseName(dbName);
+
+            db2.open();
+        }
+
     query2 = QSqlQuery(db2);
 }
 
