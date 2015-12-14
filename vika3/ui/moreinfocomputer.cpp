@@ -10,7 +10,6 @@ MoreInfoComputer::MoreInfoComputer(QWidget *parent) :
     ui(new Ui::MoreInfoComputer)
 {
     ui->setupUi(this);
-    displayInfo();
 
 }
 
@@ -19,10 +18,14 @@ MoreInfoComputer::~MoreInfoComputer()
     delete ui;
 }
 
-void MoreInfoComputer::displayInfo(){
+void MoreInfoComputer::setComputer(Computer computer){
 
-    computer = mainwindow.returnCurrentlySelectedComputer();
-
+    // Printing info
     ui->label_name->setText(QString::fromStdString(computer.getComputerName()));
-
+    ui->label_type->setText(QString::fromStdString(computer.getComputerType()));
+    ui->label_built->setText(QString::fromStdString(computer.getWasItBuilt()));
+    ui->label_buildYear->setText(QString::number(computer.getBuildYear()));
+    ui->label_description->setText(QString::fromStdString(computer.getComputerDescription()));
 }
+
+

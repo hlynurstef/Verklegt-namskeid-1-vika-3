@@ -17,15 +17,15 @@ class MoreInfoPioneer : public QDialog
 public:
     explicit MoreInfoPioneer(QWidget *parent = 0);
     ~MoreInfoPioneer();
-    void displayPioneer();
+    void setPioneer(Pioneer pioneer);
+        // Sets information in MoreInfo window to the currently selected Pioneer in the table in main window
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::MoreInfoPioneer *ui;
-    Pioneer pioneer;
-    MainWindow mainwindow;
+    //MainWindow mainwindow;
 };
 
 #endif // MOREINFOPIONEER_H

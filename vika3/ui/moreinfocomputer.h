@@ -18,7 +18,10 @@ public:
     explicit MoreInfoComputer(QWidget *parent = 0);
     ~MoreInfoComputer();
 
-    void displayInfo();
+    void setComputer(Computer computer);
+
+private slots:
+
 
 private:
     Ui::MoreInfoComputer *ui;

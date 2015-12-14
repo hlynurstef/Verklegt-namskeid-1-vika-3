@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>editComputer</class>
- <widget class="QDialog" name="editComputer">
+ <class>editPioneer</class>
+ <widget class="QDialog" name="editPioneer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Edit</string>
+   <string>Edit </string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -19,66 +19,66 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label_editComputer">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Edit computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Edit Pioneer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_name">
+    <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Name:</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QLabel" name="label_wasbuilt">
+   <item row="1" column="1">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Was It Built? (y/n):</string>
+      <string>Birth Year:</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLineEdit" name="lineEdit_name"/>
+    <widget class="QLineEdit" name="lineEdit"/>
    </item>
    <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_wasbuilt"/>
+    <widget class="QLineEdit" name="lineEdit_2"/>
    </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="label_type">
+    <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Type:</string>
+      <string>Sex:</string>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QLabel" name="label_buildYear">
+    <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Build Year:</string>
+      <string>Death Year:</string>
      </property>
     </widget>
    </item>
    <item row="4" column="0">
-    <widget class="QLineEdit" name="lineEdit_type"/>
+    <widget class="QLineEdit" name="lineEdit_3"/>
    </item>
    <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_buildyear"/>
+    <widget class="QLineEdit" name="lineEdit_4"/>
    </item>
    <item row="5" column="0">
-    <widget class="QLabel" name="label_description">
+    <widget class="QLabel" name="label_6">
      <property name="text">
       <string>Description:</string>
      </property>
     </widget>
    </item>
    <item row="6" column="0" colspan="3">
-    <widget class="QLineEdit" name="lineEdit_description"/>
+    <widget class="QLineEdit" name="lineEdit_5"/>
    </item>
    <item row="7" column="2">
-    <widget class="QPushButton" name="pushButton_editcomputer">
+    <widget class="QPushButton" name="pushButton">
      <property name="text">
-      <string> Edit Computer</string>
+      <string>Edit Pioneer</string>
      </property>
     </widget>
    </item>

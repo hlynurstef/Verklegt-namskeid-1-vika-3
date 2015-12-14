@@ -4,13 +4,25 @@
 #include <limits>
 #include <QDebug>
 
+const QString connectionName = "name1";
+
 PioneerConnection::PioneerConnection(){
 
     QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE", "name1");
     QString dbN = "computer_science_db.sqlite";
-    db.setDatabaseName(dbN);
-    db.open();
+
+    if(QSqlDatabase::contains(connectionName))
+        {
+            db = QSqlDatabase::database(connectionName);
+        }
+        else
+        {
+            db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+            db.setDatabaseName(dbN);
+
+            db.open();
+        }
+
     query = QSqlQuery(db);
 
 }

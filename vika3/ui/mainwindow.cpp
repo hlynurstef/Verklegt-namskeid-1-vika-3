@@ -47,25 +47,21 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllComputers();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::displayAllPioneers()
-{
+void MainWindow::displayAllPioneers(){
     vector<Pioneer> pioneers = pioneerService.printQuery(getCurrentGenderPioneers(), getCurrentVitalStatusPioneers(), getCurrentOrderByPioneers(), getCurrentDirectionPioneers());
     displayPioneers(pioneers);
 }
 
-void MainWindow::displayAllComputers()
-{
+void MainWindow::displayAllComputers(){
     vector<Computer> computers = computerService.printQuery(getCurrentBuiltComputers(), getCurrentTypeComputers(), getCurrentOrderByComputers(), getCurrentDirectionComputers());
     displayComputers(computers);
 }
 
-void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
-{
+void MainWindow::displayPioneers(std::vector<Pioneer> pioneers){
     ui->table_pioneers->clearContents();
     ui->table_pioneers->setRowCount(pioneers.size());
 
@@ -82,8 +78,7 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers)
     currentlyDisplayedPioneers = pioneers;
 }
 
-void MainWindow::displayComputers(std::vector<Computer> computers)
-{
+void MainWindow::displayComputers(std::vector<Computer> computers){
     ui->table_computers->clearContents();
     ui->table_computers->setRowCount(computers.size());
 
@@ -106,64 +101,53 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     currentlyDisplayedComputers = computers;
 }
 
-void MainWindow::on_input_search_pioneers_textChanged()
-{
+void MainWindow::on_input_search_pioneers_textChanged(){
     string userInput = ui->input_search_pioneers->text().toStdString();
 
     vector<Pioneer> pioneers = pioneerService.search(userInput, getCurrentSearchByPioneers(), getCurrentGenderPioneers(), getCurrentVitalStatusPioneers(), getCurrentOrderByPioneers(),getCurrentDirectionPioneers());
     displayPioneers(pioneers);
 }
 
-void MainWindow::on_input_search_computers_textChanged()
-{
+void MainWindow::on_input_search_computers_textChanged(){
     string userInput = ui->input_search_computers->text().toStdString();
 
     vector<Computer> computers = computerService.search(userInput, getCurrentSearchByComputers(), getCurrentBuiltComputers(), getCurrentTypeComputers(), getCurrentOrderByComputers(), getCurrentDirectionComputers());
     displayComputers(computers);
 }
 
-void MainWindow::on_dropdown_pioneers_order_by_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_pioneers_order_by_currentIndexChanged(int index){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_pioneers_order_direction_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_pioneers_order_direction_currentIndexChanged(int index){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_pioneers_filter_gender_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_pioneers_filter_gender_currentIndexChanged(int index){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_pioneers_filter_vital_status_currentIndexChanged(int index){
     on_input_search_pioneers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_order_by_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_computers_order_by_currentIndexChanged(int index){
     on_input_search_computers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_order_direction_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_computers_order_direction_currentIndexChanged(int index){
     on_input_search_computers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_filter_type_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_computers_filter_type_currentIndexChanged(int index){
     on_input_search_computers_textChanged();
 }
 
-void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int index)
-{
+void MainWindow::on_dropdown_computers_filter_built_currentIndexChanged(int index){
     on_input_search_computers_textChanged();
 }
 
-string MainWindow::getCurrentOrderByPioneers()
-{
+string MainWindow::getCurrentOrderByPioneers(){
     string orderBy = ui->dropdown_pioneers_order_by->currentText().toStdString();
 
     if(orderBy == "Name"){
@@ -177,8 +161,7 @@ string MainWindow::getCurrentOrderByPioneers()
     }
 }
 
-string MainWindow::getCurrentOrderByComputers()
-{
+string MainWindow::getCurrentOrderByComputers(){
     string orderBy = ui->dropdown_computers_order_by->currentText().toStdString();
 
     if(orderBy == "Name"){
@@ -192,8 +175,7 @@ string MainWindow::getCurrentOrderByComputers()
     }
 }
 
-string MainWindow::getCurrentDirectionPioneers()
-{
+string MainWindow::getCurrentDirectionPioneers(){
     string direction = ui->dropdown_pioneers_order_direction->currentText().toStdString();
 
     if(direction == "Ascending"){
@@ -207,8 +189,7 @@ string MainWindow::getCurrentDirectionPioneers()
     }
 }
 
-string MainWindow::getCurrentDirectionComputers()
-{
+string MainWindow::getCurrentDirectionComputers(){
     string direction = ui->dropdown_computers_order_direction->currentText().toStdString();
 
     if(direction == "Ascending"){
@@ -222,8 +203,7 @@ string MainWindow::getCurrentDirectionComputers()
     }
 }
 
-string MainWindow::getCurrentTypeComputers()
-{
+string MainWindow::getCurrentTypeComputers(){
     string type = ui->dropdown_computers_filter_type->currentText().toStdString();
 
     if(type == "No filter"){
@@ -246,8 +226,7 @@ string MainWindow::getCurrentTypeComputers()
     }
 }
 
-string MainWindow::getCurrentBuiltComputers()
-{
+string MainWindow::getCurrentBuiltComputers(){
     string built = ui->dropdown_computers_filter_built->currentText().toStdString();
 
     if(built == "No filter"){
@@ -264,8 +243,7 @@ string MainWindow::getCurrentBuiltComputers()
     }
 }
 
-string MainWindow::getCurrentSearchByComputers()
-{
+string MainWindow::getCurrentSearchByComputers(){
     string searchBy = ui->dropdown_computers_search_by->currentText().toStdString();
 
     if(searchBy == "Name"){
@@ -279,8 +257,7 @@ string MainWindow::getCurrentSearchByComputers()
     }
 }
 
-string MainWindow::getCurrentGenderPioneers()
-{
+string MainWindow::getCurrentGenderPioneers(){
     string gender = ui->dropdown_pioneers_filter_gender->currentText().toStdString();
 
     if(gender == "No filter"){
@@ -297,8 +274,7 @@ string MainWindow::getCurrentGenderPioneers()
     }
 }
 
-string MainWindow::getCurrentVitalStatusPioneers()
-{
+string MainWindow::getCurrentVitalStatusPioneers(){
     string vitalStats = ui->dropdown_pioneers_filter_vital_status->currentText().toStdString();
 
     if(vitalStats == "No filter"){
@@ -315,8 +291,7 @@ string MainWindow::getCurrentVitalStatusPioneers()
     }
 }
 
-string MainWindow::getCurrentSearchByPioneers()
-{
+string MainWindow::getCurrentSearchByPioneers(){
     string searchBy = ui->dropdown_pioneers_search_by->currentText().toStdString();
 
     if(searchBy == "Name"){
@@ -330,8 +305,7 @@ string MainWindow::getCurrentSearchByPioneers()
     }
 }
 
-void MainWindow::on_button_pioneer_remove_clicked()
-{
+void MainWindow::on_button_pioneer_remove_clicked(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
@@ -346,8 +320,7 @@ void MainWindow::on_button_pioneer_remove_clicked()
             ui->input_search_pioneers->setText("");
             displayAllPioneers();
 
-            ui->button_pioneer_remove->setEnabled(false);
-            ui->pushButton_pioneers_more_info->setEnabled(false);
+            disableButtonsForPioneer();
 
         }
         else{
@@ -361,8 +334,7 @@ void MainWindow::on_button_pioneer_remove_clicked()
 
 }
 
-void MainWindow::on_button_computer_remove_clicked()
-{
+void MainWindow::on_button_computer_remove_clicked(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
@@ -377,8 +349,7 @@ void MainWindow::on_button_computer_remove_clicked()
             ui->input_search_computers->setText("");
             displayAllComputers();
 
-            ui->button_computer_remove->setEnabled(false);
-            ui->pushButton_computers_more_info->setEnabled(false);
+            disableButtonsForComputer();
 
         }
         else{
@@ -409,49 +380,68 @@ void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     }
 }
 
-void MainWindow::on_table_pioneers_clicked(const QModelIndex &index)
-{
+void MainWindow::on_table_pioneers_clicked(const QModelIndex &index){
     ui->button_pioneer_remove->setEnabled(true);
     ui->pushButton_pioneers_more_info->setEnabled(true);
+    ui->pushButton_pioneers_edit->setEnabled(true);
 }
 
-void MainWindow::on_table_computers_clicked(const QModelIndex &index)
-{
+void MainWindow::on_table_computers_clicked(const QModelIndex &index){
     ui->button_computer_remove->setEnabled(true);
     ui->pushButton_computers_more_info->setEnabled(true);
+    ui->pushButton_computers_edit->setEnabled(true);
 }
 
-void MainWindow::on_pushButton_pioneers_more_info_clicked()
-{   
+void MainWindow::on_pushButton_pioneers_more_info_clicked(){
+
+    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+    currentlySelectedPio = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
     MoreInfoPioneer temp;
+
+    temp.setPioneer(currentlySelectedPio);
+    temp.setModal(true);
     int returnValue = temp.exec();
 
 }
 
-void MainWindow::on_pushButton_computers_more_info_clicked()
-{
+void MainWindow::on_pushButton_computers_more_info_clicked(){
+
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+    currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
     MoreInfoComputer temp;
+
+    temp.setComputer(currentlySelectedComp);
     temp.setModal(true);
     temp.exec();
 }
 
 Pioneer MainWindow::returnCurrentlySelectedPioneer(){
 
-    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+    QString name = QString::fromStdString(currentlySelectedPio.getName());
+    QString sex = QString::fromStdString(currentlySelectedPio.getSex());
+    QString birthYear = QString::number(currentlySelectedPio.getByear());
+    QString deathYear = QString::number(currentlySelectedPio.getDyear());
+    QString description = QString::fromStdString(currentlySelectedPio.getDescription());
+//    qDebug() << "name: " + name;
+//    qDebug() << "sex: " + sex;
+//    qDebug() << "birth year: " + birthYear;
+//    qDebug() << "death year: " + deathYear;
+//    qDebug() << "description: " + description;
 
-    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
-
-    return currentlySelectedPioneer;
+    return currentlySelectedPio;
 }
 
 
 Computer MainWindow::returnCurrentlySelectedComputer(){
 
-    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+    QString name = QString::fromStdString(currentlySelectedComp.getComputerName());
+    QString type = QString::fromStdString(currentlySelectedComp.getComputerType());
+    QString wasbuilt = QString::fromStdString(currentlySelectedComp.getWasItBuilt());
+    QString dbuildyear = QString::number(currentlySelectedComp.getBuildYear());
+    QString description = QString::fromStdString(currentlySelectedComp.getComputerDescription());
 
-    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
-
-    return currentlySelectedComputer;
+    return currentlySelectedComp;
 }
 
 
@@ -476,9 +466,9 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
 
 void MainWindow::on_pushButton_pioneers_edit_clicked()
 {
-    editComputer editComp;
-    editComp.setModal(true);
-    editComp.exec();
+    editPioneer editPio;
+    editPio.setModal(true);
+    editPio.exec();
 }
 
 vector<Computer> MainWindow::returnAllComputers(){
@@ -486,3 +476,22 @@ vector<Computer> MainWindow::returnAllComputers(){
     return allComp;
 }
 
+
+void MainWindow::on_pushButton_computers_edit_clicked()
+{
+    editComputer editComp;
+    editComp.setModal(true);
+    editComp.exec();
+}
+
+void MainWindow::disableButtonsForPioneer(){
+    ui->button_pioneer_remove->setEnabled(false);
+    ui->pushButton_pioneers_more_info->setEnabled(false);
+    ui->pushButton_pioneers_edit->setEnabled(false);
+}
+
+void MainWindow::disableButtonsForComputer(){
+    ui->button_computer_remove->setEnabled(false);
+    ui->pushButton_computers_more_info->setEnabled(false);
+    ui->pushButton_computers_edit->setEnabled(false);
+}

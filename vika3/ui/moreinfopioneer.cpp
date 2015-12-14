@@ -1,6 +1,7 @@
 #include "moreinfopioneer.h"
 #include "ui_moreinfopioneer.h"
 #include "utilities/constants.h"
+#include <QDebug>
 
 using namespace std;
 
@@ -9,34 +10,22 @@ MoreInfoPioneer::MoreInfoPioneer(QWidget *parent) :
     ui(new Ui::MoreInfoPioneer)
 {
     ui->setupUi(this);
-    displayPioneer();
 }
 
-MoreInfoPioneer::~MoreInfoPioneer()
-{
+MoreInfoPioneer::~MoreInfoPioneer(){
     delete ui;
 }
 
-void MoreInfoPioneer::displayPioneer(){
-    pioneer = mainwindow.returnCurrentlySelectedPioneer();
-
+void MoreInfoPioneer::setPioneer(Pioneer pioneer){
     ui->show_single_pioneer->clearContents();
-    ui->show_single_pioneer->setLineWidth(5);
 
-    QString name = QString::fromStdString(pioneer.getName());
-    QString sex = QString::fromStdString(pioneer.getSex());
-    QString birthYear = QString::number(pioneer.getByear());
-    QString deathYear = QString::number(pioneer.getByear());
-    QString description = QString::number(pioneer.getByear());
-
-    ui->show_single_pioneer->setItem(0, 0, new QTableWidgetItem(name));
-    ui->show_single_pioneer->setItem(1, 0, new QTableWidgetItem(sex));
-    ui->show_single_pioneer->setItem(2, 0, new QTableWidgetItem(birthYear));
-    ui->show_single_pioneer->setItem(3, 0, new QTableWidgetItem(deathYear));
-    ui->show_single_pioneer->setItem(4, 0, new QTableWidgetItem(description));
+    ui->show_single_pioneer->setItem(0, 0, new QTableWidgetItem(QString::fromStdString(pioneer.getName())));
+    ui->show_single_pioneer->setItem(1, 0, new QTableWidgetItem(QString::fromStdString(pioneer.getSex())));
+    ui->show_single_pioneer->setItem(2, 0, new QTableWidgetItem(QString::number(pioneer.getByear())));
+    ui->show_single_pioneer->setItem(3, 0, new QTableWidgetItem(QString::number(pioneer.getDyear())));
+    ui->show_single_pioneer->setItem(4, 0, new QTableWidgetItem(QString::fromStdString(pioneer.getDescription())));
 }
 
-void MoreInfoPioneer::on_pushButton_clicked()
-{
+void MoreInfoPioneer::on_pushButton_clicked(){
     this->done(1);
 }
