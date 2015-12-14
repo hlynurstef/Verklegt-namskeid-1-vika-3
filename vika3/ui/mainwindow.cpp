@@ -474,7 +474,12 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     }
 }
 
-
+void MainWindow::on_pushButton_pioneers_edit_clicked()
+{
+    editComputer editComp;
+    editComp.setModal(true);
+    editComp.exec();
+}
 
 vector<Computer> MainWindow::returnAllComputers(){
     vector<Computer> allComp = computerService.getList();
