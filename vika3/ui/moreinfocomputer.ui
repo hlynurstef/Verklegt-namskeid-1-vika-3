@@ -23,12 +23,15 @@
    <iconset resource="resources.qrc">
     <normaloff>:/icons/Images/information.png</normaloff>:/icons/Images/information.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QTextBrowser" name="label_description">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>150</y>
-     <width>256</width>
+     <width>251</width>
      <height>145</height>
     </rect>
    </property>
@@ -63,6 +66,19 @@
    </property>
    <property name="text">
     <string>Relation:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>430</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>close</string>
    </property>
   </widget>
   <widget class="QWidget" name="">
