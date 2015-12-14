@@ -486,3 +486,10 @@ vector<Computer> MainWindow::returnAllComputers(){
     return allComp;
 }
 
+
+void MainWindow::on_pushButton_computers_edit_clicked()
+{
+    editPioneer editPio;
+    editPio.setModal(true);
+    editPio.exec();
+}
