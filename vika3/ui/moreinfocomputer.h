@@ -20,6 +20,9 @@ public:
 
     void displayInfo();
 
+private slots:
+    void on_pushButton_close_clicked();
+
 private:
     Ui::MoreInfoComputer *ui;
     Computer computer;

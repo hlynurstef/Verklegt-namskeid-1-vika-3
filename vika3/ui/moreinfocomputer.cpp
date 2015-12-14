@@ -26,3 +26,8 @@ void MoreInfoComputer::displayInfo(){
     ui->label_name->setText(QString::fromStdString(computer.getComputerName()));
 
 }
+
+void MoreInfoComputer::on_pushButton_close_clicked()
+{
+
+}

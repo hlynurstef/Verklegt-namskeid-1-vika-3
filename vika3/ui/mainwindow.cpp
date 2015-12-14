@@ -444,21 +444,19 @@ Pioneer MainWindow::returnCurrentlySelectedPioneer(){
     return currentlySelectedPioneer;
 }
 
-<<<<<<< HEAD
+
 Computer MainWindow::returnCurrentlySelectedComputer(){
 
-    int currentlySelectedComputerIndex = ui->table_computers->currentIndex();
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
 
     Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
     return currentlySelectedComputer;
 }
 
-void MainWindow::on_pushButton_computers_add_new_entry_clicked()
-{
-=======
+
 void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
->>>>>>> 3375ea972aaffc7264cb915a6ba1f069c3857d98
+
     addComputer addComp;
     int returnValue = addComp.exec();
 
@@ -476,11 +474,10 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     }
 }
 
-<<<<<<< HEAD
 
-=======
+
 vector<Computer> MainWindow::returnAllComputers(){
     vector<Computer> allComp = computerService.getList();
     return allComp;
 }
->>>>>>> 3375ea972aaffc7264cb915a6ba1f069c3857d98
+
