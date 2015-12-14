@@ -362,26 +362,6 @@ void MainWindow::on_button_computer_remove_clicked(){
     }
 }
 
-
-void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
-    AddPioneer addPio;
-    addPio.displayUnrelatedComputers(currentlyDisplayedComputers);
-    int returnValue = addPio.exec();
-
-    if (returnValue == 1)
-    {
-        ui->dropdown_pioneers_filter_gender->clear();
-        ui->dropdown_pioneers_filter_vital_status->clear();
-        displayAllPioneers();
-
-        ui->statusBar->showMessage("Pioneer has been added", 2000);
-    }
-    else
-    {
-        ui->statusBar->showMessage("No pioneer was added", 2000);
-    }
-}
-
 void MainWindow::on_table_pioneers_clicked(){
     ui->button_pioneer_remove->setEnabled(true);
     ui->pushButton_pioneers_more_info->setEnabled(true);
@@ -446,10 +426,30 @@ Computer MainWindow::returnCurrentlySelectedComputer(){
     return currentlySelectedComp;
 }
 
+void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
+
+    AddPioneer addPio;
+    addPio.displayUnrelatedComputers(currentlyDisplayedComputers);
+    int returnValue = addPio.exec();
+
+    if (returnValue == 1)
+    {
+        ui->dropdown_pioneers_filter_gender->clear();
+        ui->dropdown_pioneers_filter_vital_status->clear();
+        displayAllPioneers();
+
+        ui->statusBar->showMessage("Pioneer has been added", 2000);
+    }
+    else
+    {
+        ui->statusBar->showMessage("No pioneer was added", 2000);
+    }
+}
 
 void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
 
     addComputer addComp;
+    addComp.displayUnrelatedPioneers(currentlyDisplayedPioneers);
     int returnValue = addComp.exec();
 
     if (returnValue == 1)

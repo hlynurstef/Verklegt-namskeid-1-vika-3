@@ -105,15 +105,15 @@ void AddPioneer::displayRelatedComputers(vector<Computer> relatedComputers){
     relatedComputersList = relatedComputers;
 }
 
-void AddPioneer::on_list_unrelated_computers_clicked(){
+void AddPioneer::on_list_unrelated_computers_clicked(const QModelIndex &/* unused */){
     ui->button_pioneer_add_relation->setEnabled(true);
 }
 
-void AddPioneer::on_list_related_computers_clicked(){
+void AddPioneer::on_list_related_computers_clicked(const QModelIndex &/* unused */){
     ui->button_pioneer_remove_relation->setEnabled(true);
 }
 
-void AddPioneer::on_button_add_relation_clicked(){
+void AddPioneer::on_button_pioneer_add_relation_clicked(){
     int currentlySelectedComputerIndex = ui->list_unrelated_computers->currentIndex().row();
 
     Computer selectedComputer = unrelatedComputersList[currentlySelectedComputerIndex];
@@ -125,7 +125,7 @@ void AddPioneer::on_button_add_relation_clicked(){
     ui->button_pioneer_add_relation->setEnabled(false);
 }
 
-void AddPioneer::on_button_remove_relation_clicked(){
+void AddPioneer::on_button_pioneer_remove_relation_clicked(){
     int currentlySelectedComputerIndex = ui->list_related_computers->currentIndex().row();
 
     Computer selectedComputer = relatedComputersList[currentlySelectedComputerIndex];

@@ -147,10 +147,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="list_computer_related_pioneers"/>
+        <widget class="QListWidget" name="list_related_pioneers"/>
        </item>
        <item>
-        <widget class="QPushButton" name="button_computer_remove_relation">
+        <widget class="QPushButton" name="button_remove_relation">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Remove Selected Relation</string>
          </property>
@@ -168,10 +171,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="list_computer_unrelated_pioneers"/>
+        <widget class="QListWidget" name="list_unrelated_pioneers"/>
        </item>
        <item>
-        <widget class="QPushButton" name="button_computer_add_relation">
+        <widget class="QPushButton" name="button_add_relation">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Add Selected to Relation</string>
          </property>
