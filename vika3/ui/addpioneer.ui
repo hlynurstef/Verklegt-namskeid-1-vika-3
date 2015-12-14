@@ -34,14 +34,14 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QLabel" name="label_name">
+            <widget class="QLabel" name="label_pioneer_name">
              <property name="text">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Name: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_name_error">
+            <widget class="QLabel" name="label_pioneer_name_error">
              <property name="text">
               <string/>
              </property>
@@ -50,7 +50,7 @@
           </layout>
          </item>
          <item>
-          <widget class="QLineEdit" name="input_name"/>
+          <widget class="QLineEdit" name="input_pioneer_name"/>
          </item>
         </layout>
        </item>
@@ -59,14 +59,14 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QLabel" name="label_sex">
+            <widget class="QLabel" name="label_pioneer_sex">
              <property name="text">
               <string>Sex:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_sex_error">
+            <widget class="QLabel" name="label_pioneer_sex_error">
              <property name="text">
               <string/>
              </property>
@@ -75,7 +75,7 @@
           </layout>
          </item>
          <item>
-          <widget class="QLineEdit" name="input_sex"/>
+          <widget class="QLineEdit" name="input_pioneer_sex"/>
          </item>
         </layout>
        </item>
@@ -88,14 +88,14 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QLabel" name="label_birth_year">
+            <widget class="QLabel" name="label_pioneer_birth_year">
              <property name="text">
               <string>Birth Year:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_byear_error">
+            <widget class="QLabel" name="label_pioneer_byear_error">
              <property name="text">
               <string/>
              </property>
@@ -104,21 +104,21 @@
           </layout>
          </item>
          <item>
-          <widget class="QLineEdit" name="input_bYear"/>
+          <widget class="QLineEdit" name="input_pioneer_bYear"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QLabel" name="label__death_year">
+          <widget class="QLabel" name="label_pioneer_death_year">
            <property name="text">
             <string>Death Year:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="input_dYear"/>
+          <widget class="QLineEdit" name="input_pioneer_dYear"/>
          </item>
         </layout>
        </item>
@@ -129,14 +129,14 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLabel" name="label_description">
+      <widget class="QLabel" name="label_pioneer_description">
        <property name="text">
         <string>Description:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_description_error">
+      <widget class="QLabel" name="label_pioneer_description_error">
        <property name="text">
         <string/>
        </property>
@@ -145,14 +145,14 @@
     </layout>
    </item>
    <item>
-    <widget class="QTextEdit" name="input_description"/>
+    <widget class="QTextEdit" name="input_pioneer_description"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
-        <widget class="QLabel" name="label_relations">
+        <widget class="QLabel" name="label_pioneer_related">
          <property name="text">
           <string>Related to:</string>
          </property>
@@ -164,7 +164,7 @@
           <widget class="QListWidget" name="list_related_computers"/>
          </item>
          <item>
-          <widget class="QPushButton" name="button_remove_relation">
+          <widget class="QPushButton" name="button_pioneer_remove_relation">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -180,7 +180,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <widget class="QLabel" name="label_relations_2">
+        <widget class="QLabel" name="label_pioneer_not_related">
          <property name="text">
           <string>Not Related to:</string>
          </property>
@@ -192,7 +192,7 @@
           <widget class="QListWidget" name="list_unrelated_computers"/>
          </item>
          <item>
-          <widget class="QPushButton" name="button_add_relation">
+          <widget class="QPushButton" name="button_pioneer_add_relation">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -230,7 +230,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="button_add_pioneer_cancel">
        <property name="text">
         <string>Cancel</string>
        </property>
@@ -241,10 +241,10 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>input_name</tabstop>
-  <tabstop>input_sex</tabstop>
-  <tabstop>input_bYear</tabstop>
-  <tabstop>input_dYear</tabstop>
+  <tabstop>input_pioneer_name</tabstop>
+  <tabstop>input_pioneer_sex</tabstop>
+  <tabstop>input_pioneer_bYear</tabstop>
+  <tabstop>input_pioneer_dYear</tabstop>
   <tabstop>button_add_pioneer</tabstop>
  </tabstops>
  <resources>

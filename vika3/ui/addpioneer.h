@@ -31,10 +31,8 @@ private slots:
     void on_button_add_pioneer_clicked();
     void on_list_unrelated_computers_clicked();
     void on_button_add_relation_clicked();
-
     void on_button_remove_relation_clicked();
-
-    void on_list_related_computers_clicked(const QModelIndex &index);
+    void on_list_related_computers_clicked();
 
 private:
     Ui::AddPioneer *ui;
