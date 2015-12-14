@@ -346,8 +346,7 @@ void MainWindow::on_button_pioneer_remove_clicked()
             ui->input_search_pioneers->setText("");
             displayAllPioneers();
 
-            ui->button_pioneer_remove->setEnabled(false);
-            ui->pushButton_pioneers_more_info->setEnabled(false);
+            disableButtonsForPioneer();
 
         }
         else{
@@ -377,8 +376,7 @@ void MainWindow::on_button_computer_remove_clicked()
             ui->input_search_computers->setText("");
             displayAllComputers();
 
-            ui->button_computer_remove->setEnabled(false);
-            ui->pushButton_computers_more_info->setEnabled(false);
+            disableButtonsForComputer();
 
         }
         else{
@@ -413,12 +411,14 @@ void MainWindow::on_table_pioneers_clicked(const QModelIndex &index)
 {
     ui->button_pioneer_remove->setEnabled(true);
     ui->pushButton_pioneers_more_info->setEnabled(true);
+    ui->pushButton_pioneers_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_computers_clicked(const QModelIndex &index)
 {
     ui->button_computer_remove->setEnabled(true);
     ui->pushButton_computers_more_info->setEnabled(true);
+    ui->pushButton_computers_edit->setEnabled(true);
 }
 
 void MainWindow::on_pushButton_pioneers_more_info_clicked()
@@ -492,4 +492,16 @@ void MainWindow::on_pushButton_computers_edit_clicked()
     editComputer editComp;
     editComp.setModal(true);
     editComp.exec();
+}
+
+void MainWindow::disableButtonsForPioneer(){
+    ui->button_pioneer_remove->setEnabled(false);
+    ui->pushButton_pioneers_more_info->setEnabled(false);
+    ui->pushButton_pioneers_edit->setEnabled(false);
+}
+
+void MainWindow::disableButtonsForComputer(){
+    ui->button_computer_remove->setEnabled(false);
+    ui->pushButton_computers_more_info->setEnabled(false);
+    ui->pushButton_computers_edit->setEnabled(false);
 }

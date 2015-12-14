@@ -18,8 +18,10 @@ MoreInfoPioneer::~MoreInfoPioneer()
 }
 
 void MoreInfoPioneer::displayPioneer(){
-    pioneer = mainwindow.returnCurrentlySelectedPioneer();
-
+    //Getting the info from selected pioneer
+   /* pioneer = mainwindow.returnCurrentlySelectedPioneer();
+    *
+    //Printing out info
     ui->show_single_pioneer->clearContents();
     ui->show_single_pioneer->setLineWidth(5);
 
@@ -33,8 +35,9 @@ void MoreInfoPioneer::displayPioneer(){
     ui->show_single_pioneer->setItem(1, 0, new QTableWidgetItem(sex));
     ui->show_single_pioneer->setItem(2, 0, new QTableWidgetItem(birthYear));
     ui->show_single_pioneer->setItem(3, 0, new QTableWidgetItem(deathYear));
-    ui->show_single_pioneer->setItem(4, 0, new QTableWidgetItem(description));
+    ui->show_single_pioneer->setItem(4, 0, new QTableWidgetItem(description));*/
 }
+
 
 void MoreInfoPioneer::on_pushButton_clicked()
 {

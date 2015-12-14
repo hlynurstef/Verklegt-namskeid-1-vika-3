@@ -23,6 +23,8 @@ public:
     ~MainWindow();
     Pioneer returnCurrentlySelectedPioneer();
     Computer returnCurrentlySelectedComputer();
+    void disableButtonsForPioneer();
+    void disableButtonsForComputer();
 
     vector<Computer> returnAllComputers();
 private slots:
@@ -46,22 +48,27 @@ private slots:
         // Filters computers by type when user chooses from dropdown list
     void on_dropdown_computers_filter_built_currentIndexChanged(int index);
         // Filters computers by if the computer was built or not when user chooses from dropdown list
+
     void on_button_pioneer_remove_clicked();
         // Removes selected pioneer from list when Remove button is clicked
     void on_button_computer_remove_clicked();
         // Removes selected computer from list when Remove button is clicked
+
     void on_table_pioneers_clicked(const QModelIndex &index);
         // Enables the "More Info" and "Remove Selected" buttons when an entry is clicked in table
     void on_table_computers_clicked(const QModelIndex &index);
         // Enables the "More Info" and "Remove Selected" buttons when an entry is clicked in table
+
     void on_pushButton_pioneers_add_new_entry_clicked();
         // Opens a new window for adding new pioneers
     void on_pushButton_computers_add_new_entry_clicked();
         // Opens a new window for adding new computer
+
     void on_pushButton_pioneers_more_info_clicked();
         // Opens up a new window that displays more info about the selected pioneer
     void on_pushButton_computers_more_info_clicked();
         // Opens up a new window that displays more info about the selected computer
+
     void on_pushButton_pioneers_edit_clicked();
         // Opens up a new window that allows the user to edit the selected pioneer
     void on_pushButton_computers_edit_clicked();

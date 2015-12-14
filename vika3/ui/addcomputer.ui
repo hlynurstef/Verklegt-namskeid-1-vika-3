@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add Computer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/add_comp.png</normaloff>:/icons/Images/add_comp.png</iconset>
   </property>
   <widget class="QLabel" name="label_name">
    <property name="geometry">
@@ -215,6 +219,8 @@
   <tabstop>input_description</tabstop>
   <tabstop>button_add_computer</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

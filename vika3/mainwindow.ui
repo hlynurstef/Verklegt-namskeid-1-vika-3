@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>*~ Computer Science ~*</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="ui/resources.qrc">
+    <normaloff>:/icons/Images/computer.png</normaloff>:/icons/Images/computer.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -177,6 +181,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_pioneers_edit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="statusTip">
              <string>Edit selected Pioneer</string>
             </property>
@@ -373,6 +380,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_computers_edit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="statusTip">
              <string>Edit selected Computer</string>
             </property>
@@ -408,7 +418,7 @@
      <x>0</x>
      <y>0</y>
      <width>667</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -426,6 +436,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="ui/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

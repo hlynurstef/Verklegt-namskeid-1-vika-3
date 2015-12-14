@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add Pioneer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/add_pio.png</normaloff>:/icons/Images/add_pio.png</iconset>
   </property>
   <widget class="QLabel" name="label_add_pio">
    <property name="geometry">
@@ -274,6 +278,8 @@
   <tabstop>input_description</tabstop>
   <tabstop>button_add_pioneer</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
