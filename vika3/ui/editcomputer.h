@@ -21,7 +21,7 @@ public:
     void setComputer(Computer computer);
 
 private slots:
-    void on_pushButton_editcomputer_clicked();
+
 
 private:
     Ui::editComputer *ui;

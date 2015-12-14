@@ -19,6 +19,7 @@ editComputer::~editComputer()
 
 void editComputer::setComputer(Computer comp){
 
+    // Printing info
     ui->lineEdit_name->setText(QString::fromStdString(computer.getComputerName()));
     ui->lineEdit_type->setText(QString::fromStdString(computer.getComputerType()));
     ui->lineEdit_wasbuilt->setText(QString::fromStdString(computer.getWasItBuilt()));
@@ -26,9 +27,6 @@ void editComputer::setComputer(Computer comp){
     ui->lineEdit_description->setText(QString::fromStdString(computer.getComputerDescription()));
 }
 
-void editComputer::on_pushButton_editcomputer_clicked()
-{ 
-    this->done(1);
-}
+
 
 
