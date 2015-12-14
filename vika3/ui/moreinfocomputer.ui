@@ -162,19 +162,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_close">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>260</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Close</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>
