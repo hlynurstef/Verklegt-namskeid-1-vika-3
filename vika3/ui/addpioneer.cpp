@@ -26,7 +26,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
     string sex = ui->input_sex->text().toStdString();
     string birthyear = ui->input_bYear->text().toStdString();
     string deathyear = ui->input_dYear->text().toStdString();
-    string description = ui->input_description->text().toStdString();
+    string description = ui->input_description->toPlainText().toStdString();
 
     if(deathyear.empty()){
         deathyear = "0";
@@ -83,13 +83,12 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
     return false;
 }
 
-void AddPioneer::displayComputers(vector<Computer> allComp){
+void AddPioneer::setUnrelatedComputers(vector<Computer> currentlyDisplayedComputers){
     ui->list_unrelated_computers->clear();
 
-    Computer current;
+    for(unsigned int i = 0; i < currentlyDisplayedComputers.size(); i++){
+        Computer currentComputer = currentlyDisplayedComputers[i];
 
-    for(unsigned int i = 0; i < allComp.size(); i++){
-        current = allComp[i];
-        ui->list_unrelated_computers->addItem(QString::fromStdString(current.getComputerName()));
+        ui->list_unrelated_computers->addItem(QString::fromStdString(currentComputer.getComputerName()));
     }
 }

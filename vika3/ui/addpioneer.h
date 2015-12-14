@@ -23,7 +23,8 @@ public:
 
     bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
     void emptyLines();
-    void displayComputers(vector<Computer> allComp);
+    void setUnrelatedComputers(vector<Computer> currentlyDisplayedComputers);
+        // Gets currently displayed computers and prints them in the unrelated computers list
 private slots:
     void on_button_add_pioneer_clicked();
 
