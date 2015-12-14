@@ -3,5 +3,8 @@
         <file>Images/information.png</file>
         <file>Images/edit.png</file>
         <file>Images/edit_.png</file>
+        <file>Images/computer.png</file>
+        <file>Images/add_comp.png</file>
+        <file>Images/add_pio.png</file>
     </qresource>
 </RCC>
