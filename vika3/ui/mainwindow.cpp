@@ -481,9 +481,14 @@ vector<Computer> MainWindow::returnAllComputers(){
 
 void MainWindow::on_pushButton_computers_edit_clicked()
 {
-    editComputer editComp;
-    editComp.setModal(true);
-    editComp.exec();
+    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+    currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+
+    editComputer temp;
+
+    temp.setComputer(currentlySelectedComp);
+    temp.setModal(true);
+    temp.exec();
 }
 
 void MainWindow::disableButtonsForPioneer(){

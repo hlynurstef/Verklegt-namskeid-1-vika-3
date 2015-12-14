@@ -18,7 +18,7 @@ public:
     explicit editComputer(QWidget *parent = 0);
     ~editComputer();
 
-    void displayComputer();
+    void setComputer(Computer computer);
 
 private slots:
     void on_pushButton_editcomputer_clicked();
