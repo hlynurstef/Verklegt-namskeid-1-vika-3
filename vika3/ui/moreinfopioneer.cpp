@@ -18,8 +18,10 @@ MoreInfoPioneer::~MoreInfoPioneer()
 }
 
 void MoreInfoPioneer::displayPioneer(){
+    //Getting the info from selected pioneer
    /* pioneer = mainwindow.returnCurrentlySelectedPioneer();
-
+    *
+    //Printing out info
     ui->show_single_pioneer->clearContents();
     ui->show_single_pioneer->setLineWidth(5);
 
