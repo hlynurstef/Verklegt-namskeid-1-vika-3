@@ -25,7 +25,7 @@ void MoreInfoComputer::displayInfo(){
     computer = mainwindow.returnCurrentlySelectedComputer();
 
     // Printing info
-    ui->label_name->setText(QString::fromStdString(constants::COMP_NAME));
+    ui->label_name->setText(QString::fromStdString(computer.getComputerName()));
 
 }
 
