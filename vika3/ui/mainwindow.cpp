@@ -448,7 +448,11 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     addComp.displayUnrelatedPioneers(currentlyDisplayedPioneers);
     int returnValue = addComp.exec();
 
-    if (returnValue == 1){
+
+    if (returnValue == 1)
+    {
+        ui->dropdown_computers_filter_type->clear();
+        ui->dropdown_computers_filter_built->clear();
         displayAllComputers();
 
         ui->statusBar->showMessage("Computer has been added", 2000);
@@ -468,9 +472,18 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
     editPio.setModal(true);
     int returnValue = editPio.exec();
 
-    ui->dropdown_pioneers_filter_gender->clear();
-    ui->dropdown_pioneers_filter_vital_status->clear();
-    displayAllPioneers();
+    if (returnValue == 1)
+    {
+        ui->dropdown_pioneers_filter_gender->clear();
+        ui->dropdown_pioneers_filter_vital_status->clear();
+        displayAllPioneers();
+
+        ui->statusBar->showMessage("Pioneer has been modified", 2000);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Pioneer has not been modified", 2000);
+    }
 }
 
 vector<Computer> MainWindow::returnAllComputers(){
@@ -487,11 +500,22 @@ void MainWindow::on_pushButton_computers_edit_clicked()
     editComputer editComp;
     editComp.setComputer(currentlySelectedComp);
     editComp.setModal(true);
-    int returnValue = editComp.exec();
+    int returnValue2 = editComp.exec();
 
-    ui->dropdown_computers_filter_built->clear();
-    ui->dropdown_computers_filter_type->clear();
-    displayAllComputers();
+
+    if (returnValue2 == 1)
+    {
+        ui->dropdown_computers_filter_built->clear();
+        ui->dropdown_computers_filter_type->clear();
+        displayAllComputers();
+
+        ui->statusBar->showMessage("Computer has been modified", 2000);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Computer was not modified", 2000);
+    }
+
 }
 
 void MainWindow::disableButtonsForPioneer(){

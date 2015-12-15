@@ -28,6 +28,8 @@ public:
         // Prints vector of computers in the unrelated computers list
     void displayRelatedComputers(vector<Computer> relatedComputers);
         // Prints vector of computers in the unrelated computers list
+    bool is_number(string& s);
+        // Returns true if inputted string is a number, false if there is a letter or symbol in there
 private slots:
     void on_button_add_pioneer_clicked();
     void on_list_unrelated_computers_clicked(const QModelIndex &);

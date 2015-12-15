@@ -13,8 +13,7 @@ editComputer::editComputer(QWidget *parent) :
 
 }
 
-editComputer::~editComputer()
-{
+editComputer::~editComputer(){
     delete ui;
 }
 
@@ -27,9 +26,6 @@ void editComputer::setComputer(Computer comp){
     ui->edit_buildyear->setText(QString::number(comp.getBuildYear()));
     ui->edit_description->setText(QString::fromStdString(comp.getComputerDescription()));
 }
-
-
-
 
 
 void editComputer::on_pushButton_editcomputer_clicked()
@@ -47,5 +43,8 @@ void editComputer::on_pushButton_editcomputer_clicked()
     compService.editComputer(comp);
 
     this->done(1);
+}
 
+void editComputer::on_button_cancel_clicked(){
+    this->done(0);
 }

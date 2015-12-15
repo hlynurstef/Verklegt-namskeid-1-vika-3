@@ -226,20 +226,9 @@ void PioneerConnection::editPioneer(Pioneer pio){
     int dYear = pio.getDyear();
     string desc = pio.getDescription();
 
-    string bYearString;
-    ostringstream convert;
-    convert << bYear;
-    bYearString = convert.str();
-
-    string dYearString;
-    ostringstream convert2;
-    convert2 << dYear;
-    dYearString = convert2.str();
-
-    string idString;
-    ostringstream convert3;
-    convert3 << id;
-    idString = convert3.str();
+    string bYearString = to_string(bYear);
+    string dYearString = to_string(dYear);
+    string idString = to_string(id);
 
     QString editId = QString::fromStdString(idString);
     QString editName = QString::fromStdString(name);

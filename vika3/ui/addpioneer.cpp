@@ -68,34 +68,56 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
         error = true;
     }
     if(sex != "male" && sex != "Male" && sex != "female" && sex != "Female"){
-        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
+        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Incorrect Input! (male/female)</span>");
         error = true;
     }
     if(sex.empty()){
-        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
+        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Input Sex! (male/female)</span>");
         error = true;
     }
     if(birthyear.empty()){
-        ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
+        ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>Input Birth Year!</span>");
+        error = true;
+    }
+    if(!is_number(birthyear)){
+        ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
         error = true;
     }
     if(description.empty()){
-        ui->label_pioneer_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+        ui->label_pioneer_description_error->setText("<span style ='color: #ff0000'>Input Description</span>");
         error = true;
     }
 
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
 
-    if(byear == dyear || byear > dyear || dyear > constants::CURRENT_YEAR){
-        ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Wrong Input</span>");
+    if(!is_number(deathyear)){
+        ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
         error = true;
+    }
+    else if(byear == dyear || (byear > dyear && dyear != 0) || dyear > constants::CURRENT_YEAR){
+        ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Incorrect Input!</span>");
+        error = true;
+    }
+
+    if(byear > constants::CURRENT_YEAR){
+        ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>People from the future are not allowed!</span>");
     }
 
     if(error == true){
         return true;
     }
     return false;
+}
+
+bool AddPioneer::is_number(string& s)
+{
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)){
+        ++it;
+    }
+
+    return !s.empty() && it == s.end();
 }
 
 void AddPioneer::displayUnrelatedComputers(vector<Computer> unrelatedComputers){

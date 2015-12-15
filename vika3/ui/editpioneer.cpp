@@ -40,12 +40,11 @@ void editPioneer::on_button_edit_pioneer_clicked()
         deathyear = "0";
     }
 
-    /*
     bool error = errorCheck(name, sex, birthyear, deathyear, description);
     if(error == true){
         return;
     }
-    */
+
 
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
@@ -57,29 +56,29 @@ void editPioneer::on_button_edit_pioneer_clicked()
     this->done(1);
 
 }
-/*
+
 bool editPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
     bool error = false;
 
     if(name.empty()){
-        ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
+        ui->label_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
         error = true;
     }
     if(sex != "male" && sex != "Male" && sex != "female" && sex != "Female"){
-        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
+        ui->label_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
         error = true;
     }
     if(sex.empty()){
-        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
+        ui->label_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
         error = true;
     }
 
     if(birthyear.empty()){
-        ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
+        ui->label_birth_year_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
         error = true;
     }
     if(description.empty()){
-        ui->label_pioneer_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+        ui->label_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
     }
 
     if(error == true){
@@ -87,5 +86,8 @@ bool editPioneer::errorCheck(string name, string sex, string birthyear, string d
     }
     return false;
 }
-*/
 
+void editPioneer::on_button_cancel_clicked()
+{
+    this->done(0);
+}
