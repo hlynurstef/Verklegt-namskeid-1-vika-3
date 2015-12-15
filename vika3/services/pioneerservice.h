@@ -30,7 +30,7 @@ public:
     vector<Pioneer> printQuery(string sex, string dYear, string sortBy, string direction);
         // Sends query from user into Connection and returns the result of that query as a vector of Pioneer
     friend ostream& operator <<(ostream& out, Pioneer temp);
-    bool removePioneer(Pioneer pio);
+    void removePioneer();
         // Sends a name of the person to delete into PioneerConnection
     void deleteAllPioneers();
         // Sends a message to PioneerConnection to delete all pioneers

@@ -61,9 +61,9 @@ Pioneer PioneerConnection::getPioValuesFromDB(QSqlQuery query){
     int birthYear = query.value("bYear").toUInt();
     int deathYear = query.value("dYear").toUInt();
     string description = query.value("description").toString().toStdString();
-    //QByteArray outByteArray = query.value("image").toByteArray();
+    QByteArray outByteArray = query.value("image").toByteArray();
 
-    Pioneer tempo(id, name, sex, birthYear, deathYear, description/*, outByteArray*/);
+    Pioneer tempo(id, name, sex, birthYear, deathYear, description, outByteArray);
     return tempo;
 }
 
@@ -163,7 +163,7 @@ vector<Pioneer> PioneerConnection::printQueryPioneers(string sex, string dYear, 
         string description = query.value("description").toString().toStdString();
         QByteArray image = query.value("image").toByteArray();
 
-        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description /*image*/));
+        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description, image));
     }
 
     return list;
@@ -206,7 +206,7 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy,
         string description = query.value("description").toString().toStdString();
         QByteArray image = query.value("image").toByteArray();
 
-        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description/*, image*/));
+        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description, image));
     }
     return searchTemp;
 }
@@ -218,15 +218,10 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy,
 // ---------------------------------------------------------------------
 //                           DELETE FUNCTIONS
 // ---------------------------------------------------------------------
-bool PioneerConnection::removePioneer(Pioneer pio){
+void PioneerConnection::removePioneer(){
 
-    stringstream sqlQuery;
-    sqlQuery << "DELETE FROM Pioneers WHERE id = " << pio.getId();
-
-    bool success = query.exec(QString::fromStdString(sqlQuery.str()));
-    pioneers.clear();
-
-    return success;
+    query.prepare("DELETE FROM Pioneers WHERE deleted = 'true'");
+    query.exec();
 }
 
 void PioneerConnection::deleteAllPioneers(){

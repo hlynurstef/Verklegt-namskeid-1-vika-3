@@ -30,7 +30,9 @@ SOURCES += main.cpp\
     ui/addpioneer.cpp \
     ui/addcomputer.cpp \
     ui/editcomputer.cpp \
-    ui/editpioneer.cpp
+    ui/editpioneer.cpp \
+    ui/trashbincomputers.cpp \
+    ui/trashbinpioneers.cpp
 
 HEADERS += \
            data_types/pioneer.h \
@@ -49,7 +51,9 @@ HEADERS += \
     ui/addpioneer.h \
     ui/addcomputer.h \
     ui/editcomputer.h \
-    ui/editpioneer.h
+    ui/editpioneer.h \
+    ui/trashbincomputers.h \
+    ui/trashbinpioneers.h
 
 FORMS    += mainwindow.ui \
     ui/moreinfopioneer.ui \
@@ -57,7 +61,9 @@ FORMS    += mainwindow.ui \
     ui/addpioneer.ui \
     ui/addcomputer.ui \
     ui/editcomputer.ui \
-    ui/editpioneer.ui
+    ui/editpioneer.ui \
+    ui/trashbincomputers.ui \
+    ui/trashbinpioneers.ui
 
 RESOURCES += \
     ui/resources.qrc
