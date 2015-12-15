@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>440</width>
-    <height>490</height>
+    <height>510</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -252,7 +252,7 @@
         </palette>
        </property>
        <property name="text">
-        <string>Image of the pioneer</string>
+        <string>No image selected</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
