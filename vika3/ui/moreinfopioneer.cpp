@@ -30,9 +30,33 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
         ui ->label_yearDied->setText(QString::number(pioneer.getDyear()));
     }
     ui->textBrowser_description->setText(QString::fromStdString(pioneer.getDescription()));
+
+    getRelationList(pioneer);
 }
+
+void MoreInfoPioneer::getRelationList(Pioneer pioneer){
+
+    string relationList;
+
+    relation = (relationService.relationSearch(pioneer.getName(), constants::REL_PIO_NAME));
+    for(int i=0; i < relation.size(); i++){
+        relationList += relation[i].getCompName();
+        if((i+1) < relation.size()){
+            relationList += ", ";
+        }
+
+    }
+    if(relation.size() == 0){
+        ui -> textBrowser_relation -> setText(QString::fromStdString("Unknown relations!"));
+    }
+    else
+        ui -> textBrowser_relation -> setText(QString::fromStdString(relationList));
+}
+
 
 void MoreInfoPioneer::on_pushButton_close_clicked()
 {
     this->close();
 }
+
+

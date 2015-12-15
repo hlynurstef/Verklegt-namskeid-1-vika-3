@@ -1,7 +1,9 @@
 #ifndef MOREINFOPIONEER_H
 #define MOREINFOPIONEER_H
 #include "data_types/pioneer.h"
+#include "data_types/relation.h"
 #include "services/pioneerservice.h"
+#include "services/relationservice.h"
 #include "ui/mainwindow.h"
 
 #include <QDialog>
@@ -23,10 +25,13 @@ public:
 private slots:
 
     void on_pushButton_close_clicked();
+    void getRelationList(Pioneer pioneer);
 
 private:
     Ui::MoreInfoPioneer *ui;
     //MainWindow mainwindow;
+    RelationService relationService;
+    vector<Relation> relation;
 };
 
 #endif // MOREINFOPIONEER_H
