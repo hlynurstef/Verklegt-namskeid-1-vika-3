@@ -32,20 +32,26 @@ void addComputer::on_button_add_computer_clicked()
     }
 
     bool error = errorCheck(name, type, wasItBuilt, buildYear, description);
-    if(error == true){
+    if(error){
         return;
     }
 
     int bYear = atoi(buildYear.c_str());
-
     Computer comp(name, bYear, type, wasItBuilt, description);
 
     int answer = QMessageBox::question(this, "Warning", "Are you sure you want to add to list?");
 
-    if(answer = QMessageBox::No){
+    if(answer == QMessageBox::No){
         return;
     }
     else{
+        computerService.addComputer(comp);
+        int idOfAddedComputer = computerService.getHighestId();
+
+        for(unsigned int i = 0; i < relatedPioneersList.size(); i++){
+            Pioneer currentPioneer = relatedPioneersList[i];
+            relationService.addRelations(currentPioneer.getId(), idOfAddedComputer);
+        }
         this->done(1);
     }
 }
@@ -87,6 +93,15 @@ bool addComputer::errorCheck(string name, string type, string wasItBuilt, string
     return false;
 }
 
+bool addComputer::is_number(string& s){
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)){
+        ++it;
+    }
+
+    return !s.empty() && it == s.end();
+}
+
 void addComputer::displayUnrelatedPioneers(vector<Pioneer> unrelatedPioneers){
     ui->list_unrelated_pioneers->clear();
 
@@ -95,7 +110,6 @@ void addComputer::displayUnrelatedPioneers(vector<Pioneer> unrelatedPioneers){
 
         ui->list_unrelated_pioneers->addItem(QString::fromStdString(currentPioneer.getName()));
     }
-
     unrelatedPioneersList = unrelatedPioneers;
 }
 

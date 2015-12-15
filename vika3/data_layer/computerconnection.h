@@ -21,7 +21,7 @@ public:
         // Returns pioneers vector
     Computer getCompValuesFromDB(QSqlQuery query2);
         // gets the computer values and returns them
-    void addToCompTable(vector<Computer>& list);
+    void addToCompTable(Computer computer);
         // Adds list vector to Computers table in SQL database
     vector<Computer> getComputerListDesc();
         // Returns computers vector but with the name in descending order

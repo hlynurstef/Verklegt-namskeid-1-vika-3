@@ -46,33 +46,20 @@ Computer ComputerConnection::getCompValuesFromDB(QSqlQuery query2){
     return tempo;
 }
 
-void ComputerConnection::addToCompTable(vector<Computer>& list){
-
-    for (unsigned int i = 0; i < list.size(); i++){
-        compTemp = list[i];
-        string name = compTemp.getComputerName();
-        int buildYear = compTemp.getBuildYear();
-        string computerType = compTemp.getComputerType();
-        string wasBuilt = compTemp.getWasItBuilt();
-        string desc = compTemp.getComputerDescription();
-
-        string buildYearString;
-        ostringstream convert;
-        convert << buildYear;
-        buildYearString = convert.str();
-
-        string id;
+void ComputerConnection::addToCompTable(Computer computer){
+        string name = computer.getComputerName();
+        int buildYear = computer.getBuildYear();
+        string computerType = computer.getComputerType();
+        string wasBuilt = computer.getWasItBuilt();
+        string desc = computer.getComputerDescription();
 
         query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc)");
-        query2.bindValue("NULL", QString::fromStdString(id));
         query2.bindValue(":tempName", QString::fromStdString(name));
-        query2.bindValue(":tempYear", QString::fromStdString(buildYearString));
+        query2.bindValue(":tempYear", QString::number(buildYear));
         query2.bindValue(":tempType", QString::fromStdString(computerType));
         query2.bindValue(":tempWasBuilt", QString::fromStdString(wasBuilt));
         query2.bindValue(":tempDesc", QString::fromStdString(desc));
         query2.exec();
-
-    }
 }
 
 vector<Computer> ComputerConnection::getComputerListAsc(){
@@ -235,5 +222,4 @@ int ComputerConnection::getHighestId(){
         highestId = query2.value("MAX(id)").toUInt();
     }
     return highestId;
-
 }

@@ -1,19 +1,11 @@
 #include "services/computerservice.h"
 
-ComputerService::ComputerService()
-{
+ComputerService::ComputerService(){
 
 }
 
-
-void ComputerService::addComputers(Computer comp, int count){
-    if(count == 1){
-        tempList2.clear();
-    }
-
-    tempList2.push_back(comp);
-
-    data.addToCompTable(tempList2);       // call to database to add list to database
+void ComputerService::addComputer(Computer computer){
+    data.addToCompTable(computer);       // call to database to add list to database
 }
 
 vector<Computer> ComputerService::search(string searchWord, string searchBy, string built, string type, string orderBy, string direction){
@@ -39,8 +31,7 @@ void ComputerService::deleteAllComputers(){
     data.deleteAllComputers();
 }
 
-vector<Computer> ComputerService::getList()
-{
+vector<Computer> ComputerService::getList(){
     vector<Computer> list = data.getComputerList();
     return list;
 }
