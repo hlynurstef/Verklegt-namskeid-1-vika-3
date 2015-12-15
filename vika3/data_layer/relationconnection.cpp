@@ -44,7 +44,7 @@ void RelationConnection::addToRelTable(int pioID, int compID){
 
 vector<Relation> RelationConnection::getRelationList(){
     // Read all information from Relations table
-    query3.exec("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id");
+    query3.exec("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id ");
 
     while(query3.next()){
         Relation R = getRelValuesFromDB(query3);
