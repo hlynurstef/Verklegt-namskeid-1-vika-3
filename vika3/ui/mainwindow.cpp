@@ -4,6 +4,8 @@
 #include "moreinfocomputer.h"
 #include "editcomputer.h"
 #include "moreinfopioneer.h"
+#include "trashbinpioneers.h"
+#include "trashbincomputers.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -525,4 +527,10 @@ void MainWindow::disableButtonsForComputer(){
     ui->button_computer_remove->setEnabled(false);
     ui->pushButton_computers_more_info->setEnabled(false);
     ui->pushButton_computers_edit->setEnabled(false);
+}
+
+void MainWindow::on_trash_button_pioneers_clicked()
+{
+    TrashBinPioneers trash;
+    trash.exec();
 }

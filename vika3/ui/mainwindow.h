@@ -74,6 +74,8 @@ private slots:
     void on_pushButton_computers_edit_clicked();
         // Opens up a new window that allows the user to edit the selected computer
 
+    void on_trash_button_pioneers_clicked();
+
 private:
     std::string getCurrentOrderByPioneers();
         // Returns SQL column name to order pioneers by based on what user has picked in dropdown list
