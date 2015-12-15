@@ -19,10 +19,12 @@ public:
     ~editPioneer();
 
     void setPioneer(Pioneer pio);
-    //bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
+    bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
 
 private slots:
     void on_button_edit_pioneer_clicked();
+
+    void on_button_cancel_clicked();
 
 private:
     Ui::editPioneer *ui;

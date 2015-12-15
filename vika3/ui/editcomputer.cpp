@@ -12,8 +12,7 @@ editComputer::editComputer(QWidget *parent) :
 
 }
 
-editComputer::~editComputer()
-{
+editComputer::~editComputer(){
     delete ui;
 }
 
@@ -27,6 +26,6 @@ void editComputer::setComputer(Computer comp){
     ui->edit_description->setText(QString::fromStdString(comp.getComputerDescription()));
 }
 
-
-
-
+void editComputer::on_button_cancel_clicked(){
+    this->done(0);
+}

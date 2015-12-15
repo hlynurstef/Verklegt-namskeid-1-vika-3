@@ -23,6 +23,8 @@ public:
 private slots:
 
 
+    void on_button_cancel_clicked();
+
 private:
     Ui::editComputer *ui;
     Computer computer;
