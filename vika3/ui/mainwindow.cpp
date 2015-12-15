@@ -66,6 +66,10 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers){
     ui->table_pioneers->clearContents();
     ui->table_pioneers->setRowCount(pioneers.size());
 
+    if(pioneers.empty()){
+        disableButtonsForPioneer();
+    }
+
     for(unsigned int row = 0; row < pioneers.size(); row++){
         Pioneer currentPioneer = pioneers[row];
 
@@ -82,6 +86,10 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers){
 void MainWindow::displayComputers(std::vector<Computer> computers){
     ui->table_computers->clearContents();
     ui->table_computers->setRowCount(computers.size());
+
+    if(computers.empty()){
+        disableButtonsForComputer();
+    }
 
     for(unsigned int row = 0; row < computers.size(); row++){
         Computer currentComputer = computers[row];
@@ -479,8 +487,6 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
 
     if (returnValue == 1)
     {
-        ui->dropdown_pioneers_filter_gender->clear();
-        ui->dropdown_pioneers_filter_vital_status->clear();
         displayAllPioneers();
 
         ui->statusBar->showMessage("Pioneer has been modified", 2000);
@@ -510,8 +516,6 @@ void MainWindow::on_pushButton_computers_edit_clicked()
 
     if (returnValue2 == 1)
     {
-        ui->dropdown_computers_filter_built->clear();
-        ui->dropdown_computers_filter_type->clear();
         displayAllComputers();
 
         ui->statusBar->showMessage("Computer has been modified", 2000);

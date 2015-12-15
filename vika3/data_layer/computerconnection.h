@@ -21,6 +21,8 @@ public:
         // Returns pioneers vector
     Computer getCompValuesFromDB(QSqlQuery query2);
         // gets the computer values and returns them
+    vector<Computer> getComputerTrash();
+        // return pioneer vector from trash
     void addToCompTable(Computer computer);
         // Adds list vector to Computers table in SQL database
     vector<Computer> getComputerListDesc();

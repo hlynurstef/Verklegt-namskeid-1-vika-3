@@ -25,13 +25,26 @@ ComputerConnection::ComputerConnection()
 
 vector<Computer> ComputerConnection::getComputerList(){
     // Read all information from the computers table
-    query2.exec("SELECT * FROM Computers");
+    query2.exec("SELECT * FROM Computers WHERE deleted = 'false'");
 
     while(query2.next()){
         Computer C = getCompValuesFromDB(query2);
         computers.push_back(C);
     }
     return computers;
+}
+
+vector<Computer> ComputerConnection::getComputerTrash(){
+    // Read all information from the computers trash
+    query2.exec("SELECT * FROM Computers WHERE deleted = 'true'");
+
+    vector<Computer> computerTrash;
+
+    while(query2.next()){
+        Computer C = getCompValuesFromDB(query2);
+        computerTrash.push_back(C);
+    }
+    return computerTrash;
 }
 
 Computer ComputerConnection::getCompValuesFromDB(QSqlQuery query2){
@@ -52,13 +65,15 @@ void ComputerConnection::addToCompTable(Computer computer){
         string computerType = computer.getComputerType();
         string wasBuilt = computer.getWasItBuilt();
         string desc = computer.getComputerDescription();
+        string deleted = "false";
 
-        query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc)");
+        query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc, :tempDeleted)");
         query2.bindValue(":tempName", QString::fromStdString(name));
         query2.bindValue(":tempYear", QString::number(buildYear));
         query2.bindValue(":tempType", QString::fromStdString(computerType));
         query2.bindValue(":tempWasBuilt", QString::fromStdString(wasBuilt));
         query2.bindValue(":tempDesc", QString::fromStdString(desc));
+        query2.bindValue(":tempDeleted", QString::fromStdString(deleted));
         query2.exec();
 }
 
@@ -95,16 +110,16 @@ vector<Computer> ComputerConnection::printQuery(string built, string type, strin
     vector<Computer> list;
 
     if(built == "" && type == ""){			// If user doesn't choose any filters / wants entire list
-        query2.prepare(QString("SELECT * FROM Computers ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query2.prepare(QString("SELECT * FROM Computers WHERE deleted = 'false' ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     else if(built != "" && type == ""){		// If user chooses to filter only by if the computer was built or not
-        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND deleted = 'false' ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     else if(built == "" && type != ""){		// If user chooses to filter only by computer type
-        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type = :type ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type = :type AND deleted = 'false' ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     else if (built != "" && type != ""){	// If user chooses to filter by both if computer was built and computer type
-        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND computer_type = :type ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND computer_type = :type AND deleted = 'false' ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     query2.bindValue(":built",QString::fromStdString(built));
     query2.bindValue(":type",QString::fromStdString(type));
@@ -129,22 +144,22 @@ vector<Computer> ComputerConnection::searchComp(string searchWord, string search
     vector<Computer> searchTempComp;
 
     if(built == "" && type == ""){                              // If user doesn't choose any filters / wants entire list
-            query2.prepare(QString("SELECT * FROM Computers WHERE " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+            query2.prepare(QString("SELECT * FROM Computers WHERE deleted = 'false' AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if(built != "" && type == ""){                         // If user chooses to filter only by if the computer was built or not
-        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND deleted = 'false' AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if(built == "" && type != "" && type != "other"){		// If user chooses to filter only by computer type
-        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type = :type AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type = :type AND deleted = 'false' AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if (built != "" && type != "" && type != "other"){     // If user chooses to filter by both if computer was built and computer type
         query2.prepare(QString("SELECT * FROM Computers WHERE was_built = :built AND computer_type = :type AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if(built == "" && type == "other"){
-        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type not in (" + QString::fromStdString("'mechanical', ") + QString::fromStdString("'electronic', ") + QString::fromStdString("'transistor'") + ") AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query2.prepare(QString("SELECT * FROM Computers WHERE deleted = 'false' AND computer_type not in (" + QString::fromStdString("'mechanical', ") + QString::fromStdString("'electronic', ") + QString::fromStdString("'transistor'") + ") AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if(built != "" && type == "other"){
-        query2.prepare(QString("SELECT * FROM Computers WHERE computer_type not in (" + QString::fromStdString("mechanical, ") + QString::fromStdString("electronic") + ") AND was_built = :built AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query2.prepare(QString("SELECT * FROM Computers WHERE deleted = 'false' AND computer_type not in (" + QString::fromStdString("mechanical, ") + QString::fromStdString("electronic") + ") AND was_built = :built AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     query2.bindValue(":word", QString::fromStdString(searchWord));
     query2.bindValue(":built",QString::fromStdString(built));
