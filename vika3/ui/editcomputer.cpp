@@ -44,6 +44,7 @@ void editComputer::on_pushButton_editcomputer_clicked()
     if(error == true){
         return;
     }
+
     int bYear = atoi(buildYear.c_str());
 
     Computer comp(compID, name, bYear, type, built, description);
@@ -71,12 +72,13 @@ bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, st
     }
 
     if(wasBuilt.empty()){
-        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>was it built?</span>");
+        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>input was it built?</span>");
             error = true;
     }
-    //if(buildYear.empty()){
-       // buildYear == '0';
-    //}
+
+    if(buildYear.empty() && wasBuilt == "yes"){
+        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>Input build year</span>");
+    }
 
     if(error == true){
         return true;
