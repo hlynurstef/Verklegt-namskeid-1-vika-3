@@ -36,6 +36,11 @@ vector<Computer> ComputerService::getList(){
     return list;
 }
 
+vector<Computer> ComputerService::getTrash(){
+    vector<Computer> trash = data.getComputerTrash();
+    return trash;
+}
+
 int ComputerService::getHighestId(){
     int highestId = data.getHighestId();
 

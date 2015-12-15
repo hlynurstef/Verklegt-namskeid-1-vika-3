@@ -22,6 +22,8 @@ public:
         // Puts all names to lowercase
     vector<Pioneer> getList();
         // Fetches list from connection
+    vector<Pioneer> getTrash();
+        // returns all pioneers in trash
     vector<Pioneer> search(string searchWord, string searchBy, string sex, string vitalStats, string orderBy, string direction);
         // Gets search word input from interface, sends word to service,
         // receives a vector with search results from service and sends vector to interface
