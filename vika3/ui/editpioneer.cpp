@@ -26,7 +26,7 @@ void editPioneer::setPioneer(Pioneer pio){
     ui->edit_birth_year->setText(QString::fromStdString(birthyear));
     ui->edit_death_year->setText(QString::fromStdString(deathyear));
     ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
-    if(!(pio.getImageByteArray().isEmpty())){
+    if(!pio.getImageByteArray().isEmpty()){
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
     }
 
@@ -197,15 +197,18 @@ void editPioneer::on_pushButton_browse_image_clicked()
                     this,
                     "Search for images",
                     "/home",
-                    "Image files (*.png *.jpg)"
+                    "Image files (*.jpg)"
                 );
 
     if (filePath.length()) // File selected
     {
+        QPixmap pixmap(filePath);
+
         ui->lineEdit_image->setText(filePath);
 
-        QFile file(filePath);
-        image = file.readAll();
+        QBuffer inBuffer( &image );
+        inBuffer.open( QIODevice::WriteOnly );
+        pixmap.save( &inBuffer, "JPG" );
     }
     else{
 

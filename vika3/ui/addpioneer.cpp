@@ -202,15 +202,18 @@ void AddPioneer::on_pushButton_browse_image_clicked()
                     this,
                     "Search for images",
                     "/home",
-                    "Image files (*.png *.jpg)"
+                    "Image files (*.jpg)"
                 );
 
     if (filePath.length()) // File selected
     {
+        QPixmap pixmap(filePath);
+
         ui->input_image->setText(filePath);
 
-        QFile file(filePath);
-        inByteArray = file.readAll();
+        QBuffer inBuffer( &inByteArray );
+        inBuffer.open( QIODevice::WriteOnly );
+        pixmap.save( &inBuffer, "JPG" );
     }
     else{
 
