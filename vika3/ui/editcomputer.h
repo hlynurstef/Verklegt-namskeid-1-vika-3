@@ -19,6 +19,7 @@ public:
     ~editComputer();
 
     void setComputer(Computer computer);
+    bool errorCheck(string name, string wasBuilt, string buildYear, string type, string description);
 
 private slots:
 

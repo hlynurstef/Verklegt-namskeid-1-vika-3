@@ -36,6 +36,15 @@ void editComputer::on_pushButton_editcomputer_clicked()
     string buildYear = ui->edit_buildyear->text().toStdString();
     string description = ui->edit_description->toPlainText().toStdString();
 
+    if(buildYear.empty()){
+        buildYear = "0";
+    }
+
+    bool error = errorCheck(name, built, buildYear, type, description);
+    if(error == true){
+        return;
+    }
+
     int bYear = atoi(buildYear.c_str());
 
     Computer comp(compID, name, bYear, type, built, description);
@@ -43,6 +52,38 @@ void editComputer::on_pushButton_editcomputer_clicked()
     compService.editComputer(comp);
 
     this->done(1);
+}
+
+bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, string type, string description)
+{
+    bool error = false;
+
+    if(name.empty()){
+        ui->label_name_error->setText("<span style ='color: #ff0000'>Input computer name</span>");
+        error = true;
+    }
+
+    if(type.empty()){
+        ui->label_type_error->setText("<span style ='color: #ff0000'>Input type</span>");
+        error = true;
+    }
+    if(description.empty()){
+        ui->label_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+    }
+
+    if(wasBuilt.empty()){
+        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>input was it built?</span>");
+            error = true;
+    }
+
+    if(buildYear.empty() && wasBuilt == "yes"){
+        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>Input build year</span>");
+    }
+
+    if(error == true){
+        return true;
+    }
+    return false;
 }
 
 void editComputer::on_button_cancel_clicked(){

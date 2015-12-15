@@ -3,13 +3,25 @@
 
 using namespace std;
 
+const QString connectionName = "name3";
+
 RelationConnection::RelationConnection(){
 
     QSqlDatabase db3;
-    db3 = QSqlDatabase::addDatabase("QSQLITE", "name3");
-    QString dbname = "computer_science_db.sqlite";
-    db3.setDatabaseName(dbname);
-    db3.open();
+    QString dbN = "computer_science_db.sqlite";
+
+    if(QSqlDatabase::contains(connectionName))
+        {
+            db3 = QSqlDatabase::database(connectionName);
+        }
+        else
+        {
+            db3 = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+            db3.setDatabaseName(dbN);
+
+            db3.open();
+        }
+
     query3 = QSqlQuery(db3);
 }
 
