@@ -26,7 +26,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -76,7 +76,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QLabel" name="label_wasbuilt">
            <property name="text">
@@ -97,11 +97,22 @@
         <widget class="QLineEdit" name="edit_wasbuilt"/>
        </item>
        <item>
-        <widget class="QLabel" name="label_buildYear">
-         <property name="text">
-          <string>Build Year:</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_buildYear">
+           <property name="text">
+            <string>Build Year:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_build_year_error">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <widget class="QLineEdit" name="edit_buildyear"/>
