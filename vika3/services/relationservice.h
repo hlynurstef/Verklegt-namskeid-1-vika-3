@@ -18,6 +18,7 @@ public:
     void removePioneerRelation(int pioID);
     // Sends pioneer information to RelationConnection, to remove all relations to that person
     void removeRelation(int pioID, int compID);
+    void removeComputerRelation(int compID);
 private:
     RelationConnection connection;
     Pioneer pio;

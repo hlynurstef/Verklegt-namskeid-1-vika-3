@@ -86,20 +86,23 @@ vector<Relation> RelationConnection::relationQuery(string name, string column){
 
 void RelationConnection::removeRelationPioneer(int pioID){
 
-    QString ID = QString::number(pioID);
-
-    query3.prepare("DELETE FROM relations WHERE pioneer_id = " + pioID );
+    query3.prepare("DELETE FROM relations WHERE pioneer_id = :word");
+    query3.bindValue(":word", QString::number(pioID));
     query3.exec();
 
     relation.clear();
 }
 
-void RelationConnection::removeRelation(int pioid, int compid){
+void RelationConnection::removeRelationComputer(int compID){
+    query3.prepare("DELETE FROM relations WHERE pioneer_id = :word");
+    query3.bindValue(":word", QString::number(compID));
+}
 
-    QString pioID = QString::number(pioid);
-    QString compID = QString::number(compid);
+void RelationConnection::removeRelation(int pioID, int compID){
 
-    query3.prepare("DELETE FROM relations WHERE pioneer_id = '" + pioID + " AND computer_id = '" + compID + "')");
+    query3.prepare("DELETE FROM relations WHERE pioneer_id = :pioid AND computer_id = :compid");
+    query3.bindValue(":pioid", QString::number(pioID));
+    query3.bindValue(":compid", QString::number(compID));
     query3.exec();
 
     relation.clear();

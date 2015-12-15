@@ -172,6 +172,9 @@ void editPioneer::on_button_remove_relation_clicked()
     displayRelatedComputers();
     displayUnrelatedComputers();
 
+    int compID = selectedComputer.getId();
+    relService.removeRelation(pioID, compID);
+
     ui->button_remove_relation->setEnabled(false);
 }
 
