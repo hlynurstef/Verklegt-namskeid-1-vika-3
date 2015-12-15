@@ -6,7 +6,6 @@
 #include "services/relationservice.h"
 #include "data_types/pioneer.h"
 
-
 #include <QDialog>
 #include <QMainWindow>
 #include <QPixmap>

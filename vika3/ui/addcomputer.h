@@ -6,6 +6,8 @@
 #include "services/relationservice.h"
 
 #include <QDialog>
+#include <QMainWindow>
+#include <QPixmap>
 
 namespace Ui {
 class addComputer;

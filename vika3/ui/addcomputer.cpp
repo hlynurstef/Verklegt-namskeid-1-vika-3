@@ -1,7 +1,10 @@
 #include "addcomputer.h"
 #include "ui_addcomputer.h"
+#include "utilities/constants.h"
 #include <QMessageBox>
 #include <QStatusBar>
+#include <QFileDialog>
+#include <algorithm>
 
 addComputer::addComputer(QWidget *parent) :
     QDialog(parent),
@@ -39,7 +42,7 @@ void addComputer::on_button_add_computer_clicked()
     int bYear = atoi(buildYear.c_str());
     Computer comp(name, bYear, type, wasItBuilt, description);
 
-    int answer = QMessageBox::question(this, "Warning", "Are you sure you want to add to list?");
+    int answer = QMessageBox::question(this, "Add Computer", "Are you sure you want to add " + QString::fromStdString(comp.getComputerName()) + " to list?");
 
     if(answer == QMessageBox::No){
         return;
@@ -52,6 +55,7 @@ void addComputer::on_button_add_computer_clicked()
             Pioneer currentPioneer = relatedPioneersList[i];
             relationService.addRelations(currentPioneer.getId(), idOfAddedComputer);
         }
+
         this->done(1);
     }
 }
@@ -66,25 +70,38 @@ void addComputer::emptyLines(){
 bool addComputer::errorCheck(string name, string type, string wasItBuilt, string buildYear, string description){
     bool error = false;
 
+    transform(wasItBuilt.begin(), wasItBuilt.end(), wasItBuilt.begin(), ::tolower);
+
     if(name.empty()){
-        ui->label_computer_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
-        error = true;
-    }
-    if(type != "mechanical" && type != "Mechanical" && type != "electronic" && type != "Electronic" && type != "transistor" && type != "Transistor"){
-        ui->label_computer_type_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
-        // ui->statusBar->showMessage("Correct type inputs are: Mechanical, Electronic or Transistor", 2000);
+        ui->label_computer_name_error->setText("<span style ='color: #ff0000'>Input Name</span>");
         error = true;
     }
     if(type.empty()){
-        ui->label_computer_type_error->setText("<span style ='color: #ff0000'>Input type</span>");
+        ui->label_computer_type_error->setText("<span style ='color: #ff0000'>Input Type</span>");
+        error = true;
+    }
+    if(wasItBuilt != "y" && wasItBuilt != "n"){
+        ui->label_computer_build_error->setText("<span style ='color: #ff0000'>Incorrect Input!</span>");
         error = true;
     }
     if(wasItBuilt.empty()){
         ui->label_computer_build_error->setText("<span style ='color: #ff0000'>Input y/n</span>");
         error = true;
     }
+    if(!is_number(buildYear)){
+        ui->label_computer_build_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
+        error = true;
+    }
     if(description.empty()){
-        ui->label_computer_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+        ui->label_computer_description_error->setText("<span style ='color: #ff0000'>Input Description!</span>");
+        error = true;
+    }
+
+    int bYear = atoi(buildYear.c_str());
+
+    if(bYear > constants::CURRENT_YEAR){
+        ui->label_computer_build_year_error->setText("<span style ='color: #ff0000'>Computers from the future are not allowed!</span>");
+        error = true;
     }
 
     if(error == true){

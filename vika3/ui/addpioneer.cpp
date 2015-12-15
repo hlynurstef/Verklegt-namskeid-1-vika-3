@@ -3,6 +3,8 @@
 #include "utilities/constants.h"
 
 #include <QFileDialog>
+#include <QMessageBox>
+#include <algorithm>
 
 AddPioneer::AddPioneer(QWidget *parent) :
     QDialog(parent),
@@ -44,15 +46,22 @@ void AddPioneer::on_button_add_pioneer_clicked()
     int dyear = atoi(deathyear.c_str());
     Pioneer pio(name, sex, byear, dyear, description);
 
-    pioService.addPioneer(pio);
-    int idOfAddedPioneer = pioService.getHighestId();
+    int answer = QMessageBox::question(this, "Add Pioneer", "Are you sure you want to add " + QString::fromStdString(pio.getName()) + " to the list?");
 
-    for(unsigned int i = 0; i < relatedComputersList.size(); i++){
-        Computer currentComputer = relatedComputersList[i];
-        relationService.addRelations(idOfAddedPioneer, currentComputer.getId());
+    if(answer == QMessageBox::No){
+        return;
     }
+    else{
+        pioService.addPioneer(pio);
+        int idOfAddedPioneer = pioService.getHighestId();
 
-    this->done(1);
+        for(unsigned int i = 0; i < relatedComputersList.size(); i++){
+            Computer currentComputer = relatedComputersList[i];
+            relationService.addRelations(idOfAddedPioneer, currentComputer.getId());
+        }
+
+        this->done(1);
+    }
 }
 
 void AddPioneer::emptyLines(){
@@ -65,11 +74,15 @@ void AddPioneer::emptyLines(){
 bool AddPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
     bool error = false;
 
+    transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
+
+    qDebug() << QString::fromStdString(sex);
+
     if(name.empty()){
-        ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
+        ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input Name</span>");
         error = true;
     }
-    if(sex != "male" && sex != "Male" && sex != "female" && sex != "Female"){
+    if(sex != "male" && sex != "female"){
         ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Incorrect Input! (male/female)</span>");
         error = true;
     }
@@ -104,6 +117,7 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
 
     if(byear > constants::CURRENT_YEAR){
         ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>People from the future are not allowed!</span>");
+        error = true;
     }
 
     if(error == true){
