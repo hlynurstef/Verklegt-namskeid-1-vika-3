@@ -75,7 +75,7 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     int dYear = pioneer.getDyear();
     string desc = pioneer.getDescription();
     string deleted = "false";
-    //QByteArray image = pioneer.getImageByteArray();
+    QByteArray image = pioneer.getImageByteArray();
 
     transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
 
@@ -91,7 +91,7 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     }
     query.bindValue(":tempDesc", QString::fromStdString(desc));
     query.bindValue(":tempDeleted", QString::fromStdString(deleted));   // Deleted
-    query.bindValue(":tempImage", /*image*/ QVariant(QVariant::String));          // Image BLOB value (set to NULL for now)
+    query.bindValue(":tempImage", image);          // Image BLOB value (set to NULL for now)
     query.exec();
 
 }

@@ -18,6 +18,7 @@ AddPioneer::AddPioneer(QWidget *parent) :
     ui->dropdown_pioneer_sex->addItem("");
     ui->dropdown_pioneer_sex->addItem("Male");
     ui->dropdown_pioneer_sex->addItem("Female");
+
 }
 
 AddPioneer::~AddPioneer()
@@ -51,7 +52,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
 
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
-    Pioneer pio(name, sex, byear, dyear, description/*, inByteArray*/);
+    Pioneer pio(name, sex, byear, dyear, description, inByteArray);
 
     int answer = QMessageBox::question(this, "Add Pioneer", "Are you sure you want to add " + QString::fromStdString(pio.getName()) + " to the list?");
 
@@ -192,21 +193,19 @@ void AddPioneer::on_button_pioneer_remove_relation_clicked(){
 
 void AddPioneer::on_pushButton_browse_image_clicked()
 {
-    string filePath = QFileDialog::getOpenFileName(
+    QString filePath = QFileDialog::getOpenFileName(
                     this,
                     "Search for images",
-                    "",
+                    "/home",
                     "Image files (*.png *.jpg)"
-                ).toStdString();
+                );
 
     if (filePath.length()) // File selected
     {
-        QPixmap pixmap(QString::fromStdString(filePath));
+        ui->input_image->setText(filePath);
 
-        ui->input_image->setText(QString::fromStdString(filePath));
-
-        //QFile file (filePath);
-        //inByteArray = file.readAll();
+        QFile file(filePath);
+        inByteArray = file.readAll();
     }
     else{
 
