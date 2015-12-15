@@ -250,5 +250,4 @@ int PioneerConnection::getHighestId(){
         highestId = query.value("MAX(id)").toUInt();
     }
     return highestId;
-
 }

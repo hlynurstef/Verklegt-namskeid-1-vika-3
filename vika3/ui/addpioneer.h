@@ -9,6 +9,7 @@
 
 #include <QDialog>
 #include <QMainWindow>
+#include <QPixmap>
 
 namespace Ui {
 class AddPioneer;

@@ -3,6 +3,7 @@
 
 #include "data_types/computer.h"
 #include "services/computerservice.h"
+#include "services/relationservice.h"
 
 #include <QDialog>
 
@@ -26,6 +27,8 @@ public:
         // Prints vector of pioneers in the unrelated pioneers list
     void displayRelatedPioneers(vector<Pioneer> relatedPioneers);
         // Prints vector of pioneers in the related pioneers list
+    bool is_number(string& s);
+        // Returns true if string is only numbers, false otherwise
 
 private slots:
     void on_button_add_computer_clicked();
@@ -42,7 +45,8 @@ private slots:
 
 private:
     Ui::addComputer *ui;
-    Computer compService;
+    ComputerService computerService;
+    RelationService relationService;
     vector<Pioneer> unrelatedPioneersList;    // This vector holds onto every computer that is currently displayed on main window
     vector<Pioneer> relatedPioneersList;      // This vector holds onto every computer related to Pioneer
 };

@@ -110,8 +110,7 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
     return false;
 }
 
-bool AddPioneer::is_number(string& s)
-{
+bool AddPioneer::is_number(string& s){
     string::const_iterator it = s.begin();
     while (it != s.end() && isdigit(*it)){
         ++it;

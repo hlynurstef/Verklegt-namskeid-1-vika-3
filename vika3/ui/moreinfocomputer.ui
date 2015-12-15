@@ -53,6 +53,9 @@
          <height>0</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
        </property>
@@ -70,7 +73,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Relation:</string>
+        <string>Relations with pioneers:</string>
        </property>
       </widget>
      </item>

@@ -18,7 +18,7 @@ MoreInfoPioneer::~MoreInfoPioneer(){
 
 void MoreInfoPioneer::setPioneer(Pioneer pioneer){
 
-    //------------------- Printing info -------------------
+    //-------------------------- Printing info --------------------------
 
     ui->label_name->setText(QString::fromStdString(pioneer.getName()));
     ui->label_sex->setText(QString::fromStdString(pioneer.getSex()));
@@ -30,9 +30,35 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
         ui ->label_yearDied->setText(QString::number(pioneer.getDyear()));
     }
     ui->textBrowser_description->setText(QString::fromStdString(pioneer.getDescription()));
+
+    getRelationList(pioneer);
 }
+
+void MoreInfoPioneer::getRelationList(Pioneer pioneer){
+
+    //---------------- Printing & getting relation info from database ----------------
+
+    string relationList;
+
+    relation = (relationService.relationSearch(pioneer.getName(), constants::REL_PIO_NAME));
+
+    for(unsigned int i=0; i < relation.size(); i++){
+        relationList += relation[i].getCompName();
+        if((i+1) < relation.size()){
+            relationList += ", ";
+        }
+    }
+    if(relation.size() == 0){
+        ui -> textBrowser_relation -> setText(QString::fromStdString("Unknown relations"));
+    }
+    else
+        ui -> textBrowser_relation -> setText(QString::fromStdString(relationList));
+}
+
 
 void MoreInfoPioneer::on_pushButton_close_clicked()
 {
     this->close();
 }
+
+
