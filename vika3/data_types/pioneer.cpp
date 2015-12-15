@@ -20,7 +20,7 @@ Pioneer::Pioneer(string pName, string s, int birthY, int deathY, string desc, QB
     imageByteArray = image;
 }
 
-Pioneer::Pioneer(int index, string pName, string s, int birthY, int deathY, string desc/*, QByteArray image*/){
+Pioneer::Pioneer(int index, string pName, string s, int birthY, int deathY, string desc, QByteArray image){
     id = index;
     name = pName;
     sex = s;
