@@ -2,6 +2,7 @@
 #include "ui_moreinfopioneer.h"
 #include "utilities/constants.h"
 #include <QDebug>
+#include <QPixmap>
 
 using namespace std;
 
