@@ -37,7 +37,8 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
     if(!(pioneer.getImageByteArray().isEmpty())){
         QPixmap pixmap;
         pixmap.loadFromData(pioneer.getImageByteArray());
-        ui->label_image->setPixmap(pixmap);
+        //ui->label_image->setPixmap(pixmap);
+        ui->label_image->setText("lalala");
     }
 }
 

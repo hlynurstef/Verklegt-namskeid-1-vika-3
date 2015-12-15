@@ -224,6 +224,13 @@ void PioneerConnection::removePioneer(){
     query.exec();
 }
 
+void PioneerConnection::removeSinglePioneer(Pioneer pio){
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM Pioneers WHERE deleted = 'true' AND id = " << pio.getId();
+    query.exec(QString::fromStdString(sqlQuery.str()));
+}
+
 void PioneerConnection::deleteAllPioneers(){
     query.exec("DELETE FROM pioneers");
 }
@@ -244,6 +251,7 @@ void PioneerConnection::pioneerToTrash(Pioneer pio){
     int dYear = pio.getDyear();
     string desc = pio.getDescription();
     string deleted = "true";
+    QByteArray image = pio.getImageByteArray();
 
     string bYearString = to_string(bYear);
     string dYearString = to_string(dYear);
@@ -257,7 +265,7 @@ void PioneerConnection::pioneerToTrash(Pioneer pio){
     QString editDesc = QString::fromStdString(desc);
     QString editDeleted = QString::fromStdString(deleted);
 
-    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', image = '"+ image +"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
     query.exec();
 }
 
@@ -284,7 +292,7 @@ void PioneerConnection::editPioneer(Pioneer pio){
     QString editDesc = QString::fromStdString(desc);
     QString editDeleted = QString::fromStdString(deleted);
 
-    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', image = '"+ image +"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
     query.exec();
 
 }

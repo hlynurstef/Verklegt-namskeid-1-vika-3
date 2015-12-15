@@ -191,6 +191,13 @@ vector<Computer> ComputerConnection::searchComp(string searchWord, string search
 // ---------------------------------------------------------------------
 //                           DELETE FUNCTIONS
 // ---------------------------------------------------------------------
+void ComputerConnection::removeSingleComputer(Computer comp){
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM Computers WHERE deleted = 'true' AND id = " << comp.getId();
+    query2.exec(QString::fromStdString(sqlQuery.str()));
+}
+
 void ComputerConnection::removeComputer(){
 
     query2.prepare("DELETE FROM Computers WHERE deleted = 'true'");

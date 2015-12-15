@@ -52,6 +52,7 @@ public:
 
     void pioneerToTrash(Pioneer pio);
 
+    void removeSinglePioneer(Pioneer pio);
 private:
     vector<Pioneer> pioneers;       // Vector that holds onto all information on runtime
     Pioneer temp;

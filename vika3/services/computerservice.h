@@ -31,6 +31,7 @@ public:
         // Returns highest id in Pioneers table (most recently added entry)
 
     void computerToTrash(Computer comp);
+    void removeSingleComputer(Computer comp);
 private:
     Computer temp;                      // Temporary object to be used in various situations
     vector<Computer> tempList2;
