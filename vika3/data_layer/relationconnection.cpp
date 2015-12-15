@@ -44,7 +44,7 @@ void RelationConnection::addToRelTable(int pioID, int compID){
 
 vector<Relation> RelationConnection::getRelationList(){
     // Read all information from Relations table
-    query3.exec("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id ");
+    query3.exec("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id WHERE p.deleted = 'false' AND c.deleted = 'false' ");
 
     while(query3.next()){
         Relation R = getRelValuesFromDB(query3);
@@ -65,10 +65,10 @@ Relation RelationConnection::getRelValuesFromDB(QSqlQuery query3){
 vector<Relation> RelationConnection::relationQuery(string name, string column){
     vector<Relation> list;
     if(column == constants::REL_COMP_NAME){
-        query3.prepare("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id WHERE c.computer_name LIKE '%'||:word||'%';");
+        query3.prepare("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id WHERE p.deleted = 'false' AND c.deleted = 'false' AND c.computer_name LIKE '%'||:word||'%';");
     }
     else if(column == constants::REL_PIO_NAME){
-        query3.prepare("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id WHERE p.name LIKE '%'||:word||'%';");
+        query3.prepare("SELECT c.computer_name, p.name FROM relations r join pioneers p on p.id = r.pioneer_id join computers c on c.id = r.computer_id WHERE p.deleted = 'false' AND c.deleted = 'false' AND p.name LIKE '%'||:word||'%';");
     }
     query3.bindValue(":word",QString::fromStdString(name));
 
@@ -86,7 +86,7 @@ vector<Relation> RelationConnection::relationQuery(string name, string column){
 
 void RelationConnection::removeRelationPioneer(int pioID){
 
-    query3.prepare(QString( "DELETE FROM relations WHERE pioneer_id = " + QString::number(pioID)) );
+    query3.prepare("DELETE FROM relations WHERE pioneer_id = " + pioID );
     query3.exec();
 
     relation.clear();
