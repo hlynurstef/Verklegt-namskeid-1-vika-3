@@ -15,8 +15,8 @@ editPioneer::~editPioneer()
 
 void editPioneer::setPioneer(Pioneer pio){
 
-    string birthyear = to_string(pio.getByear());
-    string deathyear = to_string(pio.getDyear());
+    string birthyear = std::to_string(pio.getByear());
+    string deathyear = std::to_string(pio.getDyear());
 
     pioID = pio.getId();
 
