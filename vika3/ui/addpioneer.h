@@ -5,7 +5,7 @@
 #include "services/pioneerservice.h"
 #include "services/relationservice.h"
 #include "data_types/pioneer.h"
-//#include "ui/mainwindow.h"
+
 
 #include <QDialog>
 #include <QMainWindow>
@@ -43,7 +43,6 @@ private:
     Ui::AddPioneer *ui;
     PioneerService pioService;
     RelationService relationService;
-    //MainWindow mainwindow;
     vector<Computer> unrelatedComputersList;    // This vector holds onto every computer that is currently displayed on main window
     vector<Computer> relatedComputersList;      // This vector holds onto every computer related to Pioneer
 };

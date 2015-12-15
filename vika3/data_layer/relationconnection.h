@@ -25,7 +25,7 @@ public:
     Relation getRelValuesFromDB(QSqlQuery query3);
         // Returns one Relation from database
     vector<Relation> relationQuery(string name, string column);
-    // Returns vector of relation where name can be found
+        // Returns vector of relation where name can be found
     void removeRelationPioneer(int pioID);
         // Removes a relation where the ID of the pioneer matches the one in table
 private:

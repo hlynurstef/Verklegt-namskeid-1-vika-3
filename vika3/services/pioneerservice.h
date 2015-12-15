@@ -2,7 +2,6 @@
 #define SERVICE_H
 #include "data_types/pioneer.h"
 #include "data_layer/pioneerconnection.h"
-//#include "ui/interface.h"
 #include <fstream>
 #include <iostream>
 #include <vector>
