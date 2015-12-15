@@ -29,10 +29,10 @@ void editComputer::setComputer(Computer comp){
     vector<Relation> allRelations = relService.displayRelations();
     vector<Pioneer> allPioneers = pioService.getList();
 
-    for(int i = 0; i < allRelations.size(); i++){
+    for(unsigned int i = 0; i < allRelations.size(); i++){
         Relation relInstance = allRelations[i];
 
-        for(int j = 0; j < allPioneers.size(); j++){
+        for(unsigned int j = 0; j < allPioneers.size(); j++){
             Pioneer pioInstance = allPioneers[j];
 
             if(relInstance.getCompName() == comp.getComputerName() && relInstance.getPioName() == pioInstance.getName()){
@@ -41,10 +41,10 @@ void editComputer::setComputer(Computer comp){
         }
     }
     bool relatedPioneer = false;
-    for(int i = 0; i < allPioneers.size(); i++){
+    for(unsigned int i = 0; i < allPioneers.size(); i++){
         Pioneer unrelated = allPioneers[i];
         relatedPioneer = false;
-        for(int j = 0; j < relatedPioneers.size(); j++){
+        for(unsigned int j = 0; j < relatedPioneers.size(); j++){
             Pioneer related = relatedPioneers[j];
             if(related.getName() != unrelated.getName()){
                 relatedPioneer = false;
@@ -131,7 +131,7 @@ void editComputer::on_button_cancel_clicked(){
 void editComputer::displayRelatedPioneers(){
     ui->list_related_pioneers->clear();
 
-    for(int i = 0; i < relatedPioneers.size(); i++){
+    for(unsigned int i = 0; i < relatedPioneers.size(); i++){
         Pioneer instance = relatedPioneers[i];
         ui->list_related_pioneers->addItem(QString::fromStdString(instance.getName()));
     }
@@ -140,7 +140,7 @@ void editComputer::displayRelatedPioneers(){
 void editComputer::displayUnrelatedPioneers(){
     ui->list_unrelated_pioneers->clear();
 
-    for(int i = 0; i < unrelatedPioneers.size(); i++){
+    for(unsigned int i = 0; i < unrelatedPioneers.size(); i++){
         Pioneer instance = unrelatedPioneers[i];
         ui->list_unrelated_pioneers->addItem(QString::fromStdString(instance.getName()));
     }
