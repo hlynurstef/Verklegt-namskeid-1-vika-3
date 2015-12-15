@@ -2,13 +2,8 @@
 
 using namespace std;
 
-void RelationService::addRelations(Pioneer pio, Computer comp){
-    int pioID, compID;
-    pioID = pio.getId();
-    compID = comp.getId();
-
-    connection.addToRelTable(compID, pioID);
-
+void RelationService::addRelations(int pioneerId, int computerId){
+    connection.addToRelTable(pioneerId, computerId);
 }
 
 vector<Relation> RelationService::relationSearch(string name, string column){

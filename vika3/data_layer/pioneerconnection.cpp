@@ -259,3 +259,14 @@ void PioneerConnection::editPioneer(Pioneer pio){
 
     QMessageBox::warning(NULL, "Success", "UPDATE pioneers SET id = '"+ editId +"', name = '"+ editName +"', sex = '"+ editSex +"', bYear = '"+ editByear +"', dYear = '"+ editDyear +"', description = '"+ editDesc+"' WHERE id = '"+ editId +"'", QMessageBox::Yes, QMessageBox::No);
 }
+
+int PioneerConnection::getHighestId(){
+    query.exec("SELECT MAX(id) FROM Pioneers");
+    int highestId;
+
+    while(query.next()){
+        highestId = query.value("MAX(id)").toUInt();
+    }
+    return highestId;
+
+}

@@ -13,7 +13,7 @@ RelationConnection::RelationConnection(){
     query3 = QSqlQuery(db3);
 }
 
-void RelationConnection::addToRelTable(int compID, int pioID){
+void RelationConnection::addToRelTable(int pioID, int compID){
     string IDCompString;
     ostringstream convert;
     convert << compID;

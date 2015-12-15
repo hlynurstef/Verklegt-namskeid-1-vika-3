@@ -34,7 +34,7 @@ void editPioneer::on_button_edit_pioneer_clicked()
     string sex = ui->edit_sex->text().toStdString();
     string birthyear = ui->edit_birth_year->text().toStdString();
     string deathyear = ui->edit_death_year->text().toStdString();
-    string description = ui->edit_description->text().toStdString();
+    string description = ui->edit_description->toPlainText().toStdString();
 
     if(deathyear.empty()){
         deathyear = "0";

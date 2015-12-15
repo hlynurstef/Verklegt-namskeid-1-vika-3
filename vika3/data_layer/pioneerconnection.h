@@ -35,6 +35,8 @@ public:
         // Deletes the entire table
     void editPioneer(Pioneer pio);
         // Edits information already in table
+    int getHighestId();
+        // Returns highest id in Pioneers table (most recently added entry)
 
     // ---------------------------------------------------------------------
     //                        PRINT QUERY FUNCTIONS:

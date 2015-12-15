@@ -16,7 +16,7 @@ class RelationConnection
 {
 public:
     RelationConnection();
-    void addToRelTable(int compID, int pioID);
+    void addToRelTable(int pioID, int compID);
         // Links one computer and one pioneer together
     vector<Relation> getRelationList();
         // Returns the whole list from database
