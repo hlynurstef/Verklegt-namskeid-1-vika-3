@@ -43,7 +43,7 @@ public:
         // edits information about one computer from database
     int getHighestId();
         // Returns highest id in Computers table (most recently added entry)
-    bool computerToTrash(Computer comp);
+    void computerToTrash(Computer comp);
         // swithces the deleted value from false to true
 private:
     vector<Computer> computers;     // Vector that holds onto all information on runtime
