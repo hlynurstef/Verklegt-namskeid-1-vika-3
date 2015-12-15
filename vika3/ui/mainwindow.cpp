@@ -383,7 +383,7 @@ void MainWindow::on_pushButton_pioneers_more_info_clicked(){
 
     temp.setPioneer(currentlySelectedPio);
     temp.setModal(true);
-    int returnValue = temp.exec();
+    temp.exec();
 
 }
 

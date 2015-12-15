@@ -185,6 +185,9 @@ void editPioneer::on_button_add_relation_clicked()
     displayUnrelatedComputers();
     displayRelatedComputers();
 
+    int compID = selectedComputer.getId();
+    relService.addRelations(pioID, compID);
+
     ui->button_add_relation->setEnabled(false);
 }
 

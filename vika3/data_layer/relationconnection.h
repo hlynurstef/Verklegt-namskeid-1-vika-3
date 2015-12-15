@@ -27,7 +27,8 @@ public:
     vector<Relation> relationQuery(string name, string column);
         // Returns vector of relation where name can be found
     void removeRelationPioneer(int pioID);
-        // Removes a relation where the ID of the pioneer matches the one in table
+    // Removes a relation where the ID of the pioneer matches the one in table
+    void removeRelation(int pioid, int compid);
 private:
     QSqlQuery query3;                // Object used to send query to SQLite database
     vector<Relation> relation;

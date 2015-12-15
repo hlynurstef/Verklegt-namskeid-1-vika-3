@@ -20,3 +20,7 @@ vector<Relation> RelationService::displayRelations(){
 void RelationService::removePioneerRelation(int pioID){
     connection.removeRelationPioneer(pioID);
 }
+
+void RelationService::removeRelation(int pioID, int compID){
+    connection.removeRelation(pioID, compID);
+}
