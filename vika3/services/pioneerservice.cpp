@@ -41,6 +41,10 @@ void PioneerService::deleteAllPioneers(){
     data.deleteAllPioneers();
 }
 
+void PioneerService::editPioneer(Pioneer pio){
+    data.editPioneer(pio);
+}
+
 int PioneerService::getHighestId(){
     int highestId = data.getHighestId();
 

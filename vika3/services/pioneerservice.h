@@ -33,6 +33,8 @@ public:
         // Sends a name of the person to delete into PioneerConnection
     void deleteAllPioneers();
         // Sends a message to PioneerConnection to delete all pioneers
+    void editPioneer(Pioneer pio);
+        // Sends information about a pioneer that needs to be edited
     int getHighestId();
         // Returns highest id in Pioneers table (most recently added entry)
 

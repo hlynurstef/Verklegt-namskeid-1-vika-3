@@ -464,10 +464,13 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
     currentlySelectedPio = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
 
     editPioneer editPio;
-
     editPio.setPioneer(currentlySelectedPio);
     editPio.setModal(true);
-    editPio.exec();
+    int returnValue = editPio.exec();
+
+    ui->dropdown_pioneers_filter_gender->clear();
+    ui->dropdown_pioneers_filter_vital_status->clear();
+    displayAllPioneers();
 }
 
 vector<Computer> MainWindow::returnAllComputers(){
