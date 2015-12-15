@@ -350,18 +350,13 @@ void MainWindow::on_button_computer_remove_clicked(){
 
         Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
-        bool success = computerService.computerToTrash(currentlySelectedComputer);
+        computerService.computerToTrash(currentlySelectedComputer);
 
-        if(success){
-            ui->input_search_computers->setText("");
-            displayAllComputers();
+        ui->input_search_computers->setText("");
+        displayAllComputers();
 
-            disableButtonsForComputer();
+        disableButtonsForComputer();
 
-        }
-        else{
-            //some error
-        }
     }
     else{
         return;
