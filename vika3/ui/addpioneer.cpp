@@ -76,6 +76,7 @@ void AddPioneer::emptyLines(){
     ui->label_pioneer_sex_error->setText("");
     ui->label_pioneer_byear_error->setText("");
     ui->label_pioneer_description_error->setText("");
+    ui->label_pioneer_death_year_error->setText("");
 }
 
 bool AddPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
@@ -111,8 +112,12 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
         ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
         error = true;
     }
-    else if((byear == dyear || byear > dyear || dyear > constants::CURRENT_YEAR) && dyear != 0){
+    else if((byear == dyear || byear > dyear) && dyear != 0){
         ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Incorrect Input!</span>");
+        error = true;
+    }
+    else if(dyear > constants::CURRENT_YEAR){
+        ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Are you trying to predict the future?</span>");
         error = true;
     }
 
