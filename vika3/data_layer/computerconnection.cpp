@@ -80,12 +80,7 @@ void ComputerConnection::addToCompTable(Computer computer){
             query2.bindValue(":tempYear", QString::number(buildYear));
         }
         query2.bindValue(":tempType", QString::fromStdString(computerType));
-        if(wasBuilt == "y"){
-            query2.bindValue(":tempWasBuilt", QString::fromStdString(constants::TRUE));
-        }
-        else{
-            query2.bindValue(":tempWasBuilt", QString::fromStdString(constants::FALSE));
-        }
+        query2.bindValue(":tempWasBuilt", QString::fromStdString(wasBuilt));
         query2.bindValue(":tempDesc", QString::fromStdString(desc));
         query2.bindValue(":tempDeleted", QString::fromStdString(deleted));  // Deleted
         query2.bindValue(":tempImage", QVariant(QVariant::String));         // Image BLOB value (set to NULL for now)
