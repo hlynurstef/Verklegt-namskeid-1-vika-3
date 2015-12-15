@@ -32,6 +32,9 @@
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QPushButton" name="button_restore_selected">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Restore Selected</string>
            </property>

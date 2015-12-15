@@ -44,7 +44,8 @@ public:
     int getHighestId();
         // Returns highest id in Computers table (most recently added entry)
     void computerToTrash(Computer comp);
-        // swithces the deleted value from false to true
+    // swithces the deleted value from false to true
+    void removeSingleComputer(Computer comp);
 private:
     vector<Computer> computers;     // Vector that holds onto all information on runtime
     Computer compTemp;

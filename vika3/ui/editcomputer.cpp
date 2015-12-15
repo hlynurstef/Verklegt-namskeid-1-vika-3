@@ -19,6 +19,8 @@ editComputer::~editComputer(){
 
 void editComputer::setComputer(Computer comp){
 
+    compID = comp.getId();
+
     // Printing info
     ui->edit_name->setText(QString::fromStdString(comp.getComputerName()));
     ui->edit_type->setText(QString::fromStdString(comp.getComputerType()));
@@ -152,4 +154,34 @@ void editComputer::on_list_unrelated_pioneers_clicked(const QModelIndex &/* unus
 
 void editComputer::on_list_related_pioneers_clicked(const QModelIndex &/* unused */){
     ui->button_remove_relation->setEnabled(true);
+}
+
+void editComputer::on_button_remove_relation_clicked(){
+    int currentlySelectedPioneerIndex = ui->list_related_pioneers->currentIndex().row();
+
+    Pioneer selectedPioneer = relatedPioneers[currentlySelectedPioneerIndex];
+    unrelatedPioneers.push_back(selectedPioneer);
+    relatedPioneers.erase(relatedPioneers.begin() + currentlySelectedPioneerIndex);
+    displayRelatedPioneers();
+    displayUnrelatedPioneers();
+
+    int pioID = selectedPioneer.getId();
+    relService.removeRelation(pioID, compID);
+
+    ui->button_remove_relation->setEnabled(false);
+}
+
+void editComputer::on_button_add_relation_clicked(){
+    int currentlySelectedPioneerIndex = ui->list_unrelated_pioneers->currentIndex().row();
+
+    Pioneer selectedPioneer = unrelatedPioneers[currentlySelectedPioneerIndex];
+    relatedPioneers.push_back(selectedPioneer);
+    unrelatedPioneers.erase(unrelatedPioneers.begin() + currentlySelectedPioneerIndex);
+    displayUnrelatedPioneers();
+    displayRelatedPioneers();
+
+    int pioID = selectedPioneer.getId();
+    relService.addRelations(pioID, compID);
+
+    ui->button_add_relation->setEnabled(false);
 }

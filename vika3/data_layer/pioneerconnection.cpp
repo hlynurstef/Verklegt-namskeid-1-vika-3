@@ -224,6 +224,13 @@ void PioneerConnection::removePioneer(){
     query.exec();
 }
 
+void PioneerConnection::removeSinglePioneer(Pioneer pio){
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM Pioneers WHERE deleted = 'true' AND id = " << pio.getId();
+    query.exec(QString::fromStdString(sqlQuery.str()));
+}
+
 void PioneerConnection::deleteAllPioneers(){
     query.exec("DELETE FROM pioneers");
 }

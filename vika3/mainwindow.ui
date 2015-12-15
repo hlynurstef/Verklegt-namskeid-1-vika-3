@@ -230,6 +230,17 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QToolButton" name="trash_button_pioneers">
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../Users/Valdi/Pictures/trash_16x16.gif</normaloff>../../../Users/Valdi/Pictures/trash_16x16.gif</iconset>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -435,6 +446,17 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QToolButton" name="trash_button_computers">
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../Users/Valdi/Pictures/trash_16x16.gif</normaloff>../../../Users/Valdi/Pictures/trash_16x16.gif</iconset>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -449,7 +471,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

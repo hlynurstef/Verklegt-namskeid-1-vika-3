@@ -21,6 +21,10 @@ void RelationService::removePioneerRelation(int pioID){
     connection.removeRelationPioneer(pioID);
 }
 
+void RelationService::removeComputerRelation(int compID){
+    connection.removeRelationComputer(compID);
+}
+
 void RelationService::removeRelation(int pioID, int compID){
     connection.removeRelation(pioID, compID);
 }

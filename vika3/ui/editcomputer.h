@@ -35,6 +35,10 @@ private slots:
 
     void on_list_related_pioneers_clicked(const QModelIndex &);
     void on_list_unrelated_pioneers_clicked(const QModelIndex &);
+    void on_button_remove_relation_clicked();
+
+    void on_button_add_relation_clicked();
+
 private:
     Ui::editComputer *ui;
     Computer computer;
