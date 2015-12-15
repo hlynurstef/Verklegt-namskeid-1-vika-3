@@ -23,6 +23,10 @@ void ComputerService::removeComputer(){
     data.removeComputer();
 }
 
+void ComputerService::removeSingleComputer(Computer comp){
+    data.removeSingleComputer(comp);
+}
+
 void ComputerService::computerToTrash(Computer comp){
     data.computerToTrash(comp);
 }
