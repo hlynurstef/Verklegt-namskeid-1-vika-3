@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <limits>
 #include <QDebug>
+#include <QMessageBox>
 
 const QString connectionName = "name1";
 
@@ -213,4 +214,48 @@ bool PioneerConnection::removePioneer(Pioneer pio){
 
 void PioneerConnection::deleteAllPioneers(){
     query.exec("DELETE FROM pioneers");
+}
+// ---------------------------------------------------------------------
+//                          DELETE FUNCTIONS END
+// ---------------------------------------------------------------------
+
+// ---------------------------------------------------------------------
+//                             EDIT FUNCTIONS
+// ---------------------------------------------------------------------
+
+void PioneerConnection::editPioneer(Pioneer pio){
+
+    int id = pio.getId();
+    string name = pio.getName();
+    string sex = pio.getSex();
+    int bYear = pio.getByear();
+    int dYear = pio.getDyear();
+    string desc = pio.getDescription();
+
+    string bYearString;
+    ostringstream convert;
+    convert << bYear;
+    bYearString = convert.str();
+
+    string dYearString;
+    ostringstream convert2;
+    convert2 << dYear;
+    dYearString = convert2.str();
+
+    string idString;
+    ostringstream convert3;
+    convert3 << id;
+    idString = convert3.str();
+
+    QString editId = QString::fromStdString(idString);
+    QString editName = QString::fromStdString(name);
+    QString editSex = QString::fromStdString(sex);
+    QString editByear = QString::fromStdString(bYearString);
+    QString editDyear = QString::fromStdString(dYearString);
+    QString editDesc = QString::fromStdString(desc);
+
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"' WHERE id = "+ editId +"");
+    query.exec();
+
+    QMessageBox::warning(NULL, "Success", "UPDATE pioneers SET id = '"+ editId +"', name = '"+ editName +"', sex = '"+ editSex +"', bYear = '"+ editByear +"', dYear = '"+ editDyear +"', description = '"+ editDesc+"' WHERE id = '"+ editId +"'", QMessageBox::Yes, QMessageBox::No);
 }

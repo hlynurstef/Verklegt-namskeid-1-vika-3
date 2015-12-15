@@ -46,3 +46,7 @@ bool PioneerService::removePioneer(Pioneer pio){
 void PioneerService::deleteAllPioneers(){
     data.deleteAllPioneers();
 }
+
+void PioneerService::editPioneer(Pioneer pio){
+    data.editPioneer(pio);
+}
