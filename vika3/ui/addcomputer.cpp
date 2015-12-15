@@ -40,6 +40,12 @@ void addComputer::on_button_add_computer_clicked()
     }
 
     int bYear = atoi(buildYear.c_str());
+    if(wasItBuilt == "y"){
+        wasItBuilt = "true";
+    }
+    else{
+        wasItBuilt = "false";
+    }
     Computer comp(name, bYear, type, wasItBuilt, description);
 
     int answer = QMessageBox::question(this, "Add Computer", "Are you sure you want to add " + QString::fromStdString(comp.getComputerName()) + " to list?");

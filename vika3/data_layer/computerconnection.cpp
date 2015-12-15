@@ -1,4 +1,5 @@
 #include "computerconnection.h"
+#include "utilities/constants.h"
 #include <QDebug>
 #include <QMessageBox>
 
@@ -67,13 +68,27 @@ void ComputerConnection::addToCompTable(Computer computer){
         string desc = computer.getComputerDescription();
         string deleted = "false";
 
-        query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc, :tempDeleted)");
+        transform(computerType.begin(), computerType.end(), computerType.begin(), ::tolower);
+        transform(wasBuilt.begin(), wasBuilt.end(), wasBuilt.begin(), ::tolower);
+
+        query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc, :tempImage, :tempDeleted)");
         query2.bindValue(":tempName", QString::fromStdString(name));
-        query2.bindValue(":tempYear", QString::number(buildYear));
+        if(buildYear == 0){
+            query2.bindValue(":tempYear", QVariant(QVariant::String));
+        }
+        else{
+            query2.bindValue(":tempYear", QString::number(buildYear));
+        }
         query2.bindValue(":tempType", QString::fromStdString(computerType));
-        query2.bindValue(":tempWasBuilt", QString::fromStdString(wasBuilt));
+        if(wasBuilt == "y"){
+            query2.bindValue(":tempWasBuilt", QString::fromStdString(constants::TRUE));
+        }
+        else{
+            query2.bindValue(":tempWasBuilt", QString::fromStdString(constants::FALSE));
+        }
         query2.bindValue(":tempDesc", QString::fromStdString(desc));
-        query2.bindValue(":tempDeleted", QString::fromStdString(deleted));
+        query2.bindValue(":tempDeleted", QString::fromStdString(deleted));  // Deleted
+        query2.bindValue(":tempImage", QVariant(QVariant::String));         // Image BLOB value (set to NULL for now)
         query2.exec();
 }
 
