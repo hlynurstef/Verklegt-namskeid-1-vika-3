@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "services/pioneerservice.h"
 #include "services/computerservice.h"
+#include "services/relationservice.h"
 #include "addpioneer.h"
 #include "addcomputer.h"
 #include "editpioneer.h"
@@ -108,6 +109,7 @@ private:
     Ui::MainWindow *ui;                                     // Pointer to MainWindow object
     PioneerService pioneerService;                          // PioneerService object
     ComputerService computerService;                        // ComputerService object
+    RelationService relationService;
     std::vector<Pioneer> currentlyDisplayedPioneers;        // Vector that holds onto every pioneer that is currently being displayed on screen
     std::vector<Computer> currentlyDisplayedComputers;      // Vector that holds onto every computer that is currently being displayed on screen
     Pioneer currentlySelectedPio;

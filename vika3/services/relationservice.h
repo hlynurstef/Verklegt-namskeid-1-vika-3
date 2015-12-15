@@ -15,6 +15,8 @@ public:
         // Sends relations from database to interface. Interface then prints out relations
     vector<Relation> relationSearch(string name, string column);
         // Returns vector containing relations to name
+    void removePioneerRelation(int pioID);
+        // Sends pioneer information to RelationConnection, to remove all relations to that person
 private:
     RelationConnection connection;
     Pioneer pio;

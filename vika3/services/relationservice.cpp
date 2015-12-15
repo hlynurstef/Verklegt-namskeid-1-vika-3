@@ -16,3 +16,7 @@ vector<Relation> RelationService::displayRelations(){
     list = connection.getRelationList();
     return list;
 }
+
+void RelationService::removePioneerRelation(int pioID){
+    connection.removeRelationPioneer(pioID);
+}

@@ -240,7 +240,6 @@ void PioneerConnection::editPioneer(Pioneer pio){
     query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"' WHERE id = "+ editId +"");
     query.exec();
 
-    QMessageBox::warning(NULL, "Success", "UPDATE pioneers SET id = '"+ editId +"', name = '"+ editName +"', sex = '"+ editSex +"', bYear = '"+ editByear +"', dYear = '"+ editDyear +"', description = '"+ editDesc+"' WHERE id = '"+ editId +"'", QMessageBox::Yes, QMessageBox::No);
 }
 
 int PioneerConnection::getHighestId(){

@@ -1,6 +1,8 @@
 #ifndef RELATIONCONNECTION_H
 #define RELATIONCONNECTION_H
 #include "data_types/relation.h"
+#include "data_types/pioneer.h"
+#include "data_types/computer.h"
 #include <QCoreApplication>
 #include <QtSql>
 #include <QDebug>
@@ -23,7 +25,9 @@ public:
     Relation getRelValuesFromDB(QSqlQuery query3);
         // Returns one Relation from database
     vector<Relation> relationQuery(string name, string column);
-        // Returns vector of relation where name can be found
+    // Returns vector of relation where name can be found
+    void removeRelationPioneer(int pioID);
+        // Removes a relation where the ID of the pioneer matches the one in table
 private:
     QSqlQuery query3;                // Object used to send query to SQLite database
     vector<Relation> relation;
