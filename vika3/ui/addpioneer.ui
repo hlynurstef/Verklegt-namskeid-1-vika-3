@@ -17,7 +17,7 @@
    <iconset resource="resources.qrc">
     <normaloff>:/icons/Images/add_pio.png</normaloff>:/icons/Images/add_pio.png</iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_11">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QLabel" name="label_add_pio">
      <property name="text">
@@ -26,7 +26,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
@@ -82,34 +82,30 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLabel" name="label_pioneer_birth_year">
-             <property name="text">
-              <string>Birth Year:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_pioneer_byear_error">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_pioneer_birth_year">
+           <property name="text">
+            <string>Birth Year:</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="input_pioneer_bYear"/>
+          <widget class="QLabel" name="label_pioneer_byear_error">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
+        <widget class="QLineEdit" name="input_pioneer_bYear"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_pioneer_death_year">
            <property name="text">
@@ -118,9 +114,16 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="input_pioneer_dYear"/>
+          <widget class="QLabel" name="label_pioneer_death_year_error">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="input_pioneer_dYear"/>
        </item>
       </layout>
      </item>

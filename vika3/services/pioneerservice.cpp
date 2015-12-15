@@ -6,15 +6,9 @@ PioneerService::PioneerService(){
 
 }
 
-void PioneerService::addPioneers(Pioneer pio, int count){
+void PioneerService::addPioneer(Pioneer pioneer){
 
-    if(count == 1){
-        tempList.clear();
-    }
-
-    tempList.push_back(pio);
-
-    data.addToPioTable(tempList);       // call to database to add list to database
+    data.addToPioTable(pioneer);       // call to database to add pioneer to database
 }
 
 string PioneerService::toLower(string name){

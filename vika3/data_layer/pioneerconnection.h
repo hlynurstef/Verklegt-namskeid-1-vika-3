@@ -21,7 +21,7 @@ public:
         // Returns pioneers vector
     Pioneer getPioValuesFromDB(QSqlQuery query);
         //gets the pioneer values and returns them
-    void addToPioTable(vector<Pioneer>& list);
+    void addToPioTable(Pioneer pioneer);
         // Adds list vector to Pioneers table in SQL database
     vector<Pioneer> getPioneerListAsc();
         // Returns pioneers vector but with the name in ascending order

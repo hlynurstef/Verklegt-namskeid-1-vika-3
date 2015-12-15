@@ -1,5 +1,6 @@
 #include "addpioneer.h"
 #include "ui_addpioneer.h"
+#include "utilities/constants.h"
 
 AddPioneer::AddPioneer(QWidget *parent) :
     QDialog(parent),
@@ -33,7 +34,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
     }
 
     bool error = errorCheck(name, sex, birthyear, deathyear, description);
-    if(error == true){
+    if(error){
         return;
     }
 
@@ -41,7 +42,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
     int dyear = atoi(deathyear.c_str());
     Pioneer pio(name, sex, byear, dyear, description);
 
-    pioService.addPioneers(pio, 1);
+    pioService.addPioneer(pio);
     int idOfAddedPioneer = pioService.getHighestId();
 
     for(unsigned int i = 0; i < relatedComputersList.size(); i++){
@@ -74,13 +75,21 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
         ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
         error = true;
     }
-
     if(birthyear.empty()){
         ui->label_pioneer_byear_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
         error = true;
     }
     if(description.empty()){
         ui->label_pioneer_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
+        error = true;
+    }
+
+    int byear = atoi(birthyear.c_str());
+    int dyear = atoi(deathyear.c_str());
+
+    if(byear == dyear || byear > dyear || dyear > constants::CURRENT_YEAR){
+        ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Wrong Input</span>");
+        error = true;
     }
 
     if(error == true){
