@@ -13,6 +13,11 @@ AddPioneer::AddPioneer(QWidget *parent) :
     ui(new Ui::AddPioneer)
 {
     ui->setupUi(this);
+
+    // dropdown list for sex
+    ui->dropdown_pioneer_sex->addItem("");
+    ui->dropdown_pioneer_sex->addItem("Male");
+    ui->dropdown_pioneer_sex->addItem("Female");
 }
 
 AddPioneer::~AddPioneer()
@@ -30,7 +35,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
 
     // Fill variables with values in input lines
     string name = ui->input_pioneer_name->text().toStdString();
-    string sex = ui->input_pioneer_sex->text().toStdString();
+    string sex = getCurrentSex();
     string birthyear = ui->input_pioneer_bYear->text().toStdString();
     string deathyear = ui->input_pioneer_dYear->text().toStdString();
     string description = ui->input_pioneer_description->toPlainText().toStdString();
@@ -78,18 +83,12 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
 
     transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
 
-    qDebug() << QString::fromStdString(sex);
-
     if(name.empty()){
-        ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input Name</span>");
-        error = true;
-    }
-    if(sex != "male" && sex != "female"){
-        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Incorrect Input! (male/female)</span>");
+        ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input Name!</span>");
         error = true;
     }
     if(sex.empty()){
-        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Input Sex! (male/female)</span>");
+        ui->label_pioneer_sex_error->setText("<span style ='color: #ff0000'>Choose Sex!</span>");
         error = true;
     }
     if(birthyear.empty()){
@@ -112,7 +111,7 @@ bool AddPioneer::errorCheck(string name, string sex, string birthyear, string de
         ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
         error = true;
     }
-    else if(byear == dyear || (byear > dyear && dyear != 0) || dyear > constants::CURRENT_YEAR){
+    else if((byear == dyear || byear > dyear || dyear > constants::CURRENT_YEAR) && dyear != 0){
         ui->label_pioneer_death_year_error->setText("<span style ='color: #ff0000'>Incorrect Input!</span>");
         error = true;
     }
@@ -223,4 +222,20 @@ void AddPioneer::on_button_add_pioneer_cancel_clicked()
     this->done(0);
 }
 
+string AddPioneer::getCurrentSex()
+{
+    string sex = ui->dropdown_pioneer_sex->currentText().toStdString();
 
+    if(sex == ""){
+        return "";
+    }
+    else if(sex == "Male"){
+        return constants::MALE;
+    }
+    else if(sex == "Female"){
+        return constants::FEMALE;
+    }
+    else{
+        return "";
+    }
+}

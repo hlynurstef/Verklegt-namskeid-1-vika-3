@@ -31,6 +31,10 @@ public:
         // Prints vector of pioneers in the related pioneers list
     bool is_number(string& s);
         // Returns true if string is only numbers, false otherwise
+    string getCurrentType();
+        // Returns current chosen item in type dropdown list
+    string getCurrentWasItBuilt();
+        // Returns current chosen item in was it built dropdown list
 
 private slots:
     void on_button_add_computer_clicked();

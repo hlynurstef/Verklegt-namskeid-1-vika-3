@@ -30,6 +30,8 @@ public:
         // Prints vector of computers in the unrelated computers list
     bool is_number(string& s);
         // Returns true if inputted string is a number, false if there is a letter or symbol in there
+    string getCurrentSex();
+        // Returns what is chosen in dropdown_sex
 private slots:
     void on_button_add_pioneer_clicked();
     void on_list_unrelated_computers_clicked(const QModelIndex &);
