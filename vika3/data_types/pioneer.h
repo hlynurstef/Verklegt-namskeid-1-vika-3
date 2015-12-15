@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 
+#include <QtSql>
+#include <QtWidgets>
+
 using namespace std;
 
 class Pioneer
@@ -22,6 +25,7 @@ public:
     int getDyear ();                       // Returns year of death of pioneer
     string getDescription ();              // Returns description of pioneer
     int getYear(int number);               // Returns year of birth if number == 1 / Returns year of death if number == 2
+    QByteArray getImageByteArray();        // Returns binary array of pioneer's image
 
     friend ostream& operator <<(ostream& out, Pioneer temp);
 
@@ -29,12 +33,13 @@ public:
     */
 
 private:
-    int id;                 // Primary Key of pioneer
-    string name;            // Last Name of pioneer
-    string sex;             // Sex  of poineer
-    int bYear;              // Birthyear of pioneer
-    int dYear;              // Deathyear of pioneer
-    string description;     // Description of what the person is famous for
+    int id;                    // Primary Key of pioneer
+    string name;               // Last Name of pioneer
+    string sex;                // Sex  of poineer
+    int bYear;                 // Birthyear of pioneer
+    int dYear;                 // Deathyear of pioneer
+    string description;        // Description of what the person is famous for
+    QByteArray imageByteArray; //Image of pioneer
 };
 
 #endif // PIONEER_H
