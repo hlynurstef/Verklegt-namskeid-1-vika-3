@@ -8,6 +8,13 @@
 
 #include <QDialog>
 
+/*  ------------------------------------------------------------
+ *                  This window is only displaying
+ *              information about the selected pioneer
+ *  ------------------------------------------------------------
+ */
+
+
 namespace Ui {
 class MoreInfoPioneer;
 }
@@ -20,16 +27,17 @@ public:
     explicit MoreInfoPioneer(QWidget *parent = 0);
     ~MoreInfoPioneer();
     void setPioneer(Pioneer pioneer);
-        // Sets information in MoreInfo window to the currently selected Pioneer in the table in main window
+        // Sets information in MoreInfo window to the currently selected Pioneer
 
 private slots:
 
     void on_pushButton_close_clicked();
+        // Close window
     void getRelationList(Pioneer pioneer);
+        // Sets relation info in MoreInfo window to the currently selected Pioneer
 
 private:
     Ui::MoreInfoPioneer *ui;
-    //MainWindow mainwindow;
     RelationService relationService;
     vector<Relation> relation;
 };
