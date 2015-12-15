@@ -19,6 +19,8 @@ public:
         // Default constructor, creates connection with SQLite database
     vector<Pioneer> getPioneerList();
         // Returns pioneers vector
+    vector<Pioneer> getPioneerTrash();
+        // Returns pioneer vector from trash
     Pioneer getPioValuesFromDB(QSqlQuery query);
         //gets the pioneer values and returns them
     void addToPioTable(Pioneer pioneer);

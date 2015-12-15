@@ -22,6 +22,12 @@ vector<Pioneer> PioneerService::getList(){
     return list;
 }
 
+vector<Pioneer> PioneerService::getTrash()
+{
+    vector<Pioneer> trash = data.getPioneerTrash();
+    return trash;
+}
+
 vector<Pioneer> PioneerService::search(string searchWord, string searchBy, string sex, string vitalStatus, string orderBy, string direction){
     vector<Pioneer> searchResults;
     searchResults = data.searchPio(searchWord, searchBy, sex, vitalStatus, orderBy, direction);

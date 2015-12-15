@@ -22,6 +22,8 @@ public:
         // Sends a message to ComputerConnection to delete all computers
     vector<Computer> getList();
         // Returns entire list of computers
+    vector<Computer> getTrash();
+        // Return list of computers in the trash
     bool removeComputer(Computer comp);
     void editComputer(Computer pio);
         // Sends information about a pioneer that needs to be edited

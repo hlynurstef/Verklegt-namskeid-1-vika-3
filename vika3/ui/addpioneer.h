@@ -39,6 +39,8 @@ private slots:
     void on_button_pioneer_remove_relation_clicked();
     void on_button_add_pioneer_cancel_clicked();
 
+    void on_pushButton_browse_image_clicked();
+
 private:
     Ui::AddPioneer *ui;
     PioneerService pioService;

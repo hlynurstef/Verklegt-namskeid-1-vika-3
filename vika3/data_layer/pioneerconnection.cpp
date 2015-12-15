@@ -30,13 +30,26 @@ PioneerConnection::PioneerConnection(){
 
 vector<Pioneer> PioneerConnection::getPioneerList(){
     // Read all information from pioneers table
-    query.exec("SELECT * FROM Pioneers");
+    query.exec("SELECT * FROM Pioneers WHERE deleted = 'false' ");
 
     while(query.next()){
         Pioneer P = getPioValuesFromDB(query);
         pioneers.push_back(P);
     }
     return pioneers;
+}
+
+vector<Pioneer> PioneerConnection::getPioneerTrash(){
+    // Read all information from pioneers trash
+    query.exec("SELECT * FROM Pioneers WHERE deleted = 'true' ");
+
+    vector<Pioneer> pioneerTrash;
+
+    while(query.next()){
+        Pioneer P = getPioValuesFromDB(query);
+        pioneerTrash.push_back(P);
+    }
+    return pioneerTrash;
 }
 
 Pioneer PioneerConnection::getPioValuesFromDB(QSqlQuery query){
@@ -59,8 +72,9 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     int bYear = pioneer.getByear();
     int dYear = pioneer.getDyear();
     string desc = pioneer.getDescription();
+    string deleted = "false";
 
-    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc)");
+    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc, :tempDeleted)");
     query.bindValue(":tempName", QString::fromStdString(name));
     if(sex == "male" || sex == "Male"){
         query.bindValue(":tempSex", QString::fromStdString(constants::MALE));
@@ -77,6 +91,7 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
         query.bindValue(":tempDYear", QString::number(dYear));
     }
     query.bindValue(":tempDesc", QString::fromStdString(desc));
+    query.bindValue(":tempDeleted", QString::fromStdString(deleted));
     query.exec();
 
 }
@@ -118,16 +133,16 @@ vector<Pioneer> PioneerConnection::printQueryPioneers(string sex, string dYear, 
     vector<Pioneer> list;
 
     if(sex == "" && dYear == ""){			// If user doesn't choose any filters / wants entire list
-        query.prepare(QString("SELECT * FROM Pioneers ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query.prepare(QString("SELECT * FROM Pioneers WHERE deleted = 'false' ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     else if(sex != "" && dYear == ""){		// If user chooses to filter only by sex
-        query.prepare(QString("SELECT * FROM Pioneers WHERE sex = :sex ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query.prepare(QString("SELECT * FROM Pioneers WHERE deleted = 'false' AND sex = :sex ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     else if(sex == "" && dYear != ""){		// If user chooses to filter only by alive/deceased
-        query.prepare(QString("SELECT * FROM Pioneers WHERE dYear " + QString::fromStdString(dYear) + " ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query.prepare(QString("SELECT * FROM Pioneers WHERE deleted = 'false' AND dYear " + QString::fromStdString(dYear) + " ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     else if (sex != "" && dYear != ""){		// If user chooses to filter by both sex and alive/deceased
-        query.prepare(QString("SELECT * FROM Pioneers WHERE sex = :sex AND dYear " + QString::fromStdString(dYear) + " ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
+        query.prepare(QString("SELECT * FROM Pioneers WHERE deleted = 'false' AND sex = :sex AND dYear " + QString::fromStdString(dYear) + " ORDER BY %1 " + QString::fromStdString(order)).arg(QString::fromStdString(orderCol)));
     }
     query.bindValue(":sex",QString::fromStdString(sex));
 
@@ -159,16 +174,16 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy,
     vector<Pioneer> searchTemp;
 
     if(sex == "" && vitalStatus == ""){			// If user doesn't choose any filters / wants entire list
-            query.prepare(QString("SELECT * FROM pioneers WHERE " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+            query.prepare(QString("SELECT * FROM pioneers WHERE deleted = 'false' AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if(sex != "" && vitalStatus == ""){		// If user chooses to filter only by sex
-        query.prepare(QString("SELECT * FROM pioneers WHERE sex = :sex AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query.prepare(QString("SELECT * FROM pioneers WHERE deleted = 'false' AND sex = :sex AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if(sex == "" && vitalStatus != ""){		// If user chooses to filter only by alive/deceased
-        query.prepare(QString("SELECT * FROM pioneers WHERE dYear " + QString::fromStdString(vitalStatus) + " AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query.prepare(QString("SELECT * FROM pioneers WHERE deleted = 'false'  AND dYear " + QString::fromStdString(vitalStatus) + " AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
     else if (sex != "" && vitalStatus != ""){		// If user chooses to filter by both sex and alive/deceased
-        query.prepare(QString("SELECT * FROM pioneers WHERE sex = :sex AND dYear " + QString::fromStdString(vitalStatus) + " AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
+        query.prepare(QString("SELECT * FROM pioneers WHERE deleted = 'false' AND sex = :sex AND dYear " + QString::fromStdString(vitalStatus) + " AND " + QString::fromStdString(searchBy) + " LIKE '%'||:word||'%' ORDER BY " + QString::fromStdString(orderBy) + " " + QString::fromStdString(direction) + ";"));
     }
 
     query.bindValue(":word", QString::fromStdString(searchWord));
