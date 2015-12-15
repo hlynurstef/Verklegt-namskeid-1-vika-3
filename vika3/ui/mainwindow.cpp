@@ -66,6 +66,10 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers){
     ui->table_pioneers->clearContents();
     ui->table_pioneers->setRowCount(pioneers.size());
 
+    if(pioneers.empty()){
+        disableButtonsForPioneer();
+    }
+
     for(unsigned int row = 0; row < pioneers.size(); row++){
         Pioneer currentPioneer = pioneers[row];
 
@@ -82,6 +86,10 @@ void MainWindow::displayPioneers(std::vector<Pioneer> pioneers){
 void MainWindow::displayComputers(std::vector<Computer> computers){
     ui->table_computers->clearContents();
     ui->table_computers->setRowCount(computers.size());
+
+    if(computers.empty()){
+        disableButtonsForComputer();
+    }
 
     for(unsigned int row = 0; row < computers.size(); row++){
         Computer currentComputer = computers[row];
