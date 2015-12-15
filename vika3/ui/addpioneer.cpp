@@ -2,6 +2,8 @@
 #include "ui_addpioneer.h"
 #include "utilities/constants.h"
 
+#include <QFileDialog>
+
 AddPioneer::AddPioneer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddPioneer)
@@ -173,7 +175,27 @@ void AddPioneer::on_button_pioneer_remove_relation_clicked(){
     ui->button_pioneer_remove_relation->setEnabled(false);
 }
 
+void AddPioneer::on_pushButton_browse_image_clicked()
+{
+    string filePath = QFileDialog::getOpenFileName(
+                    this,
+                    "Search for images",
+                    "",
+                    "Image files (*.png *.jpg)"
+                ).toStdString();
+
+    if (filePath.length()) // File selected
+    {
+        QPixmap pixmap(QString::fromStdString(filePath));
+
+        ui->input_image->setText(QString::fromStdString(filePath));
+
+    }
+}
+
 void AddPioneer::on_button_add_pioneer_cancel_clicked()
 {
     this->done(0);
 }
+
+

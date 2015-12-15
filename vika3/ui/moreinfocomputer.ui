@@ -97,7 +97,7 @@
       </font>
      </property>
      <property name="text">
-      <string/>
+      <string>Text Label</string>
      </property>
     </widget>
    </item>
