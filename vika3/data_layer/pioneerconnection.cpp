@@ -61,9 +61,9 @@ Pioneer PioneerConnection::getPioValuesFromDB(QSqlQuery query){
     int birthYear = query.value("bYear").toUInt();
     int deathYear = query.value("dYear").toUInt();
     string description = query.value("description").toString().toStdString();
-    QByteArray outByteArray = query.value("image").toByteArray();
+    //QByteArray outByteArray = query.value("image").toByteArray();
 
-    Pioneer tempo(id, name, sex, birthYear, deathYear, description, outByteArray);
+    Pioneer tempo(id, name, sex, birthYear, deathYear, description/*, outByteArray*/);
     return tempo;
 }
 
@@ -75,7 +75,7 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     int dYear = pioneer.getDyear();
     string desc = pioneer.getDescription();
     string deleted = "false";
-    QByteArray image = pioneer.getImageByteArray();
+    //QByteArray image = pioneer.getImageByteArray();
 
     transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
 
@@ -91,7 +91,7 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     }
     query.bindValue(":tempDesc", QString::fromStdString(desc));
     query.bindValue(":tempDeleted", QString::fromStdString(deleted));   // Deleted
-    query.bindValue(":tempImage", image);          // Image BLOB value (set to NULL for now)
+    query.bindValue(":tempImage", /*image*/ QVariant(QVariant::String));          // Image BLOB value (set to NULL for now)
     query.exec();
 
 }
@@ -157,7 +157,7 @@ vector<Pioneer> PioneerConnection::printQueryPioneers(string sex, string dYear, 
         string description = query.value("description").toString().toStdString();
         QByteArray image = query.value("image").toByteArray();
 
-        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description, image));
+        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description /*image*/));
     }
 
     return list;
@@ -200,7 +200,7 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy,
         string description = query.value("description").toString().toStdString();
         QByteArray image = query.value("image").toByteArray();
 
-        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description, image));
+        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description/*, image*/));
     }
     return searchTemp;
 }

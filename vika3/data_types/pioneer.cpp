@@ -10,24 +10,24 @@ Pioneer::Pioneer(){
 
 }
 
-Pioneer::Pioneer(string pName, string s, int birthY, int deathY, string desc, QByteArray image){
+Pioneer::Pioneer(string pName, string s, int birthY, int deathY, string desc/*, QByteArray image*/){
     id = NULL;
     name = pName;
     sex = s;
     bYear = birthY;
     dYear = deathY;
     description = desc;
-    imageByteArray = image;
+    //imageByteArray = image;
 }
 
-Pioneer::Pioneer(int index, string pName, string s, int birthY, int deathY, string desc, QByteArray image){
+Pioneer::Pioneer(int index, string pName, string s, int birthY, int deathY, string desc/*, QByteArray image*/){
     id = index;
     name = pName;
     sex = s;
     bYear = birthY;
     dYear = deathY;
     description = desc;
-    imageByteArray = image;
+    //imageByteArray = image;
 }
 
 int Pioneer::getId(){

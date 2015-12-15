@@ -51,7 +51,7 @@ void AddPioneer::on_button_add_pioneer_clicked()
 
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
-    Pioneer pio(name, sex, byear, dyear, description);
+    Pioneer pio(name, sex, byear, dyear, description/*, inByteArray*/);
 
     int answer = QMessageBox::question(this, "Add Pioneer", "Are you sure you want to add " + QString::fromStdString(pio.getName()) + " to the list?");
 
@@ -205,8 +205,8 @@ void AddPioneer::on_pushButton_browse_image_clicked()
 
         ui->input_image->setText(QString::fromStdString(filePath));
 
-        QFile file(filePath);
-        inByteArray = file.readALL();
+        //QFile file (filePath);
+        //inByteArray = file.readAll();
     }
     else{
 
