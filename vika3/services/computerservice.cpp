@@ -23,6 +23,10 @@ bool ComputerService::removeComputer(Computer comp){
     return data.removeComputer(comp);
 }
 
+bool ComputerService::computerToTrash(Computer comp){
+    return data.computerToTrash(comp);
+}
+
 void ComputerService::editComputer(Computer comp){
     data.editComputer(comp);
 }

@@ -234,7 +234,7 @@ void PioneerConnection::deleteAllPioneers(){
 //                             EDIT FUNCTIONS
 // ---------------------------------------------------------------------
 
-void PioneerConnection::editPioneer(Pioneer pio){
+void PioneerConnection::pioneerToTrash(Pioneer pio){
 
     int id = pio.getId();
     string name = pio.getName();
@@ -242,6 +242,7 @@ void PioneerConnection::editPioneer(Pioneer pio){
     int bYear = pio.getByear();
     int dYear = pio.getDyear();
     string desc = pio.getDescription();
+    string deleted = "true";
 
     string bYearString = to_string(bYear);
     string dYearString = to_string(dYear);
@@ -253,8 +254,35 @@ void PioneerConnection::editPioneer(Pioneer pio){
     QString editByear = QString::fromStdString(bYearString);
     QString editDyear = QString::fromStdString(dYearString);
     QString editDesc = QString::fromStdString(desc);
+    QString editDeleted = QString::fromStdString(deleted);
 
-    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"' WHERE id = "+ editId +"");
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
+    query.exec();
+}
+
+void PioneerConnection::editPioneer(Pioneer pio){
+
+    int id = pio.getId();
+    string name = pio.getName();
+    string sex = pio.getSex();
+    int bYear = pio.getByear();
+    int dYear = pio.getDyear();
+    string desc = pio.getDescription();
+    string deleted = "false";
+
+    string bYearString = to_string(bYear);
+    string dYearString = to_string(dYear);
+    string idString = to_string(id);
+
+    QString editId = QString::fromStdString(idString);
+    QString editName = QString::fromStdString(name);
+    QString editSex = QString::fromStdString(sex);
+    QString editByear = QString::fromStdString(bYearString);
+    QString editDyear = QString::fromStdString(dYearString);
+    QString editDesc = QString::fromStdString(desc);
+    QString editDeleted = QString::fromStdString(deleted);
+
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
     query.exec();
 
 }

@@ -30,6 +30,7 @@ public:
     int getHighestId();
         // Returns highest id in Pioneers table (most recently added entry)
 
+    bool computerToTrash(Computer comp);
 private:
     Computer temp;                      // Temporary object to be used in various situations
     vector<Computer> tempList2;
