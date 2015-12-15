@@ -61,7 +61,9 @@ Pioneer PioneerConnection::getPioValuesFromDB(QSqlQuery query){
     int birthYear = query.value("bYear").toUInt();
     int deathYear = query.value("dYear").toUInt();
     string description = query.value("description").toString().toStdString();
-    Pioneer tempo(id, name, sex, birthYear, deathYear, description);
+    QByteArray outByteArray = query.value("image").toByteArray();
+
+    Pioneer tempo(id, name, sex, birthYear, deathYear, description, outByteArray);
     return tempo;
 }
 
@@ -152,8 +154,9 @@ vector<Pioneer> PioneerConnection::printQueryPioneers(string sex, string dYear, 
         int birthYear = query.value("bYear").toUInt();
         int deathYear = query.value("dYear").toUInt();
         string description = query.value("description").toString().toStdString();
+        QByteArray image = query.value("image").toByteArray();
 
-        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description));
+        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description, image));
     }
 
     return list;
@@ -194,8 +197,9 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy,
         int birthYear = query.value("bYear").toUInt();
         int deathYear = query.value("dYear").toUInt();
         string description = query.value("description").toString().toStdString();
+        QByteArray image = query.value("image").toByteArray();
 
-        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description));
+        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description, image));
     }
     return searchTemp;
 }
