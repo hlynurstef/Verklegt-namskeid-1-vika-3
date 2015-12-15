@@ -20,11 +20,53 @@ void editPioneer::setPioneer(Pioneer pio){
 
     pioID = pio.getId();
 
+
     ui->edit_name->setText(QString::fromStdString(pio.getName()));
     ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
     ui->edit_birth_year->setText(QString::fromStdString(birthyear));
     ui->edit_death_year->setText(QString::fromStdString(deathyear));
     ui->edit_description->setText(QString::fromStdString(pio.getDescription()));
+
+    vector<Relation> allRelations = relService.displayRelations();
+    vector<Computer> allComputers = compService.getList();
+
+
+    for(int i = 0; i < allRelations.size(); i++){
+        Relation relInstance = allRelations[i];
+
+        for(int j = 0; j < allComputers.size(); j++){
+            Computer compInstance = allComputers[j];
+
+            if(relInstance.getPioName() == pio.getName() && relInstance.getCompName() == compInstance.getComputerName()){
+                relatedComputers.push_back(compInstance);
+            }
+        }
+    }
+
+    bool relatedComputer = false;
+    for(int i = 0; i < allComputers.size(); i++){
+        Computer unrelated = allComputers[i];
+        relatedComputer = false;
+        for(int j = 0; j < relatedComputers.size(); j++){
+            Computer related = relatedComputers[j];
+            if(related.getComputerName() != unrelated.getComputerName()){
+                relatedComputer = false;
+            }
+            else{
+                relatedComputer = true;
+            }
+        }
+        if(relatedComputer == false){
+            unrelatedComputers.push_back(unrelated);
+        }
+    }
+
+    displayRelatedComputers();
+    displayUnrelatedComputers();
+
+    ui->button_add_relation->setEnabled(false);
+    ui->button_remove_relation->setEnabled(false);
+
 }
 
 
@@ -90,4 +132,55 @@ bool editPioneer::errorCheck(string name, string sex, string birthyear, string d
 void editPioneer::on_button_cancel_clicked()
 {
     this->done(0);
+}
+
+void editPioneer::displayRelatedComputers(){
+    ui->list_related_computers->clear();
+
+    for(int i = 0; i < relatedComputers.size(); i++){
+        Computer instance = relatedComputers[i];
+        ui->list_related_computers->addItem(QString::fromStdString(instance.getComputerName()));
+    }
+}
+
+void editPioneer::displayUnrelatedComputers(){
+    ui->list_unrelated_computers->clear();
+    for(int i = 0; i < unrelatedComputers.size(); i++){
+        Computer instance = unrelatedComputers[i];
+        ui->list_unrelated_computers->addItem(QString::fromStdString(instance.getComputerName()));
+    }
+}
+
+void editPioneer::on_list_unrelated_computers_clicked(const QModelIndex &/* unused */){
+    ui->button_add_relation->setEnabled(true);
+}
+
+void editPioneer::on_list_related_computers_clicked(const QModelIndex &/* unused */){
+    ui->button_remove_relation->setEnabled(true);
+}
+
+void editPioneer::on_button_remove_relation_clicked()
+{
+    int currentlySelectedComputerIndex = ui->list_related_computers->currentIndex().row();
+
+    Computer selectedComputer = relatedComputers[currentlySelectedComputerIndex];
+    unrelatedComputers.push_back(selectedComputer);
+    relatedComputers.erase(relatedComputers.begin() + currentlySelectedComputerIndex);
+    displayRelatedComputers();
+    displayUnrelatedComputers();
+
+    ui->button_remove_relation->setEnabled(false);
+}
+
+void editPioneer::on_button_add_relation_clicked()
+{
+    int currentlySelectedComputerIndex = ui->list_unrelated_computers->currentIndex().row();
+
+    Computer selectedComputer = unrelatedComputers[currentlySelectedComputerIndex];
+    relatedComputers.push_back(selectedComputer);
+    unrelatedComputers.erase(unrelatedComputers.begin() + currentlySelectedComputerIndex);
+    displayUnrelatedComputers();
+    displayRelatedComputers();
+
+    ui->button_add_relation->setEnabled(false);
 }

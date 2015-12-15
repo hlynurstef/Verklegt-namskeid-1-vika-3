@@ -74,7 +74,7 @@ vector<Relation> RelationConnection::relationQuery(string name, string column){
 
 void RelationConnection::removeRelationPioneer(int pioID){
 
-    query3.prepare("DELETE FROM relations WHERE pioneer_id = " + pioID );
+    query3.prepare(QString( "DELETE FROM relations WHERE pioneer_id = " + QString::number(pioID)) );
     query3.exec();
 
     relation.clear();
