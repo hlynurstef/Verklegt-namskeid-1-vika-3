@@ -21,7 +21,8 @@ public:
         // Sets information in MoreInfo window to the currently selected Pioneer in the table in main window
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_pushButton_close_clicked();
 
 private:
     Ui::MoreInfoPioneer *ui;

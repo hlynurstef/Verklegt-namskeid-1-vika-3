@@ -26,8 +26,8 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_name">
      <property name="font">
       <font>
@@ -42,9 +42,22 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="description">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Description: </string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
+     <item alignment="Qt::AlignLeft">
       <widget class="QLabel" name="type">
        <property name="font">
         <font>
@@ -66,7 +79,7 @@
      </item>
     </layout>
    </item>
-   <item>
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="built">
@@ -77,7 +90,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Built (True/False) ? </string>
+        <string>Was the computer built ?</string>
        </property>
       </widget>
      </item>
@@ -90,7 +103,7 @@
      </item>
     </layout>
    </item>
-   <item>
+   <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="buildYear">
@@ -114,20 +127,7 @@
      </item>
     </layout>
    </item>
-   <item>
-    <widget class="QLabel" name="description">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Description: </string>
-     </property>
-    </widget>
-   </item>
-   <item>
+   <item row="5" column="0" alignment="Qt::AlignTop">
     <widget class="QTextBrowser" name="label_description">
      <property name="baseSize">
       <size>
@@ -137,27 +137,14 @@
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="relation">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Relation:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
+   <item row="8" column="0">
     <widget class="QLabel" name="label_relation">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="9" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <spacer name="horizontalSpacer">
@@ -180,6 +167,19 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="relation">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Relation:</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

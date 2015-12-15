@@ -17,15 +17,22 @@ MoreInfoPioneer::~MoreInfoPioneer(){
 }
 
 void MoreInfoPioneer::setPioneer(Pioneer pioneer){
-    ui->show_single_pioneer->clearContents();
 
-    ui->show_single_pioneer->setItem(0, 0, new QTableWidgetItem(QString::fromStdString(pioneer.getName())));
-    ui->show_single_pioneer->setItem(1, 0, new QTableWidgetItem(QString::fromStdString(pioneer.getSex())));
-    ui->show_single_pioneer->setItem(2, 0, new QTableWidgetItem(QString::number(pioneer.getByear())));
-    ui->show_single_pioneer->setItem(3, 0, new QTableWidgetItem(QString::number(pioneer.getDyear())));
-    ui->show_single_pioneer->setItem(4, 0, new QTableWidgetItem(QString::fromStdString(pioneer.getDescription())));
+    //------------------- Printing info -------------------
+
+    ui->label_name->setText(QString::fromStdString(pioneer.getName()));
+    ui->label_sex->setText(QString::fromStdString(pioneer.getSex()));
+    ui->label_yearBorn->setText(QString::number(pioneer.getByear()));
+    if(pioneer.getDyear() == 0){
+        ui ->label_yearDied->setText(QString::fromStdString("Still alive!"));
+    }
+    else{
+        ui ->label_yearDied->setText(QString::number(pioneer.getDyear()));
+    }
+    ui->textBrowser_description->setText(QString::fromStdString(pioneer.getDescription()));
 }
 
-void MoreInfoPioneer::on_pushButton_clicked(){
-    this->done(1);
+void MoreInfoPioneer::on_pushButton_close_clicked()
+{
+    this->close();
 }
