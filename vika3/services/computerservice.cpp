@@ -31,6 +31,10 @@ bool ComputerService::removeComputer(Computer comp){
     return data.removeComputer(comp);
 }
 
+void ComputerService::editComputer(Computer comp){
+    data.editComputer(comp);
+}
+
 void ComputerService::deleteAllComputers(){
     data.deleteAllComputers();
 }
@@ -39,4 +43,10 @@ vector<Computer> ComputerService::getList()
 {
     vector<Computer> list = data.getComputerList();
     return list;
+}
+
+int ComputerService::getHighestId(){
+    int highestId = data.getHighestId();
+
+    return highestId;
 }

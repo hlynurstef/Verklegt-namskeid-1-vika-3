@@ -1,5 +1,6 @@
 #include "computerconnection.h"
 #include <QDebug>
+#include <QMessageBox>
 
 ComputerConnection::ComputerConnection()
 {
@@ -189,7 +190,50 @@ bool ComputerConnection::removeComputer(Computer comp){
     return success;
 }
 
+void ComputerConnection::editComputer(Computer comp)
+{
+    int id = comp.getId();
+    string name = comp.getComputerName();
+    string built = comp.getWasItBuilt();
+    int buildYear = comp.getBuildYear();
+    string type = comp.getComputerType();
+    string compdesc = comp.getComputerDescription();
+
+    string buildYearString;
+    ostringstream convert;
+    convert << buildYear;
+    buildYearString = convert.str();
+
+    string idString;
+    ostringstream convert3;
+    convert3 << id;
+    idString = convert3.str();
+
+    QString editId = QString::fromStdString(idString);
+    QString editName = QString::fromStdString(name);
+    QString editBuilt = QString::fromStdString(built);
+    QString editYear = QString::fromStdString(buildYearString);
+    QString editType = QString::fromStdString(type);
+    QString editcompDesc = QString::fromStdString(compdesc);
+
+    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"");
+    query2.exec();
+
+    QMessageBox::warning(NULL, "Success", "UPDATE Computers SET id = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"'", QMessageBox::Yes, QMessageBox::No);
+}
+
+
 void ComputerConnection::deleteAllComputers(){
     query2.exec("DELETE FROM computers");
 }
 
+int ComputerConnection::getHighestId(){
+    query2.exec("SELECT MAX(id) FROM Computers");
+    int highestId;
+
+    while(query2.next()){
+        highestId = query2.value("MAX(id)").toUInt();
+    }
+    return highestId;
+
+}

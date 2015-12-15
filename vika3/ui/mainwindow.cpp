@@ -484,11 +484,14 @@ void MainWindow::on_pushButton_computers_edit_clicked()
     int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
     currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
-    editComputer temp;
+    editComputer editComp;
+    editComp.setComputer(currentlySelectedComp);
+    editComp.setModal(true);
+    int returnValue = editComp.exec();
 
-    temp.setComputer(currentlySelectedComp);
-    temp.setModal(true);
-    temp.exec();
+    ui->dropdown_computers_filter_built->clear();
+    ui->dropdown_computers_filter_type->clear();
+    displayAllComputers();
 }
 
 void MainWindow::disableButtonsForPioneer(){

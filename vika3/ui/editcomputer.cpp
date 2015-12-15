@@ -4,6 +4,7 @@
 #include "data_types/computer.h"
 
 
+
 editComputer::editComputer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editComputer)
@@ -30,3 +31,21 @@ void editComputer::setComputer(Computer comp){
 
 
 
+
+void editComputer::on_pushButton_editcomputer_clicked()
+{
+    string name = ui->edit_name->text().toStdString();
+    string built = ui->edit_wasbuilt->text().toStdString();
+    string type = ui->edit_type->text().toStdString();
+    string buildYear = ui->edit_buildyear->text().toStdString();
+    string description = ui->edit_description->toPlainText().toStdString();
+
+    int bYear = atoi(buildYear.c_str());
+
+    Computer comp(compID, name, bYear, type, built, description);
+
+    compService.editComputer(comp);
+
+    this->done(1);
+
+}

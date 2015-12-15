@@ -37,6 +37,11 @@ public:
         // Deletes the entire table
     bool removeComputer(Computer comp);
         // removes one computer from database
+    void editComputer(Computer comp);
+        // edits information about one computer from database
+    int getHighestId();
+        // Returns highest id in Computers table (most recently added entry)
+
 
 private:
     vector<Computer> computers;     // Vector that holds onto all information on runtime

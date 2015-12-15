@@ -23,10 +23,14 @@ public:
 private slots:
 
 
+    void on_pushButton_editcomputer_clicked();
+
 private:
     Ui::editComputer *ui;
     Computer computer;
     MainWindow mainwindow;
+    ComputerService compService;
+    int compID;
 };
 
 #endif // EDITCOMPUTER_H

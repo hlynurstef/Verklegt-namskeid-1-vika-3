@@ -25,6 +25,11 @@ public:
     vector<Computer> getList();
         // Returns entire list of computers
     bool removeComputer(Computer comp);
+    void editComputer(Computer pio);
+        // Sends information about a pioneer that needs to be edited
+    int getHighestId();
+        // Returns highest id in Pioneers table (most recently added entry)
+
 private:
     Computer temp;                      // Temporary object to be used in various situations
     vector<Computer> tempList2;
