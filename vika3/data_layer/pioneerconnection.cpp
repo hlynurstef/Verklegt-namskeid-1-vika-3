@@ -51,39 +51,33 @@ Pioneer PioneerConnection::getPioValuesFromDB(QSqlQuery query){
     return tempo;
 }
 
-void PioneerConnection::addToPioTable(vector<Pioneer>& list){
+void PioneerConnection::addToPioTable(Pioneer pioneer){
 
-        // Takes vector of pioneers that should be added to the SQL database
-        // and adds them.
+    string name = pioneer.getName();
+    string sex = pioneer.getSex();
+    int bYear = pioneer.getByear();
+    int dYear = pioneer.getDyear();
+    string desc = pioneer.getDescription();
 
-    for (unsigned int i = 0; i < list.size(); i++){
-        Pioneer tempList = list[i];
-
-        string name = tempList.getName();
-        string sex = tempList.getSex();
-        int bYear = tempList.getByear();
-        int dYear = tempList.getDyear();
-        string desc = tempList.getDescription();
-
-        string bYearString;
-        ostringstream convert;
-        convert << bYear;
-        bYearString = convert.str();
-
-        string dYearString;
-        ostringstream convert2;
-        convert2 << dYear;
-        dYearString = convert2.str();
-
-        query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc)");
-        query.bindValue(":tempName", QString::fromStdString(name));
-        query.bindValue(":tempSex", QString::fromStdString(sex));
-        query.bindValue(":tempBYear", QString::fromStdString(bYearString));
-        query.bindValue(":tempDYear", QString::fromStdString(dYearString));
-        query.bindValue(":tempDesc", QString::fromStdString(desc));
-        query.exec();
-
+    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc)");
+    query.bindValue(":tempName", QString::fromStdString(name));
+    if(sex == "male" || sex == "Male"){
+        query.bindValue(":tempSex", QString::fromStdString(constants::MALE));
     }
+    else{
+        query.bindValue(":tempSex", QString::fromStdString(constants::FEMALE));
+    }
+
+    query.bindValue(":tempBYear", QString::number(bYear));
+    if(dYear == 0){
+        query.bindValue(":tempDYear", QVariant(QVariant::String));
+    }
+    else{
+        query.bindValue(":tempDYear", QString::number(dYear));
+    }
+    query.bindValue(":tempDesc", QString::fromStdString(desc));
+    query.exec();
+
 }
 
 vector<Pioneer> PioneerConnection::getPioneerListAsc(){

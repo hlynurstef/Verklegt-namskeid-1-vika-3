@@ -17,7 +17,7 @@ class PioneerService
 public:
     PioneerService();
         // Default constructor
-    void addPioneers(Pioneer pio, int count);
+    void addPioneer(Pioneer pioneer);
         // Adds Pioneer object into tempList vector, then sends that vector to data layer to be added to SQL database
     string toLower(string name);
         // Puts all names to lowercase

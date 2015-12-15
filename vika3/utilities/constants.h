@@ -8,17 +8,6 @@ using namespace std;
 /**
  * This file contains constants that this application uses
  */
-/*
-const char TL_CORNER = 201;
-const char BL_CORNER = 200;
-const char TR_CORNER = 187;
-const char BR_CORNER = 188;
-const char H_LINE = 205;
-const char V_LINE = 186;
-const char L_JOIN = 204;
-const char R_JOIN = 185;
-const int LEFT_MARGIN = 20;
-*/
 namespace constants {
 
     // Following constants are used when asking user how to print the list:
@@ -45,6 +34,7 @@ namespace constants {
     const std::string REL_COMP_NAME = "c.computer_name";
     const std::string REL_PIO_NAME = "p.name";
     const char X = 'X';
+    const int CURRENT_YEAR = 2015;
 }
 
 #endif // CONSTANTS_H

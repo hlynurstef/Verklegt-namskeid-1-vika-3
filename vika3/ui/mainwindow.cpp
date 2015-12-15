@@ -432,16 +432,12 @@ void MainWindow::on_pushButton_pioneers_add_new_entry_clicked(){
     addPio.displayUnrelatedComputers(currentlyDisplayedComputers);
     int returnValue = addPio.exec();
 
-    if (returnValue == 1)
-    {
-        ui->dropdown_pioneers_filter_gender->clear();
-        ui->dropdown_pioneers_filter_vital_status->clear();
+    if (returnValue == 1){
         displayAllPioneers();
 
         ui->statusBar->showMessage("Pioneer has been added", 2000);
     }
-    else
-    {
+    else{
         ui->statusBar->showMessage("No pioneer was added", 2000);
     }
 }
@@ -452,16 +448,12 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     addComp.displayUnrelatedPioneers(currentlyDisplayedPioneers);
     int returnValue = addComp.exec();
 
-    if (returnValue == 1)
-    {
-        ui->dropdown_pioneers_filter_gender->clear();
-        ui->dropdown_pioneers_filter_vital_status->clear();
-        displayAllPioneers();
+    if (returnValue == 1){
+        displayAllComputers();
 
         ui->statusBar->showMessage("Computer has been added", 2000);
     }
-    else
-    {
+    else{
         ui->statusBar->showMessage("No computer was added", 2000);
     }
 }
