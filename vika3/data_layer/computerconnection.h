@@ -37,7 +37,7 @@ public:
         // Deletes a single computer from table
     void deleteAllComputers();
         // Deletes the entire table
-    bool removeComputer(Computer comp);
+    void removeComputer();
         // removes one computer from database
     void editComputer(Computer comp);
         // edits information about one computer from database

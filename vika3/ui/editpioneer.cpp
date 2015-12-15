@@ -34,10 +34,10 @@ void editPioneer::setPioneer(Pioneer pio){
     vector<Computer> allComputers = compService.getList();
 
 
-    for(int i = 0; i < allRelations.size(); i++){
+    for(unsigned int i = 0; i < allRelations.size(); i++){
         Relation relInstance = allRelations[i];
 
-        for(int j = 0; j < allComputers.size(); j++){
+        for(unsigned int j = 0; j < allComputers.size(); j++){
             Computer compInstance = allComputers[j];
 
             if(relInstance.getPioName() == pio.getName() && relInstance.getCompName() == compInstance.getComputerName()){
@@ -47,10 +47,10 @@ void editPioneer::setPioneer(Pioneer pio){
     }
 
     bool relatedComputer = false;
-    for(int i = 0; i < allComputers.size(); i++){
+    for(unsigned int i = 0; i < allComputers.size(); i++){
         Computer unrelated = allComputers[i];
         relatedComputer = false;
-        for(int j = 0; j < relatedComputers.size(); j++){
+        for(unsigned int j = 0; j < relatedComputers.size(); j++){
             Computer related = relatedComputers[j];
             if(related.getComputerName() != unrelated.getComputerName()){
                 relatedComputer = false;
@@ -140,7 +140,7 @@ void editPioneer::on_button_cancel_clicked()
 void editPioneer::displayRelatedComputers(){
     ui->list_related_computers->clear();
 
-    for(int i = 0; i < relatedComputers.size(); i++){
+    for(unsigned int i = 0; i < relatedComputers.size(); i++){
         Computer instance = relatedComputers[i];
         ui->list_related_computers->addItem(QString::fromStdString(instance.getComputerName()));
     }
@@ -148,7 +148,7 @@ void editPioneer::displayRelatedComputers(){
 
 void editPioneer::displayUnrelatedComputers(){
     ui->list_unrelated_computers->clear();
-    for(int i = 0; i < unrelatedComputers.size(); i++){
+    for(unsigned int i = 0; i < unrelatedComputers.size(); i++){
         Computer instance = unrelatedComputers[i];
         ui->list_unrelated_computers->addItem(QString::fromStdString(instance.getComputerName()));
     }
