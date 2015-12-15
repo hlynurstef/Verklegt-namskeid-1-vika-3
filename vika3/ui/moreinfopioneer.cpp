@@ -33,6 +33,12 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
     ui->textBrowser_description->setText(QString::fromStdString(pioneer.getDescription()));
 
     getRelationList(pioneer);
+
+    if(!(pioneer.getImageByteArray().isEmpty())){
+        QPixmap pixmap;
+        pixmap.loadFromData(pioneer.getImageByteArray());
+        ui->label_image->setPixmap(pixmap);
+    }
 }
 
 void MoreInfoPioneer::getRelationList(Pioneer pioneer){

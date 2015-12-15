@@ -25,7 +25,10 @@ void editPioneer::setPioneer(Pioneer pio){
     ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
     ui->edit_birth_year->setText(QString::fromStdString(birthyear));
     ui->edit_death_year->setText(QString::fromStdString(deathyear));
-    ui->edit_description->setText(QString::fromStdString(pio.getDescription()));
+    ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
+    if(!(pio.getImageByteArray().isEmpty())){
+            ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
+    }
 
     vector<Relation> allRelations = relService.displayRelations();
     vector<Computer> allComputers = compService.getList();
@@ -91,7 +94,7 @@ void editPioneer::on_button_edit_pioneer_clicked()
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
 
-    Pioneer pio(pioID, name, sex, byear, dyear, description);
+    Pioneer pio(pioID, name, sex, byear, dyear, description, image);
 
     pioService.editPioneer(pio);
 
@@ -183,4 +186,27 @@ void editPioneer::on_button_add_relation_clicked()
     displayRelatedComputers();
 
     ui->button_add_relation->setEnabled(false);
+}
+
+void editPioneer::on_pushButton_browse_image_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(
+                    this,
+                    "Search for images",
+                    "/home",
+                    "Image files (*.png *.jpg)"
+                );
+
+    if (filePath.length()) // File selected
+    {
+        ui->lineEdit_image->setText(filePath);
+
+        QFile file(filePath);
+        image = file.readAll();
+    }
+    else{
+
+        //didn't open file
+    }
+
 }
