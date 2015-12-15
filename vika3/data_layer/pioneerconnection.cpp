@@ -74,15 +74,11 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     string desc = pioneer.getDescription();
     string deleted = "false";
 
-    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc, :tempDeleted)");
-    query.bindValue(":tempName", QString::fromStdString(name));
-    if(sex == "male" || sex == "Male"){
-        query.bindValue(":tempSex", QString::fromStdString(constants::MALE));
-    }
-    else{
-        query.bindValue(":tempSex", QString::fromStdString(constants::FEMALE));
-    }
+    transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
 
+    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc, :tempImage, :tempDeleted)");
+    query.bindValue(":tempName", QString::fromStdString(name));
+    query.bindValue(":tempSex", QString::fromStdString(sex));
     query.bindValue(":tempBYear", QString::number(bYear));
     if(dYear == 0){
         query.bindValue(":tempDYear", QVariant(QVariant::String));
@@ -91,7 +87,8 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
         query.bindValue(":tempDYear", QString::number(dYear));
     }
     query.bindValue(":tempDesc", QString::fromStdString(desc));
-    query.bindValue(":tempDeleted", QString::fromStdString(deleted));
+    query.bindValue(":tempDeleted", QString::fromStdString(deleted));   // Deleted
+    query.bindValue(":tempImage", QVariant(QVariant::String));          // Image BLOB value (set to NULL for now)
     query.exec();
 
 }
