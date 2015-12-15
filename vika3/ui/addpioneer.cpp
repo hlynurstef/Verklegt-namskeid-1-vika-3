@@ -2,6 +2,8 @@
 #include "ui_addpioneer.h"
 #include "utilities/constants.h"
 
+#include <QtSql>
+#include <QtWidgets>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <algorithm>
@@ -203,7 +205,16 @@ void AddPioneer::on_pushButton_browse_image_clicked()
 
         ui->input_image->setText(QString::fromStdString(filePath));
 
+        QFile file(filePath);
+        inByteArray = file.readALL();
     }
+    else{
+
+        //didn't open file
+    }
+
+
+
 }
 
 void AddPioneer::on_button_add_pioneer_cancel_clicked()

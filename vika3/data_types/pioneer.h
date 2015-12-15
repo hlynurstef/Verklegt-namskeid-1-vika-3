@@ -15,8 +15,8 @@ class Pioneer
 public:
 
     Pioneer();                                                                       //Default constructor
-    Pioneer(string pName, string s, int birthY, int deathY, string desc);              // Constructor without id
-    Pioneer(int index, string pName, string s, int bYear, int dYear, string desc);   // Constructor
+    Pioneer(string pName, string s, int birthY, int deathY, string desc, QByteArray image);              // Constructor without id
+    Pioneer(int index, string pName, string s, int bYear, int dYear, string desc, QByteArray image);   // Constructor
 
     int getId();                           //Returns ID of pioneer
     string getName ();                     // Returns name of pioneer
