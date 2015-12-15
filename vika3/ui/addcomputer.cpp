@@ -40,10 +40,8 @@ void addComputer::on_button_add_computer_clicked()
     string name = ui->input_computer_name->text().toStdString();
     string type = getCurrentType();
     string wasItBuilt = getCurrentWasItBuilt();
-    string buildYear= ui->input_computer_build_year->text().toStdString();
+    string buildYear = ui->input_computer_build_year->text().toStdString();
     string description = ui->input_computer_description->toPlainText().toStdString();
-
-
 
     bool error = errorCheck(name, type, wasItBuilt, buildYear, description);
     if(error){
@@ -80,6 +78,7 @@ void addComputer::emptyLines(){
     ui->label_computer_type_error->setText("");
     ui->label_computer_build_error->setText("");
     ui->label_computer_description_error->setText("");
+    ui->label_computer_build_year_error->setText("");
 }
 
 bool addComputer::errorCheck(string name, string type, string wasItBuilt, string buildYear, string description){
@@ -101,15 +100,15 @@ bool addComputer::errorCheck(string name, string type, string wasItBuilt, string
     if((wasItBuilt == "" || wasItBuilt == "No") && buildYear.empty()){
         // do nothing
     }
-    else if((wasItBuilt == "No") && !buildYear.empty()){
+    if((wasItBuilt == "false") && !buildYear.empty()){
         ui->label_computer_build_year_error->setText("<span style ='color: #ff0000'>Computer Wasn't Built!</span>");
         error = true;
     }
-    else if(wasItBuilt == "Yes" && buildYear.empty()){
+    else if(wasItBuilt == "true" && buildYear.empty()){
         ui->label_computer_build_year_error->setText("<span style ='color: #ff0000'>Input Build Year!</span>");
         error = true;
     }
-    else if(wasItBuilt == "Yes" && !is_number(buildYear)){
+    else if(wasItBuilt == "true" && !is_number(buildYear)){
         ui->label_computer_build_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
         error = true;
     }
