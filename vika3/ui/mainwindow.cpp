@@ -316,8 +316,6 @@ void MainWindow::on_button_pioneer_remove_clicked(){
         Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
 
         int pioID = currentlySelectedPioneer.getId();
-        string id = to_string(pioID);
-        ui->statusBar->showMessage(QString::fromStdString(id), 2000);
         relationService.removePioneerRelation(pioID);
 
         bool success = pioneerService.removePioneer(currentlySelectedPioneer);
