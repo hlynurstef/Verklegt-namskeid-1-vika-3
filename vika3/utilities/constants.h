@@ -16,8 +16,8 @@ namespace constants {
     const std::string FEMALE = "female";
     const std::string IS_NULL = "IS NULL";
     const std::string IS_NOT_NULL = "IS NOT NULL";
-    const std::string TRUE = "true";
-    const std::string FALSE = "false";
+    const std::string DB_TRUE = "true";
+    const std::string DB_FALSE = "false";
     const std::string MECHANICAL = "mechanical";
     const std::string ELECTRONIC = "electronic";
     const std::string TRANSISTOR = "transistor";

@@ -242,10 +242,10 @@ string MainWindow::getCurrentBuiltComputers(){
         return "";
     }
     else if(built == "Was built"){
-        return constants::TRUE;
+        return constants::DB_TRUE;
     }
     else if(built == "Was not built"){
-        return constants::FALSE;
+        return constants::DB_FALSE;
     }
     else{
         return "";

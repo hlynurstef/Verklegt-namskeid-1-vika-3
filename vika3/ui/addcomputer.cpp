@@ -171,10 +171,10 @@ string addComputer::getCurrentWasItBuilt(){
         return "";
     }
     else if(wasBuilt == "Yes"){
-        return constants::TRUE;
+        return constants::DB_TRUE;
     }
     else if(wasBuilt == "No"){
-        return constants::FALSE;
+        return constants::DB_FALSE;
     }
     else{
         return "";
