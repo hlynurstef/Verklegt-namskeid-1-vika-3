@@ -50,6 +50,8 @@ public:
         // Searches through database for a name of pioneer that matches a search word
 
 
+    void pioneerToTrash(Pioneer pio);
+
 private:
     vector<Pioneer> pioneers;       // Vector that holds onto all information on runtime
     Pioneer temp;

@@ -61,7 +61,9 @@ Pioneer PioneerConnection::getPioValuesFromDB(QSqlQuery query){
     int birthYear = query.value("bYear").toUInt();
     int deathYear = query.value("dYear").toUInt();
     string description = query.value("description").toString().toStdString();
-    Pioneer tempo(id, name, sex, birthYear, deathYear, description);
+    //QByteArray outByteArray = query.value("image").toByteArray();
+
+    Pioneer tempo(id, name, sex, birthYear, deathYear, description/*, outByteArray*/);
     return tempo;
 }
 
@@ -73,16 +75,13 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     int dYear = pioneer.getDyear();
     string desc = pioneer.getDescription();
     string deleted = "false";
+    //QByteArray image = pioneer.getImageByteArray();
 
-    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc, :tempDeleted)");
+    transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
+
+    query.prepare("INSERT INTO pioneers VALUES(NULL, :tempName, :tempSex, :tempBYear, :tempDYear, :tempDesc, :tempImage, :tempDeleted)");
     query.bindValue(":tempName", QString::fromStdString(name));
-    if(sex == "male" || sex == "Male"){
-        query.bindValue(":tempSex", QString::fromStdString(constants::MALE));
-    }
-    else{
-        query.bindValue(":tempSex", QString::fromStdString(constants::FEMALE));
-    }
-
+    query.bindValue(":tempSex", QString::fromStdString(sex));
     query.bindValue(":tempBYear", QString::number(bYear));
     if(dYear == 0){
         query.bindValue(":tempDYear", QVariant(QVariant::String));
@@ -91,7 +90,8 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
         query.bindValue(":tempDYear", QString::number(dYear));
     }
     query.bindValue(":tempDesc", QString::fromStdString(desc));
-    query.bindValue(":tempDeleted", QString::fromStdString(deleted));
+    query.bindValue(":tempDeleted", QString::fromStdString(deleted));   // Deleted
+    query.bindValue(":tempImage", /*image*/ QVariant(QVariant::String));          // Image BLOB value (set to NULL for now)
     query.exec();
 
 }
@@ -155,8 +155,9 @@ vector<Pioneer> PioneerConnection::printQueryPioneers(string sex, string dYear, 
         int birthYear = query.value("bYear").toUInt();
         int deathYear = query.value("dYear").toUInt();
         string description = query.value("description").toString().toStdString();
+        QByteArray image = query.value("image").toByteArray();
 
-        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description));
+        list.push_back(Pioneer(id, name, sex, birthYear, deathYear, description /*image*/));
     }
 
     return list;
@@ -197,8 +198,9 @@ vector<Pioneer> PioneerConnection::searchPio(string searchWord, string searchBy,
         int birthYear = query.value("bYear").toUInt();
         int deathYear = query.value("dYear").toUInt();
         string description = query.value("description").toString().toStdString();
+        QByteArray image = query.value("image").toByteArray();
 
-        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description));
+        searchTemp.push_back(Pioneer(id, name, sex, birthYear, deathYear, description/*, image*/));
     }
     return searchTemp;
 }
@@ -232,7 +234,7 @@ void PioneerConnection::deleteAllPioneers(){
 //                             EDIT FUNCTIONS
 // ---------------------------------------------------------------------
 
-void PioneerConnection::editPioneer(Pioneer pio){
+void PioneerConnection::pioneerToTrash(Pioneer pio){
 
     int id = pio.getId();
     string name = pio.getName();
@@ -240,6 +242,7 @@ void PioneerConnection::editPioneer(Pioneer pio){
     int bYear = pio.getByear();
     int dYear = pio.getDyear();
     string desc = pio.getDescription();
+    string deleted = "true";
 
     string bYearString = to_string(bYear);
     string dYearString = to_string(dYear);
@@ -251,8 +254,35 @@ void PioneerConnection::editPioneer(Pioneer pio){
     QString editByear = QString::fromStdString(bYearString);
     QString editDyear = QString::fromStdString(dYearString);
     QString editDesc = QString::fromStdString(desc);
+    QString editDeleted = QString::fromStdString(deleted);
 
-    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"' WHERE id = "+ editId +"");
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
+    query.exec();
+}
+
+void PioneerConnection::editPioneer(Pioneer pio){
+
+    int id = pio.getId();
+    string name = pio.getName();
+    string sex = pio.getSex();
+    int bYear = pio.getByear();
+    int dYear = pio.getDyear();
+    string desc = pio.getDescription();
+    string deleted = "false";
+
+    string bYearString = to_string(bYear);
+    string dYearString = to_string(dYear);
+    string idString = to_string(id);
+
+    QString editId = QString::fromStdString(idString);
+    QString editName = QString::fromStdString(name);
+    QString editSex = QString::fromStdString(sex);
+    QString editByear = QString::fromStdString(bYearString);
+    QString editDyear = QString::fromStdString(dYearString);
+    QString editDesc = QString::fromStdString(desc);
+    QString editDeleted = QString::fromStdString(deleted);
+
+    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
     query.exec();
 
 }

@@ -39,6 +39,7 @@ public:
     int getHighestId();
         // Returns highest id in Pioneers table (most recently added entry)
 
+    void pioneerToTrash(Pioneer pio);
 private:
     PioneerConnection data;         // This object will hold onto all runtime information
     Pioneer temp;                   // Temporary object to be used in various situations

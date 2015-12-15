@@ -242,10 +242,10 @@ string MainWindow::getCurrentBuiltComputers(){
         return "";
     }
     else if(built == "Was built"){
-        return constants::TRUE;
+        return constants::DB_TRUE;
     }
     else if(built == "Was not built"){
-        return constants::FALSE;
+        return constants::DB_FALSE;
     }
     else{
         return "";
@@ -326,19 +326,12 @@ void MainWindow::on_button_pioneer_remove_clicked(){
         int pioID = currentlySelectedPioneer.getId();
         relationService.removePioneerRelation(pioID);
 
-        bool success = pioneerService.removePioneer(currentlySelectedPioneer);
+        pioneerService.pioneerToTrash(currentlySelectedPioneer);
 
+        ui->input_search_pioneers->setText("");
+        displayAllPioneers();
 
-        if(success){
-            ui->input_search_pioneers->setText("");
-            displayAllPioneers();
-
-            disableButtonsForPioneer();
-
-        }
-        else{
-            //some error
-        }
+        disableButtonsForPioneer();
 
     }
     else{
@@ -357,7 +350,7 @@ void MainWindow::on_button_computer_remove_clicked(){
 
         Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
-        bool success = computerService.removeComputer(currentlySelectedComputer);
+        bool success = computerService.computerToTrash(currentlySelectedComputer);
 
         if(success){
             ui->input_search_computers->setText("");

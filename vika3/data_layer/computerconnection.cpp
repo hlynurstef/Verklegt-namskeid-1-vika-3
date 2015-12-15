@@ -1,4 +1,5 @@
 #include "computerconnection.h"
+#include "utilities/constants.h"
 #include <QDebug>
 #include <QMessageBox>
 
@@ -67,13 +68,22 @@ void ComputerConnection::addToCompTable(Computer computer){
         string desc = computer.getComputerDescription();
         string deleted = "false";
 
-        query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc, :tempDeleted)");
+        transform(computerType.begin(), computerType.end(), computerType.begin(), ::tolower);
+        transform(wasBuilt.begin(), wasBuilt.end(), wasBuilt.begin(), ::tolower);
+
+        query2.prepare("INSERT INTO computers VALUES(NULL, :tempName, :tempYear, :tempType, :tempWasBuilt, :tempDesc, :tempImage, :tempDeleted)");
         query2.bindValue(":tempName", QString::fromStdString(name));
-        query2.bindValue(":tempYear", QString::number(buildYear));
+        if(buildYear == 0){
+            query2.bindValue(":tempYear", QVariant(QVariant::String));
+        }
+        else{
+            query2.bindValue(":tempYear", QString::number(buildYear));
+        }
         query2.bindValue(":tempType", QString::fromStdString(computerType));
         query2.bindValue(":tempWasBuilt", QString::fromStdString(wasBuilt));
         query2.bindValue(":tempDesc", QString::fromStdString(desc));
-        query2.bindValue(":tempDeleted", QString::fromStdString(deleted));
+        query2.bindValue(":tempDeleted", QString::fromStdString(deleted));  // Deleted
+        query2.bindValue(":tempImage", QVariant(QVariant::String));         // Image BLOB value (set to NULL for now)
         query2.exec();
 }
 
@@ -192,14 +202,14 @@ bool ComputerConnection::removeComputer(Computer comp){
     return success;
 }
 
-void ComputerConnection::editComputer(Computer comp)
-{
+bool ComputerConnection::computerToTrash(Computer comp){
     int id = comp.getId();
     string name = comp.getComputerName();
     string built = comp.getWasItBuilt();
     int buildYear = comp.getBuildYear();
     string type = comp.getComputerType();
     string compdesc = comp.getComputerDescription();
+    string deleted = "true";
 
     string buildYearString;
     ostringstream convert;
@@ -217,8 +227,45 @@ void ComputerConnection::editComputer(Computer comp)
     QString editYear = QString::fromStdString(buildYearString);
     QString editType = QString::fromStdString(type);
     QString editcompDesc = QString::fromStdString(compdesc);
+    QString editDeleted = QString::fromStdString(deleted);
 
-    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"");
+    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
+    query2.exec();
+
+    QMessageBox::warning(NULL, "Success", "UPDATE Computers SET id = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"'", QMessageBox::Yes, QMessageBox::No);
+}
+
+
+
+void ComputerConnection::editComputer(Computer comp)
+{
+    int id = comp.getId();
+    string name = comp.getComputerName();
+    string built = comp.getWasItBuilt();
+    int buildYear = comp.getBuildYear();
+    string type = comp.getComputerType();
+    string compdesc = comp.getComputerDescription();
+    string deleted = "false";
+
+    string buildYearString;
+    ostringstream convert;
+    convert << buildYear;
+    buildYearString = convert.str();
+
+    string idString;
+    ostringstream convert3;
+    convert3 << id;
+    idString = convert3.str();
+
+    QString editId = QString::fromStdString(idString);
+    QString editName = QString::fromStdString(name);
+    QString editBuilt = QString::fromStdString(built);
+    QString editYear = QString::fromStdString(buildYearString);
+    QString editType = QString::fromStdString(type);
+    QString editcompDesc = QString::fromStdString(compdesc);
+    QString editDeleted = QString::fromStdString(deleted);
+
+    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
     query2.exec();
 
     QMessageBox::warning(NULL, "Success", "UPDATE Computers SET id = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"'", QMessageBox::Yes, QMessageBox::No);

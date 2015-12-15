@@ -43,6 +43,10 @@ bool PioneerService::removePioneer(Pioneer pio){
     return data.removePioneer(pio);
 }
 
+void PioneerService::pioneerToTrash(Pioneer pio){
+    data.pioneerToTrash(pio);
+}
+
 void PioneerService::deleteAllPioneers(){
     data.deleteAllPioneers();
 }
