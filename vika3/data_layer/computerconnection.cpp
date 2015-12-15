@@ -202,7 +202,7 @@ bool ComputerConnection::removeComputer(Computer comp){
     return success;
 }
 
-bool ComputerConnection::computerToTrash(Computer comp){
+void ComputerConnection::computerToTrash(Computer comp){
     int id = comp.getId();
     string name = comp.getComputerName();
     string built = comp.getWasItBuilt();
