@@ -69,7 +69,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QLineEdit" name="edit_type"/>
+        <widget class="QComboBox" name="edit_dropdown_type"/>
        </item>
       </layout>
      </item>
@@ -80,7 +80,7 @@
          <item>
           <widget class="QLabel" name="label_wasbuilt">
            <property name="text">
-            <string>Was It Built? (y/n):</string>
+            <string>Was It Built?</string>
            </property>
           </widget>
          </item>
@@ -94,7 +94,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QLineEdit" name="edit_wasbuilt"/>
+        <widget class="QComboBox" name="edit_dropdown_was_it_built"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -206,7 +206,7 @@
      <item>
       <widget class="QPushButton" name="pushButton_editcomputer">
        <property name="text">
-        <string> Edit Computer</string>
+        <string>Save Changes</string>
        </property>
       </widget>
      </item>

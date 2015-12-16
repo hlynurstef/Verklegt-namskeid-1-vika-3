@@ -23,9 +23,14 @@ public:
 
     void setComputer(Computer computer);
     bool errorCheck(string name, string wasBuilt, string buildYear, string type, string description);
-
     void displayUnrelatedPioneers();
     void displayRelatedPioneers();
+    string getCurrentType();
+        // Returns current type chosen in dropdown list
+    string getCurrentWasItBuilt();
+        // Returns current was it built chosen in dropdown list
+
+
 private slots:
 
 
