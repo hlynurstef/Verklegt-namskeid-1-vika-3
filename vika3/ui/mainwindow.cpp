@@ -408,11 +408,6 @@ Pioneer MainWindow::returnCurrentlySelectedPioneer(){
     QString birthYear = QString::number(currentlySelectedPio.getByear());
     QString deathYear = QString::number(currentlySelectedPio.getDyear());
     QString description = QString::fromStdString(currentlySelectedPio.getDescription());
-//    qDebug() << "name: " + name;
-//    qDebug() << "sex: " + sex;
-//    qDebug() << "birth year: " + birthYear;
-//    qDebug() << "death year: " + deathYear;
-//    qDebug() << "description: " + description;
 
     return currentlySelectedPio;
 }
@@ -478,7 +473,7 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
     if (returnValue == 1)
     {
         displayAllPioneers();
-
+        disableButtonsForPioneer();
         ui->statusBar->showMessage("Pioneer has been modified", 2000);
     }
     else
@@ -507,7 +502,7 @@ void MainWindow::on_pushButton_computers_edit_clicked()
     if (returnValue2 == 1)
     {
         displayAllComputers();
-
+        disableButtonsForComputer();
         ui->statusBar->showMessage("Computer has been modified", 2000);
     }
     else
