@@ -254,26 +254,23 @@ void ComputerConnection::editComputer(Computer comp){
     string deleted = "false";
     QByteArray image = comp.getImageByteArray();
 
-    string buildYearString;
-    ostringstream convert;
-    convert << buildYear;
-    buildYearString = convert.str();
-
-    string idString;
-    ostringstream convert3;
-    convert3 << id;
-    idString = convert3.str();
-
-    QString editId = QString::fromStdString(idString);
-    QString editName = QString::fromStdString(name);
-    QString editBuilt = QString::fromStdString(built);
-    QString editYear = QString::fromStdString(buildYearString);
-    QString editType = QString::fromStdString(type);
-    QString editcompDesc = QString::fromStdString(compdesc);
-    QString editDeleted = QString::fromStdString(deleted);
-
-    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', image = '"+ image +"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
+    query2.prepare("UPDATE Computers SET id = :id, computer_name = :name, was_built = :built, build_year = :buildYear, computer_type = :type, description = :description, image = :image, deleted = :deleted WHERE id = :id");
+    query2.bindValue(":id", QString::number(id));
+    query2.bindValue(":name", QString::fromStdString(name));
+    query2.bindValue(":built", QString::fromStdString(built));
+    query2.bindValue(":buildYear", QString::number(buildYear));
+    query2.bindValue(":type", QString::fromStdString(type));
+    query2.bindValue(":description", QString::fromStdString(compdesc));
+    if(image.isEmpty()){
+        query2.bindValue(":image", QVariant(QVariant::String));
+    }
+    else{
+        query2.bindValue(":image", image);       // Image BLOB value (set to NULL for now)
+    }
+    query2.bindValue(":deleted", QString::fromStdString(deleted));
     query2.exec();
+
+    qDebug() << query2.lastError().text();
 
 }
 
