@@ -69,7 +69,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QLineEdit" name="edit_sex"/>
+        <widget class="QComboBox" name="edit_dropdown_sex"/>
        </item>
       </layout>
      </item>
