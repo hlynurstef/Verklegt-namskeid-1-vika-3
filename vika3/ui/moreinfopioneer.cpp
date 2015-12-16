@@ -39,7 +39,7 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
         QPixmap pixmap = QPixmap();
         pixmap.loadFromData(pioneer.getImageByteArray());
         ui->label_image->setPixmap(pixmap);
-        ui->label_image->setScaledContents(false);
+        ui->label_image->setScaledContents(true);
     //}
 }
 
