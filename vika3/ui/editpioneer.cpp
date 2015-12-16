@@ -1,6 +1,7 @@
 #include "editpioneer.h"
 #include "ui_editpioneer.h"
 #include "utilities/constants.h"
+#include <QMessageBox>
 
 editPioneer::editPioneer(QWidget *parent) :
     QDialog(parent),
@@ -21,8 +22,8 @@ editPioneer::~editPioneer()
 
 void editPioneer::setPioneer(Pioneer pio){
 
-    string birthyear = std::to_string(pio.getByear());
-    string deathyear = std::to_string(pio.getDyear());
+//    string birthyear = std::to_string(pio.getByear());
+//    string deathyear = std::to_string(pio.getDyear());
     string sex;
 
     pioID = pio.getId();
@@ -36,9 +37,13 @@ void editPioneer::setPioneer(Pioneer pio){
 
     ui->edit_name->setText(QString::fromStdString(pio.getName()));
     ui->edit_dropdown_sex->setCurrentText(QString::fromStdString(sex));
-    //ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
-    ui->edit_birth_year->setText(QString::fromStdString(birthyear));
-    ui->edit_death_year->setText(QString::fromStdString(deathyear));
+    ui->edit_birth_year->setText(QString::number(pio.getByear()));
+    if(pio.getDyear() == 0){
+        ui->edit_death_year->setText(QString::fromStdString(""));
+    }
+    else{
+        ui->edit_death_year->setText(QString::number(pio.getDyear()));
+    }
     ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
     if(!pio.getImageByteArray().isEmpty()){
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
@@ -104,46 +109,79 @@ void editPioneer::on_button_edit_pioneer_clicked()
         return;
     }
 
-
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
-
     Pioneer pio(pioID, name, sex, byear, dyear, description, image);
 
-    pioService.editPioneer(pio);
+    int answer = QMessageBox::question(this, "Save Changes", "Are you sure you want to save changes?");
 
-    this->done(1);
+    if(answer == QMessageBox::No){
+        return;
+    }
+    else{
+        pioService.editPioneer(pio);
 
+        this->done(1);
+    }
 }
 
 bool editPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
     bool error = false;
 
     if(name.empty()){
-        ui->label_name_error->setText("<span style ='color: #ff0000'>Input name</span>");
-        error = true;
-    }
-    if(sex != "male" && sex != "Male" && sex != "female" && sex != "Female"){
-        ui->label_sex_error->setText("<span style ='color: #ff0000'>Wrong input</span>");
+        ui->label_name_error->setText("<span style ='color: #ff0000'>Input Name!</span>");
         error = true;
     }
     if(sex.empty()){
-        ui->label_sex_error->setText("<span style ='color: #ff0000'>Input sex</span>");
+        ui->label_sex_error->setText("<span style ='color: #ff0000'>Choose Sex!</span>");
         error = true;
     }
-
     if(birthyear.empty()){
-        ui->label_birth_year_error->setText("<span style ='color: #ff0000'>Input birth year</span>");
+        ui->label_birth_year_error->setText("<span style ='color: #ff0000'>Input Birth Year!</span>");
+        error = true;
+    }
+    if(!is_number(birthyear)){
+        ui->label_birth_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
         error = true;
     }
     if(description.empty()){
         ui->label_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
     }
 
+    int byear = atoi(birthyear.c_str());
+    int dyear = atoi(deathyear.c_str());
+
+    if(!is_number(deathyear)){
+        ui->label_death_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
+        error = true;
+    }
+    else if((byear == dyear || byear > dyear) && dyear != 0){
+        ui->label_death_year_error->setText("<span style ='color: #ff0000'>Incorrect Input!</span>");
+        error = true;
+    }
+    else if(dyear > constants::CURRENT_YEAR){
+        ui->label_death_year_error->setText("<span style ='color: #ff0000'>Are you trying to predict the future?</span>");
+        error = true;
+    }
+
+    if(byear > constants::CURRENT_YEAR){
+        ui->label_birth_year_error->setText("<span style ='color: #ff0000'>People from the future are not allowed!</span>");
+        error = true;
+    }
+
     if(error == true){
         return true;
     }
     return false;
+}
+
+bool editPioneer::is_number(string& s){
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)){
+        ++it;
+    }
+
+    return !s.empty() && it == s.end();
 }
 
 void editPioneer::on_button_cancel_clicked()

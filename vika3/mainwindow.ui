@@ -23,6 +23,11 @@
    <iconset resource="ui/resources.qrc">
     <normaloff>:/icons/Images/computer.png</normaloff>:/icons/Images/computer.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">selection-color: rgb(0, 0, 0);
+selection-background-color: rgb(157, 224, 255);
+alternate-background-color: rgb(233, 255, 255);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
@@ -57,11 +62,20 @@
             </item>
             <item>
              <widget class="QTableWidget" name="table_pioneers">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
               <property name="editTriggers">
                <set>QAbstractItemView::NoEditTriggers</set>
               </property>
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
               <property name="selectionBehavior">
                <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
               </property>
               <attribute name="horizontalHeaderDefaultSectionSize">
                <number>185</number>
@@ -279,11 +293,20 @@
           </item>
           <item>
            <widget class="QTableWidget" name="table_computers">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
             </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
             <property name="selectionBehavior">
              <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
             </property>
             <attribute name="horizontalHeaderDefaultSectionSize">
              <number>185</number>
@@ -471,7 +494,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

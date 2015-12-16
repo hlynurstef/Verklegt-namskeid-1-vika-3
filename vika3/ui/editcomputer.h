@@ -23,10 +23,16 @@ public:
 
     void setComputer(Computer computer);
     bool errorCheck(string name, string wasBuilt, string buildYear, string type, string description);
-    bool is_number(string& s);
-    string getCurrentWasItBuilt();
     void displayUnrelatedPioneers();
     void displayRelatedPioneers();
+    string getCurrentType();
+        // Returns current type chosen in dropdown list
+    string getCurrentWasItBuilt();
+        // Returns current was it built chosen in dropdown list
+    bool is_number(string& s);
+        // Returns true if string is a number, false if there is a nondigit in there somewhere
+
+
 private slots:
 
 
@@ -40,6 +46,8 @@ private slots:
 
     void on_button_add_relation_clicked();
 
+    void on_pushButton_image_clicked();
+
 private:
     Ui::editComputer *ui;
     Computer computer;
@@ -49,6 +57,7 @@ private:
     PioneerService pioService;
     Relation rel;
     vector<Pioneer> relatedPioneers, unrelatedPioneers;
+    QByteArray image;
 
     int compID;
 };

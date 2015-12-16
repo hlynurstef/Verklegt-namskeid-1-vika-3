@@ -83,8 +83,6 @@ void AddPioneer::emptyLines(){
 bool AddPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
     bool error = false;
 
-    transform(sex.begin(), sex.end(), sex.begin(), ::tolower);
-
     if(name.empty()){
         ui->label_pioneer_name_error->setText("<span style ='color: #ff0000'>Input Name!</span>");
         error = true;

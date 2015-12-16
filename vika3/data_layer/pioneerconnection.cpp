@@ -91,12 +91,12 @@ void PioneerConnection::addToPioTable(Pioneer pioneer){
     }
     query.bindValue(":tempDesc", QString::fromStdString(desc));
     query.bindValue(":tempDeleted", QString::fromStdString(deleted));   // Deleted
-    /*if(image.isEmpty()){
+    if(image.isEmpty()){
         query.bindValue(":tempImage", QVariant(QVariant::String));
-    }*/
-    //else{
+    }
+    else{
         query.bindValue(":tempImage", image);       // Image BLOB value (set to NULL for now)
-    //}
+    }
 
     query.exec();
 

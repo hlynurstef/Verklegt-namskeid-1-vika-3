@@ -26,7 +26,18 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QListWidget" name="list_trash"/>
+        <widget class="QTableWidget" name="table_pioneers">
+         <column>
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Birth Year</string>
+          </property>
+         </column>
+        </widget>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">

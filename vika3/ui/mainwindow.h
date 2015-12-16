@@ -76,6 +76,8 @@ private slots:
 
     void on_trash_button_pioneers_clicked();
 
+    void on_trash_button_computers_clicked();
+
 private:
     std::string getCurrentOrderByPioneers();
         // Returns SQL column name to order pioneers by based on what user has picked in dropdown list

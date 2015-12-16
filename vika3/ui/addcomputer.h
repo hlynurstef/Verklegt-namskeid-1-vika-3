@@ -49,12 +49,15 @@ private slots:
 
     void on_button_remove_relation_clicked();
 
+    void on_pushButton_image_clicked();
+
 private:
     Ui::addComputer *ui;
     ComputerService computerService;
     RelationService relationService;
     vector<Pioneer> unrelatedPioneersList;    // This vector holds onto every computer that is currently displayed on main window
     vector<Pioneer> relatedPioneersList;      // This vector holds onto every computer related to Pioneer
+    QByteArray inByteArray;                   // This vector holds onto the image of the computer
 };
 
 #endif // ADDCOMPUTER_H

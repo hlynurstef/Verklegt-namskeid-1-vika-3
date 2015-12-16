@@ -35,12 +35,12 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
 
     getRelationList(pioneer);
 
-    //if(!(pioneer.getImageByteArray().isEmpty())){
+    if(!(pioneer.getImageByteArray().isEmpty())){
         QPixmap pixmap = QPixmap();
         pixmap.loadFromData(pioneer.getImageByteArray());
         ui->label_image->setPixmap(pixmap);
         ui->label_image->setScaledContents(true);
-    //}
+    }
 }
 
 void MoreInfoPioneer::getRelationList(Pioneer pioneer){
