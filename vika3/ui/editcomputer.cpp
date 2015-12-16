@@ -107,15 +107,17 @@ void editComputer::setComputer(Computer comp){
 }
 
 
-void editComputer::on_pushButton_editcomputer_clicked()
-{
+void editComputer::on_pushButton_editcomputer_clicked(){
+    // Clear error messages
+    emptyLines();
+
     string name = ui->edit_name->text().toStdString();
     string built = getCurrentWasItBuilt();
     string type = getCurrentType();
     string buildYear = ui->edit_buildyear->text().toStdString();
     string description = ui->edit_description->toPlainText().toStdString();
 
-    bool error = errorCheck(name, buildYear, type, built, description);
+    bool error = errorCheck(name, built, buildYear, type, description);
     if(error){
         return;
     }
@@ -140,6 +142,14 @@ void editComputer::on_pushButton_editcomputer_clicked()
     }
 }
 
+void editComputer::emptyLines(){
+    ui->label_name_error->setText("");
+    ui->label_type_error->setText("");
+    ui->label_wasbuilt_error->setText("");
+    ui->label_description_error->setText("");
+    ui->label_build_year_error->setText("");
+}
+
 bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, string type, string description){
     bool error = false;
 
@@ -154,6 +164,7 @@ bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, st
     if(wasBuilt.empty()){
         ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>Choose Yes/No!</span>");
         error = true;
+        qDebug() << QString::fromStdString(wasBuilt);
     }
 
     if((wasBuilt == "" || wasBuilt == "No") && buildYear.empty()){

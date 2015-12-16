@@ -30,7 +30,8 @@ public:
         // Returns currently chosen sex from dropdown_sex
     bool is_number(string& s);
         // Returns true if string is a number, false if there is a nondigit in there somewhere
-
+    void emptyLines();
+        // Clears all the error messages
 
 private slots:
     void on_button_edit_pioneer_clicked();
