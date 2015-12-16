@@ -29,6 +29,8 @@ public:
         // Returns current type chosen in dropdown list
     string getCurrentWasItBuilt();
         // Returns current was it built chosen in dropdown list
+    bool is_number(string& s);
+        // Returns true if string is a number, false if there is a nondigit in there somewhere
 
 
 private slots:
