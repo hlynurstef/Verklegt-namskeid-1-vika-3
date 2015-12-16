@@ -447,8 +447,6 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
 
 
     if (returnValue == 1){
-        ui->dropdown_computers_filter_type->clear();
-        ui->dropdown_computers_filter_built->clear();
         displayAllComputers();
 
         ui->statusBar->showMessage("Computer has been added", 2000);
