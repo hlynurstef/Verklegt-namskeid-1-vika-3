@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>867</width>
-    <height>543</height>
+    <width>922</width>
+    <height>556</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -563,8 +563,8 @@ alternate-background-color: rgb(233, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>867</width>
-     <height>21</height>
+     <width>922</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
