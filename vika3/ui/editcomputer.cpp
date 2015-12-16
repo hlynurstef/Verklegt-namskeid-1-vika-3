@@ -140,36 +140,62 @@ void editComputer::on_pushButton_editcomputer_clicked()
     }
 }
 
-bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, string type, string description)
-{
+bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, string type, string description){
     bool error = false;
 
     if(name.empty()){
-        ui->label_name_error->setText("<span style ='color: #ff0000'>Input computer name</span>");
+        ui->label_name_error->setText("<span style ='color: #ff0000'>Input Name!</span>");
         error = true;
     }
-
     if(type.empty()){
-        ui->label_type_error->setText("<span style ='color: #ff0000'>Input type</span>");
+        ui->label_type_error->setText("<span style ='color: #ff0000'>Choose Type!</span>");
         error = true;
     }
-    if(description.empty()){
-        ui->label_description_error->setText("<span style ='color: #ff0000'>Input description</span>");
-    }
-
     if(wasBuilt.empty()){
-        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>input was it built?</span>");
-            error = true;
+        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>Choose Yes/No!</span>");
+        error = true;
     }
 
-    if(buildYear.empty() && wasBuilt == "yes"){
-        ui->label_wasbuilt_error->setText("<span style ='color: #ff0000'>Input build year</span>");
+    if((wasBuilt == "" || wasBuilt == "No") && buildYear.empty()){
+        // do nothing
+    }
+    if((wasBuilt == "false") && !buildYear.empty()){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Computer Wasn't Built!</span>");
+        error = true;
+    }
+    else if(wasBuilt == "true" && buildYear.empty()){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Input Build Year!</span>");
+        error = true;
+    }
+    else if(wasBuilt == "true" && !is_number(buildYear)){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
+        error = true;
     }
 
+    if(description.empty()){
+        ui->label_description_error->setText("<span style ='color: #ff0000'>Input Description!</span>");
+        error = true;
+    }
+
+    int bYear = atoi(buildYear.c_str());
+
+    if(bYear > constants::CURRENT_YEAR){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Computers from the future are not allowed!</span>");
+        error = true;
+    }
     if(error == true){
         return true;
     }
     return false;
+}
+
+bool editComputer::is_number(string& s){
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)){
+        ++it;
+    }
+
+    return !s.empty() && it == s.end();
 }
 
 void editComputer::on_button_cancel_clicked(){
