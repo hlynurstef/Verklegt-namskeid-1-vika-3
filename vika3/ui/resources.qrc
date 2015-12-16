@@ -6,5 +6,6 @@
         <file>Images/computer.png</file>
         <file>Images/add_comp.png</file>
         <file>Images/add_pio.png</file>
+        <file>Images/Trash_Can.png</file>
     </qresource>
 </RCC>
