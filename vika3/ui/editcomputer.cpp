@@ -226,7 +226,7 @@ void editComputer::on_button_add_relation_clicked(){
     ui->button_add_relation->setEnabled(false);
 }
 
-<<<<<<< HEAD
+
 void editComputer::on_pushButton_image_clicked()
 {
     QString filePath = QFileDialog::getOpenFileName(
@@ -251,7 +251,6 @@ void editComputer::on_pushButton_image_clicked()
         //didn't open file
     }
 
-=======
 string editComputer::getCurrentType(){
     string type = ui->edit_dropdown_type->currentText().toStdString();
 
@@ -290,5 +289,5 @@ string editComputer::getCurrentWasItBuilt(){
     else{
         return "";
     }
->>>>>>> df6363d54afd538457686d04298de153ea2c0977
+
 }
