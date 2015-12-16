@@ -255,6 +255,7 @@ void editComputer::on_pushButton_image_clicked()
 
         //didn't open file
     }
+}
 
 string editComputer::getCurrentType(){
     string type = ui->edit_dropdown_type->currentText().toStdString();
