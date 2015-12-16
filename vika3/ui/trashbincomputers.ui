@@ -32,12 +32,26 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QListWidget" name="list_trash"/>
+        <widget class="QTableWidget" name="table_computers">
+         <column>
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Build Year</string>
+          </property>
+         </column>
+        </widget>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QPushButton" name="button_restore_selected">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Restore Selected</string>
            </property>
