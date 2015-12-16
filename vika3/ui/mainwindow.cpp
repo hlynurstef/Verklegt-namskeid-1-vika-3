@@ -533,10 +533,12 @@ void MainWindow::on_trash_button_pioneers_clicked()
 {
     TrashBinPioneers trash;
     trash.exec();
+    displayAllPioneers();
 }
 
 void MainWindow::on_trash_button_computers_clicked()
 {
     TrashBinComputers trash;
     trash.exec();
+    displayAllComputers();
 }

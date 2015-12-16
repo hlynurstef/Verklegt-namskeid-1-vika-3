@@ -115,13 +115,13 @@ void editComputer::on_pushButton_editcomputer_clicked()
     string buildYear = ui->edit_buildyear->text().toStdString();
     string description = ui->edit_description->toPlainText().toStdString();
 
-    if(buildYear.empty()){
-        buildYear = "0";
+    bool error = errorCheck(name, buildYear, type, built, description);
+    if(error){
+        return;
     }
 
-    bool error = errorCheck(name, built, buildYear, type, description);
-    if(error == true){
-        return;
+    if(buildYear.empty()){
+        buildYear = "0";
     }
 
     int bYear = atoi(buildYear.c_str());
@@ -172,6 +172,22 @@ bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, st
         error = true;
     }
 
+    if((wasBuilt == "" || wasBuilt == "No") && buildYear.empty()){
+        // do nothing
+    }
+    if((wasBuilt == "false") && !buildYear.empty()){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Computer Wasn't Built!</span>");
+        error = true;
+    }
+    else if(wasBuilt == "true" && buildYear.empty()){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Input Build Year!</span>");
+        error = true;
+    }
+    else if(wasBuilt == "true" && !is_number(buildYear)){
+        ui->label_build_year_error->setText("<span style ='color: #ff0000'>Input a Number!</span>");
+        error = true;
+    }
+
     if(description.empty()){
         ui->label_description_error->setText("<span style ='color: #ff0000'>Input Description!</span>");
         error = true;
@@ -183,19 +199,22 @@ bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, st
         ui->label_build_year_error->setText("<span style ='color: #ff0000'>Computers from the future are not allowed!</span>");
         error = true;
     }
+
     if(error == true){
         return true;
-    }
-    return false;
+      }
+        return false;
+
 }
 
 bool editComputer::is_number(string& s){
-    string::const_iterator it = s.begin();
-    while (it != s.end() && isdigit(*it)){
-        ++it;
-    }
 
-    return !s.empty() && it == s.end();
+    string::const_iterator it = s.begin();
+        while (it != s.end() && isdigit(*it)){
+            ++it;
+        }
+
+        return !s.empty() && it == s.end();
 }
 
 void editComputer::on_button_cancel_clicked(){
