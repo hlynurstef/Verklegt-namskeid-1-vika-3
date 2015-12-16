@@ -278,21 +278,21 @@ void PioneerConnection::editPioneer(Pioneer pio){
     string deleted = "false";
     QByteArray image = pio.getImageByteArray();
 
-    string bYearString = to_string(bYear);
-    string dYearString = to_string(dYear);
-    string idString = to_string(id);
-
-    QString editId = QString::fromStdString(idString);
-    QString editName = QString::fromStdString(name);
-    QString editSex = QString::fromStdString(sex);
-    QString editByear = QString::fromStdString(bYearString);
-    QString editDyear = QString::fromStdString(dYearString);
-    QString editDesc = QString::fromStdString(desc);
-    QString editDeleted = QString::fromStdString(deleted);
-
-    query.prepare("UPDATE pioneers SET id = "+ editId +", name = '"+ editName +"', sex = '"+ editSex +"', bYear = "+ editByear +", dYear = "+ editDyear +", description = '"+ editDesc+"', image = "+ image +", deleted = '"+ editDeleted+"' WHERE id = "+ editId +"");
+    query.prepare("UPDATE pioneers SET id = :id, name = :name, sex = :sex, bYear = :birthYear, dYear = :deathYear, description = :description, image = :image, deleted = :deleted WHERE id = :id");
+    query.bindValue(":id", QString::number(id));
+    query.bindValue(":name", QString::fromStdString(name));
+    query.bindValue(":sex", QString::fromStdString(sex));
+    query.bindValue(":birthYear", QString::number(bYear));
+    query.bindValue(":deathYear", QString::number(dYear));
+    query.bindValue(":description", QString::fromStdString(desc));
+    if(image.isEmpty()){
+        query.bindValue(":image", QVariant(QVariant::String));
+    }
+    else{
+        query.bindValue(":image", image);       // Image BLOB value (set to NULL for now)
+    }
+    query.bindValue(":deleted", QString::fromStdString(deleted));
     query.exec();
-
 }
 
 int PioneerConnection::getHighestId(){

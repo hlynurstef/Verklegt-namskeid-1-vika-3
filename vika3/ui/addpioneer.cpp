@@ -208,6 +208,9 @@ void AddPioneer::on_pushButton_browse_image_clicked(){
         QBuffer inBuffer( &inByteArray );
         inBuffer.open( QIODevice::WriteOnly );
         pixmap.save( &inBuffer, "JPG" );
+
+
+
     }
     else{
 

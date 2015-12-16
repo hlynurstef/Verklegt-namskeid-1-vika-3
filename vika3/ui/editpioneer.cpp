@@ -2,6 +2,7 @@
 #include "ui_editpioneer.h"
 #include "utilities/constants.h"
 #include <QMessageBox>
+#include <QDebug>
 
 editPioneer::editPioneer(QWidget *parent) :
     QDialog(parent),
