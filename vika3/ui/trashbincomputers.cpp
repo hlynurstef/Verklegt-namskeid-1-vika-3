@@ -44,20 +44,38 @@ void TrashBinComputers::on_table_computers_clicked(const QModelIndex &index)
 
 void TrashBinComputers::on_button_restore_selected_clicked()
 {
-    int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
-    Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
+    if (reply == QMessageBox::Yes){
+        int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
 
-    data.editComputer(currentlySelectedComputer);
+        Computer currentlySelectedComputer = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
-    displayComputers();
+        data.editComputer(currentlySelectedComputer);
+
+        displayComputers();
+
+    }
+    else{
+        return;
+    }
 }
 
 void TrashBinComputers::on_button_take_out_the_trash_clicked()
 {
-    data.removeComputer();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
-    displayComputers();
+    if (reply == QMessageBox::Yes){
+
+        data.removeComputer();
+
+        displayComputers();
+    }
+    else{
+        return;
+    }
 }
 
 void TrashBinComputers::on_button_close_clicked()

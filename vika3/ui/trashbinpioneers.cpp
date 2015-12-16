@@ -44,20 +44,38 @@ void TrashBinPioneers::on_table_pioneers_clicked(const QModelIndex &index)
 
 void TrashBinPioneers::on_button_restore_selected_clicked()
 {
-    int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
-    Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+    if (reply == QMessageBox::Yes){
 
-    data.editPioneer(currentlySelectedPioneer);
+        int currentlySelectedPioneerIndex = ui->table_pioneers->currentIndex().row();
 
-    displayPioneers();
+        Pioneer currentlySelectedPioneer = currentlyDisplayedPioneers[currentlySelectedPioneerIndex];
+
+        data.editPioneer(currentlySelectedPioneer);
+
+        displayPioneers();
+    }
+    else{
+        return;
+    }
 }
 
 void TrashBinPioneers::on_button_take_out_the_trash_clicked()
 {
-    data.removePioneer();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
-    displayPioneers();
+    if (reply == QMessageBox::Yes){
+
+        data.removePioneer();
+
+        displayPioneers();
+    }
+    else{
+        return;
+    }
 }
 
 void TrashBinPioneers::on_button_close_clicked()
