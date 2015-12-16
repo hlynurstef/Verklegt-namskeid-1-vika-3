@@ -281,9 +281,7 @@ void ComputerConnection::editComputer(Computer comp)
     query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', image = '"+ image +"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
     query2.exec();
 
-    QMessageBox::warning(NULL, "Success", "UPDATE Computers SET id = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"'", QMessageBox::Yes, QMessageBox::No);
 }
-
 
 void ComputerConnection::deleteAllComputers(){
     query2.exec("DELETE FROM computers");
