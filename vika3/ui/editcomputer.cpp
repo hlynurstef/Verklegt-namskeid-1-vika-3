@@ -58,7 +58,12 @@ void editComputer::setComputer(Computer comp){
     ui->edit_name->setText(QString::fromStdString(comp.getComputerName()));
     ui->edit_dropdown_type->setCurrentText(QString::fromStdString(type));
     ui->edit_dropdown_was_it_built->setCurrentText(QString::fromStdString(wasBuilt));
-    ui->edit_buildyear->setText(QString::number(comp.getBuildYear()));
+    if(comp.getBuildYear() == 0){
+        ui->edit_buildyear->setText(QString::fromStdString(""));
+    }
+    else{
+        ui->edit_buildyear->setText(QString::number(comp.getBuildYear()));
+    }
     ui->edit_description->setText(QString::fromStdString(comp.getComputerDescription()));
 
     vector<Relation> allRelations = relService.displayRelations();

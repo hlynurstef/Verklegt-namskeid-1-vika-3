@@ -28,6 +28,8 @@ public:
     void displayUnrelatedComputers();
     string getCurrentSex();
         // Returns currently chosen sex from dropdown_sex
+    bool is_number(string& s);
+        // Returns true if string is a number, false if there is a nondigit in there somewhere
 
 
 private slots:
