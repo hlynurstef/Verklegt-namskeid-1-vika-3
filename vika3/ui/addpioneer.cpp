@@ -216,6 +216,7 @@ void AddPioneer::on_pushButton_browse_image_clicked()
     else{
 
         //didn't open file
+        return;
     }
 
 

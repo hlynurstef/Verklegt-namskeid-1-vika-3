@@ -9,6 +9,7 @@
 #include "services/computerservice.h"
 
 #include <QDialog>
+#include <QPixmap>
 
 namespace Ui {
 class editPioneer;
