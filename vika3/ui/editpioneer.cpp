@@ -9,9 +9,9 @@ editPioneer::editPioneer(QWidget *parent) :
     ui->setupUi(this);
 
     // dropdown list for sex
-    ui->dropdown_sex->addItem("");
-    ui->dropdown_sex->addItem("Male");
-    ui->dropdown_sex->addItem("Female");
+    ui->edit_dropdown_sex->addItem("");
+    ui->edit_dropdown_sex->addItem("Male");
+    ui->edit_dropdown_sex->addItem("Female");
 }
 
 editPioneer::~editPioneer()
@@ -35,7 +35,7 @@ void editPioneer::setPioneer(Pioneer pio){
     }
 
     ui->edit_name->setText(QString::fromStdString(pio.getName()));
-    ui->dropdown_sex->setCurrentText(QString::fromStdString(sex));
+    ui->edit_dropdown_sex->setCurrentText(QString::fromStdString(sex));
     //ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
     ui->edit_birth_year->setText(QString::fromStdString(birthyear));
     ui->edit_death_year->setText(QString::fromStdString(deathyear));
@@ -235,7 +235,7 @@ void editPioneer::on_pushButton_browse_image_clicked()
 }
 
 string editPioneer::getCurrentSex(){
-    string sex = ui->dropdown_sex->currentText().toStdString();
+    string sex = ui->edit_dropdown_sex->currentText().toStdString();
 
     if(sex == ""){
         return "";
