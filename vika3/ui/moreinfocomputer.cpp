@@ -2,6 +2,8 @@
 #include "ui_moreinfocomputer.h"
 #include "utilities/constants.h"
 #include "data_types/computer.h"
+#include <QDebug>
+#include <QPixmap>
 
 using namespace std;
 
@@ -36,6 +38,13 @@ void MoreInfoComputer::setComputer(Computer computer){
     ui->label_description->setText(QString::fromStdString(computer.getComputerDescription()));
 
     getRelationList(computer);
+
+    if(!(computer.getImageByteArray().isEmpty())){
+        QPixmap pixmap = QPixmap();
+        pixmap.loadFromData(computer.getImageByteArray());
+        ui->label_image->setPixmap(pixmap);
+        ui->label_image->setScaledContents(true);
+    }
 }
 
 void MoreInfoComputer::getRelationList(Computer computer){

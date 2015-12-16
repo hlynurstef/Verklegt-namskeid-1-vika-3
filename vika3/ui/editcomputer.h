@@ -39,6 +39,8 @@ private slots:
 
     void on_button_add_relation_clicked();
 
+    void on_pushButton_image_clicked();
+
 private:
     Ui::editComputer *ui;
     Computer computer;
@@ -48,6 +50,7 @@ private:
     PioneerService pioService;
     Relation rel;
     vector<Pioneer> relatedPioneers, unrelatedPioneers;
+    QByteArray image;
 
     int compID;
 };

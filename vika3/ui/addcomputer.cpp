@@ -1,6 +1,9 @@
 #include "addcomputer.h"
 #include "ui_addcomputer.h"
 #include "utilities/constants.h"
+
+#include <QtSql>
+#include <QtWidgets>
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QFileDialog>
@@ -53,7 +56,7 @@ void addComputer::on_button_add_computer_clicked()
     }
 
     int bYear = atoi(buildYear.c_str());
-    Computer comp(name, bYear, type, wasItBuilt, description);
+    Computer comp(name, bYear, type, wasItBuilt, description, inByteArray);
 
     int answer = QMessageBox::question(this, "Add Computer", "Are you sure you want to add " + QString::fromStdString(comp.getComputerName()) + " to list?");
 
@@ -237,4 +240,30 @@ void addComputer::on_button_remove_relation_clicked(){
 
 void addComputer::on_button_computer_cancel_clicked(){
     this->done(0);
+}
+
+void addComputer::on_pushButton_image_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(
+                    this,
+                    "Search for images",
+                    "/home",
+                    "Image files (*.jpg)"
+                );
+
+    if (filePath.length()) // File selected
+    {
+        QPixmap pixmap(filePath);
+
+        ui->lineEdit_image->setText(filePath);
+
+        QBuffer inBuffer( &inByteArray );
+        inBuffer.open( QIODevice::WriteOnly );
+        pixmap.save( &inBuffer, "JPG" );
+    }
+    else{
+
+        //didn't open file
+    }
+
 }

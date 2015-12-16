@@ -1,26 +1,32 @@
 #include "data_types/computer.h"
 #include "utilities/constants.h"
+#include <string>
+#include <cstdlib>
+#include <sstream>
+
 
 Computer::Computer(){
 
 }
 
-Computer::Computer(string inputName, int inputYear, string inputType, string inputBuilt, string inputDes){
+Computer::Computer(string inputName, int inputYear, string inputType, string inputBuilt, string inputDes, QByteArray image){
     id = NULL;
     computerName = inputName;
     computerBuildYear = inputYear;
     computerType = inputType;
     wasItBuilt = inputBuilt;
     computerDescription = inputDes;
+    imageByteArray = image;
 }
 
-Computer::Computer(int index, string inputName, int inputYear, string inputType, string inputBuilt, string inputDes){
+Computer::Computer(int index, string inputName, int inputYear, string inputType, string inputBuilt, string inputDes, QByteArray image){
     id = index;
     computerName = inputName;
     computerBuildYear = inputYear;
     computerType = inputType;
     wasItBuilt = inputBuilt;
     computerDescription = inputDes;
+    imageByteArray = image;
 }
 
 int Computer::getId(){
@@ -45,6 +51,11 @@ string Computer::getWasItBuilt(){
 
 string Computer::getComputerDescription(){
     return computerDescription;
+}
+
+QByteArray Computer::getImageByteArray(){
+
+    return imageByteArray;
 }
 
 ostream& operator <<(ostream& out, Computer temp){

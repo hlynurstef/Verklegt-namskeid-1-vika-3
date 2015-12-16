@@ -56,7 +56,8 @@ Computer ComputerConnection::getCompValuesFromDB(QSqlQuery query2){
     string computerType = query2.value("computer_type").toString().toStdString();
     string wasBuilt = query2.value("was_built").toString().toStdString();
     string description = query2.value("description").toString().toStdString();
-    Computer tempo(id, name, buildYear, computerType, wasBuilt, description);
+    QByteArray outByteArray = query2.value("image").toByteArray();
+    Computer tempo(id, name, buildYear, computerType, wasBuilt, description,outByteArray);
     return tempo;
 }
 
@@ -67,6 +68,8 @@ void ComputerConnection::addToCompTable(Computer computer){
         string wasBuilt = computer.getWasItBuilt();
         string desc = computer.getComputerDescription();
         string deleted = "false";
+        QByteArray image = computer.getImageByteArray();
+
 
         transform(computerType.begin(), computerType.end(), computerType.begin(), ::tolower);
         transform(wasBuilt.begin(), wasBuilt.end(), wasBuilt.begin(), ::tolower);
@@ -83,7 +86,12 @@ void ComputerConnection::addToCompTable(Computer computer){
         query2.bindValue(":tempWasBuilt", QString::fromStdString(wasBuilt));
         query2.bindValue(":tempDesc", QString::fromStdString(desc));
         query2.bindValue(":tempDeleted", QString::fromStdString(deleted));  // Deleted
-        query2.bindValue(":tempImage", QVariant(QVariant::String));         // Image BLOB value (set to NULL for now)
+        if(image.isEmpty()){
+            query2.bindValue(":tempImage", QVariant(QVariant::String));
+        }
+        else{
+            query2.bindValue(":tempImage", image);       // Image BLOB value (set to NULL for now)
+        }
         query2.exec();
 }
 
@@ -143,8 +151,9 @@ vector<Computer> ComputerConnection::printQuery(string built, string type, strin
         string computerType = query2.value("computer_type").toString().toStdString();
         string wasBuilt = query2.value("was_built").toString().toStdString();
         string description = query2.value("description").toString().toStdString();
+        QByteArray image = query2.value("image").toByteArray();
 
-        list.push_back(Computer(id, name, buildYear, computerType, wasBuilt, description));
+        list.push_back(Computer(id, name, buildYear, computerType, wasBuilt, description, image));
     }
 
     return list;
@@ -183,8 +192,9 @@ vector<Computer> ComputerConnection::searchComp(string searchWord, string search
         string computerType = query2.value("computer_type").toString().toStdString();
         string wasBuilt = query2.value("was_built").toString().toStdString();
         string description = query2.value("description").toString().toStdString();
+        QByteArray image = query2.value("image").toByteArray();
 
-        searchTempComp.push_back(Computer(id, name, buildYear, computerType, wasBuilt, description));
+        searchTempComp.push_back(Computer(id, name, buildYear, computerType, wasBuilt, description, image));
     }
     return searchTempComp;
 }
@@ -248,6 +258,7 @@ void ComputerConnection::editComputer(Computer comp)
     string type = comp.getComputerType();
     string compdesc = comp.getComputerDescription();
     string deleted = "false";
+    QByteArray image = comp.getImageByteArray();
 
     string buildYearString;
     ostringstream convert;
@@ -267,7 +278,7 @@ void ComputerConnection::editComputer(Computer comp)
     QString editcompDesc = QString::fromStdString(compdesc);
     QString editDeleted = QString::fromStdString(deleted);
 
-    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
+    query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', image = '"+ image +"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
     query2.exec();
 
     QMessageBox::warning(NULL, "Success", "UPDATE Computers SET id = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"' WHERE id = "+ editId +"'", QMessageBox::Yes, QMessageBox::No);

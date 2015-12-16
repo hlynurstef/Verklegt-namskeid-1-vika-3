@@ -48,7 +48,7 @@ private:
     RelationService relationService;
     vector<Computer> unrelatedComputersList;    // This vector holds onto every computer that is currently displayed on main window
     vector<Computer> relatedComputersList;      // This vector holds onto every computer related to Pioneer
-    QByteArray inByteArray;
+    QByteArray inByteArray;                     // This vector holds onto the image of the pioneer
 };
 
 #endif // ADDPIONEER_H

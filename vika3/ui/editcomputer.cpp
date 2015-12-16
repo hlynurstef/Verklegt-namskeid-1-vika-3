@@ -88,7 +88,7 @@ void editComputer::on_pushButton_editcomputer_clicked()
 
     int bYear = atoi(buildYear.c_str());
 
-    Computer comp(compID, name, bYear, type, built, description);
+    Computer comp(compID, name, bYear, type, built, description, image);
 
     compService.editComputer(comp);
 
@@ -184,4 +184,30 @@ void editComputer::on_button_add_relation_clicked(){
     relService.addRelations(pioID, compID);
 
     ui->button_add_relation->setEnabled(false);
+}
+
+void editComputer::on_pushButton_image_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(
+                    this,
+                    "Search for images",
+                    "/home",
+                    "Image files (*.jpg)"
+                );
+
+    if (filePath.length()) // File selected
+    {
+        QPixmap pixmap(filePath);
+
+        ui->lineEdit_image->setText(filePath);
+
+        QBuffer inBuffer( &image );
+        inBuffer.open( QIODevice::WriteOnly );
+        pixmap.save( &inBuffer, "JPG" );
+    }
+    else{
+
+        //didn't open file
+    }
+
 }
