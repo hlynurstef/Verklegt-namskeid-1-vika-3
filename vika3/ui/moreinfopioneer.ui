@@ -235,6 +235,11 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>pushButton_close</tabstop>
+  <tabstop>textBrowser_relation</tabstop>
+  <tabstop>textBrowser_description</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

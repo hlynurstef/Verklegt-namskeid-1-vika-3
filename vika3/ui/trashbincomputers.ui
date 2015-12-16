@@ -136,6 +136,12 @@ alternate-background-color: rgb(233, 255, 255);</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>table_computers</tabstop>
+  <tabstop>button_restore_selected</tabstop>
+  <tabstop>button_take_out_the_trash</tabstop>
+  <tabstop>button_close</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

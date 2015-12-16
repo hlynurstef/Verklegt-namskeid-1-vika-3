@@ -10,8 +10,6 @@ using namespace std;
  */
 namespace constants {
 
-    // Following constants are used when asking user how to print the list:
-
     const std::string MALE = "male";
     const std::string FEMALE = "female";
     const std::string IS_NULL = "IS NULL";

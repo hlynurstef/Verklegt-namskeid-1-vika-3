@@ -227,6 +227,11 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>label_relation</tabstop>
+  <tabstop>label_description</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

@@ -242,6 +242,21 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>edit_name</tabstop>
+  <tabstop>edit_dropdown_sex</tabstop>
+  <tabstop>edit_birth_year</tabstop>
+  <tabstop>edit_death_year</tabstop>
+  <tabstop>edit_description</tabstop>
+  <tabstop>list_unrelated_computers</tabstop>
+  <tabstop>button_add_relation</tabstop>
+  <tabstop>list_related_computers</tabstop>
+  <tabstop>button_remove_relation</tabstop>
+  <tabstop>pushButton_browse_image</tabstop>
+  <tabstop>button_edit_pioneer</tabstop>
+  <tabstop>button_cancel</tabstop>
+  <tabstop>lineEdit_image</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

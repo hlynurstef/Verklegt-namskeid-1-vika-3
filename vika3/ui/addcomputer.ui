@@ -243,8 +243,18 @@
  </widget>
  <tabstops>
   <tabstop>input_computer_name</tabstop>
+  <tabstop>dropdown_type</tabstop>
+  <tabstop>dropdown_was_it_built</tabstop>
   <tabstop>input_computer_build_year</tabstop>
+  <tabstop>input_computer_description</tabstop>
+  <tabstop>list_unrelated_pioneers</tabstop>
+  <tabstop>button_add_relation</tabstop>
+  <tabstop>list_related_pioneers</tabstop>
+  <tabstop>button_remove_relation</tabstop>
+  <tabstop>pushButton_image</tabstop>
   <tabstop>button_add_computer</tabstop>
+  <tabstop>button_computer_cancel</tabstop>
+  <tabstop>lineEdit_image</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>

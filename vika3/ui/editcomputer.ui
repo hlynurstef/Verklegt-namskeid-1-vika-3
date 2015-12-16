@@ -231,6 +231,21 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>edit_name</tabstop>
+  <tabstop>edit_dropdown_type</tabstop>
+  <tabstop>edit_dropdown_was_it_built</tabstop>
+  <tabstop>edit_buildyear</tabstop>
+  <tabstop>edit_description</tabstop>
+  <tabstop>list_unrelated_pioneers</tabstop>
+  <tabstop>button_add_relation</tabstop>
+  <tabstop>list_related_pioneers</tabstop>
+  <tabstop>button_remove_relation</tabstop>
+  <tabstop>pushButton_image</tabstop>
+  <tabstop>pushButton_editcomputer</tabstop>
+  <tabstop>button_cancel</tabstop>
+  <tabstop>lineEdit_image</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

@@ -19,16 +19,14 @@ public:
 
 private slots:
     void on_table_computers_clicked(const QModelIndex &);
-
     void on_button_restore_selected_clicked();
-
     void on_button_take_out_the_trash_clicked();
-
     void on_button_close_clicked();
 
 private:
     Ui::TrashBinComputers *ui;
     void displayComputers();
+        // Displays the computer in the trash bin
     vector<Computer> currentlyDisplayedComputers;
     ComputerService data;
 };

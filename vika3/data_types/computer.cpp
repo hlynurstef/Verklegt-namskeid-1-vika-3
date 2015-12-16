@@ -10,7 +10,7 @@ Computer::Computer(){
 }
 
 Computer::Computer(string inputName, int inputYear, string inputType, string inputBuilt, string inputDes, QByteArray image){
-    id = NULL;
+    id = 0;
     computerName = inputName;
     computerBuildYear = inputYear;
     computerType = inputType;
