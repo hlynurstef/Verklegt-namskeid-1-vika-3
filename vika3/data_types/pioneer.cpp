@@ -27,7 +27,7 @@ Pioneer::Pioneer(int index, string pName, string s, int birthY, int deathY, stri
     bYear = birthY;
     dYear = deathY;
     description = desc;
-    //imageByteArray = image;
+    imageByteArray = image;
 }
 
 int Pioneer::getId(){
