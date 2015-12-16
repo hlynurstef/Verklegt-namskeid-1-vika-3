@@ -50,6 +50,8 @@ private slots:
     void on_button_add_relation_clicked();
     void on_pushButton_image_clicked();
 
+    void on_button_remove_image_clicked();
+
 private:
     Ui::editComputer *ui;
     Computer computer;

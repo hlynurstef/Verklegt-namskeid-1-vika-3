@@ -53,6 +53,8 @@ void editComputer::setComputer(Computer comp){
         wasBuilt = "No";
     }
 
+    ui->button_remove_image->setEnabled(false);
+
     // Printing info
     ui->edit_name->setText(QString::fromStdString(comp.getComputerName()));
     ui->edit_dropdown_type->setCurrentText(QString::fromStdString(type));
@@ -66,6 +68,7 @@ void editComputer::setComputer(Computer comp){
     ui->edit_description->setText(QString::fromStdString(comp.getComputerDescription()));
     if(!comp.getImageByteArray().isEmpty()){
             currentImage = comp.getImageByteArray();
+            ui->button_remove_image->setEnabled(true);
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + comp.getComputerName()));
     }
 
@@ -358,4 +361,10 @@ string editComputer::getCurrentWasItBuilt(){
         return "";
     }
 
+}
+
+void editComputer::on_button_remove_image_clicked(){
+    currentImage.clear();
+    ui->lineEdit_image->setText(QString::fromStdString("Current Image has been deleted!"));
+    ui->button_remove_image->setEnabled(false);
 }

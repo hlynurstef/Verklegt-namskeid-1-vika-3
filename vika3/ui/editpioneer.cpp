@@ -34,6 +34,8 @@ void editPioneer::setPioneer(Pioneer pio){
         sex = "Female";
     }
 
+    ui->button_remove_image->setEnabled(false);
+
     ui->edit_name->setText(QString::fromStdString(pio.getName()));
     ui->edit_dropdown_sex->setCurrentText(QString::fromStdString(sex));
     ui->edit_birth_year->setText(QString::number(pio.getByear()));
@@ -46,6 +48,7 @@ void editPioneer::setPioneer(Pioneer pio){
     ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
     if(!pio.getImageByteArray().isEmpty()){
             currentImage = pio.getImageByteArray();
+            ui->button_remove_image->setEnabled(true);
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
     }
 
@@ -300,4 +303,10 @@ string editPioneer::getCurrentSex(){
     else{
         return "";
     }
+}
+
+void editPioneer::on_button_remove_image_clicked(){
+    currentImage.clear();
+    ui->lineEdit_image->setText(QString::fromStdString("Current Image has been deleted!"));
+    ui->button_remove_image->setEnabled(false);
 }

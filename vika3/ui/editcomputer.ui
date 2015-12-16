@@ -17,15 +17,15 @@
    <iconset resource="resources.qrc">
     <normaloff>:/icons/Images/edit_.png</normaloff>:/icons/Images/edit_.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
     <widget class="QLabel" name="label_edit_computer">
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Edit computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -121,7 +121,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="label_description">
@@ -139,10 +139,10 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item>
     <widget class="QTextEdit" name="edit_description"/>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -188,18 +188,33 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
-    <widget class="QLineEdit" name="lineEdit_image"/>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_9">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_image">
+       <property name="placeholderText">
+        <string>No image selected</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_image">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="pushButton_image">
-     <property name="text">
-      <string>Browse</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="2">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <widget class="QPushButton" name="button_remove_image">
+       <property name="text">
+        <string>Remove Current Image</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
