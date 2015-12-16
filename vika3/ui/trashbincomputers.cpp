@@ -55,6 +55,7 @@ void TrashBinComputers::on_button_restore_selected_clicked()
         data.editComputer(currentlySelectedComputer);
 
         displayComputers();
+        ui->button_restore_selected->setEnabled(false);
 
     }
     else{

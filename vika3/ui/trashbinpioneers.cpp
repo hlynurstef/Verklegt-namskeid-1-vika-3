@@ -56,6 +56,8 @@ void TrashBinPioneers::on_button_restore_selected_clicked()
         data.editPioneer(currentlySelectedPioneer);
 
         displayPioneers();
+
+        ui->button_restore_selected->setEnabled(false);
     }
     else{
         return;
