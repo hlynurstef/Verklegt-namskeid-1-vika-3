@@ -1,5 +1,7 @@
 #ifndef TRASHBINPIONEERS_H
 #define TRASHBINPIONEERS_H
+#include "services/pioneerservice.h"
+#include "ui/mainwindow.h"
 
 #include <QDialog>
 

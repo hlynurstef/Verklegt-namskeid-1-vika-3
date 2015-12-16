@@ -26,6 +26,8 @@ public:
     bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
     void displayRelatedComputers();
     void displayUnrelatedComputers();
+    string getCurrentSex();
+        // Returns currently chosen sex from dropdown_sex
 
 
 private slots:

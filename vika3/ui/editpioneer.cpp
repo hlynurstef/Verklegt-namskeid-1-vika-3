@@ -1,11 +1,17 @@
 #include "editpioneer.h"
 #include "ui_editpioneer.h"
+#include "utilities/constants.h"
 
 editPioneer::editPioneer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editPioneer)
 {
     ui->setupUi(this);
+
+    // dropdown list for sex
+    ui->edit_dropdown_sex->addItem("");
+    ui->edit_dropdown_sex->addItem("Male");
+    ui->edit_dropdown_sex->addItem("Female");
 }
 
 editPioneer::~editPioneer()
@@ -17,16 +23,24 @@ void editPioneer::setPioneer(Pioneer pio){
 
     string birthyear = std::to_string(pio.getByear());
     string deathyear = std::to_string(pio.getDyear());
+    string sex;
 
     pioID = pio.getId();
 
+    if(pio.getSex() == constants::MALE){
+        sex = "Male";
+    }
+    else{
+        sex = "Female";
+    }
 
     ui->edit_name->setText(QString::fromStdString(pio.getName()));
-    ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
+    ui->edit_dropdown_sex->setCurrentText(QString::fromStdString(sex));
+    //ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
     ui->edit_birth_year->setText(QString::fromStdString(birthyear));
     ui->edit_death_year->setText(QString::fromStdString(deathyear));
     ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
-    if(!(pio.getImageByteArray().isEmpty())){
+    if(!pio.getImageByteArray().isEmpty()){
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
     }
 
@@ -76,7 +90,7 @@ void editPioneer::setPioneer(Pioneer pio){
 void editPioneer::on_button_edit_pioneer_clicked()
 {
     string name = ui->edit_name->text().toStdString();
-    string sex = ui->edit_sex->text().toStdString();
+    string sex = getCurrentSex();
     string birthyear = ui->edit_birth_year->text().toStdString();
     string deathyear = ui->edit_death_year->text().toStdString();
     string description = ui->edit_description->toPlainText().toStdString();
@@ -200,19 +214,39 @@ void editPioneer::on_pushButton_browse_image_clicked()
                     this,
                     "Search for images",
                     "/home",
-                    "Image files (*.png *.jpg)"
+                    "Image files (*.jpg)"
                 );
 
     if (filePath.length()) // File selected
     {
+        QPixmap pixmap(filePath);
+
         ui->lineEdit_image->setText(filePath);
 
-        QFile file(filePath);
-        image = file.readAll();
+        QBuffer inBuffer( &image );
+        inBuffer.open( QIODevice::WriteOnly );
+        pixmap.save( &inBuffer, "JPG" );
     }
     else{
 
         //didn't open file
     }
 
+}
+
+string editPioneer::getCurrentSex(){
+    string sex = ui->edit_dropdown_sex->currentText().toStdString();
+
+    if(sex == ""){
+        return "";
+    }
+    else if(sex == "Male"){
+        return constants::MALE;
+    }
+    else if(sex == "Female"){
+        return constants::FEMALE;
+    }
+    else{
+        return "";
+    }
 }
