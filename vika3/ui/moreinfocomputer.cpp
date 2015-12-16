@@ -32,7 +32,12 @@ void MoreInfoComputer::setComputer(Computer computer){
     else if(computer.getWasItBuilt() == "false"){
         ui->label_built->setText(QString::fromStdString("no"));
     }
+    if(computer.getBuildYear() == 0){
+        ui->label_buildYear->setText("was not built!");
+    }
+    else{
     ui->label_buildYear->setText(QString::number(computer.getBuildYear()));
+    }
     ui->label_description->setText(QString::fromStdString(computer.getComputerDescription()));
 
     getRelationList(computer);
