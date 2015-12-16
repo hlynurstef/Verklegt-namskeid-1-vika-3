@@ -25,6 +25,7 @@ class MoreInfoComputer : public QDialog
 public:
     explicit MoreInfoComputer(QWidget *parent = 0);
     ~MoreInfoComputer();
+
     void setComputer(Computer computer);
         // Sets information in MoreInfo window to the currently selected computer
 

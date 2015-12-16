@@ -476,12 +476,6 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
     }
 }
 
-vector<Computer> MainWindow::returnAllComputers(){
-    vector<Computer> allComp = computerService.getList();
-    return allComp;
-}
-
-
 void MainWindow::on_pushButton_computers_edit_clicked(){
     int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
     currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];

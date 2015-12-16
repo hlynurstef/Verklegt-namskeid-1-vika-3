@@ -38,17 +38,11 @@ public:
 
 private slots:
     void on_button_add_computer_clicked();
-
     void on_button_computer_cancel_clicked();
-
     void on_list_related_pioneers_clicked(const QModelIndex &);
-
     void on_list_unrelated_pioneers_clicked(const QModelIndex &);
-
     void on_button_add_relation_clicked();
-
     void on_button_remove_relation_clicked();
-
     void on_pushButton_image_clicked();
 
 private:

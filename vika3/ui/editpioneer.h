@@ -24,9 +24,13 @@ public:
     ~editPioneer();
 
     void setPioneer(Pioneer pio);
+        // Sets the information from pio to the edit window
     bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
+        // Checks for errors and displays them, returns true if error was displayed
     void displayRelatedComputers();
+        // Displays vector of Related Computers
     void displayUnrelatedComputers();
+        // Displays vector of Unrelated Computers
     string getCurrentSex();
         // Returns currently chosen sex from dropdown_sex
     bool is_number(string& s);
@@ -39,12 +43,8 @@ private slots:
     void on_list_unrelated_computers_clicked(const QModelIndex &);
     void on_list_related_computers_clicked(const QModelIndex &);
     void on_button_cancel_clicked();
-
-
     void on_button_remove_relation_clicked();
-
     void on_button_add_relation_clicked();
-
     void on_pushButton_browse_image_clicked();
 
 private:

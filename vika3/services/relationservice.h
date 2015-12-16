@@ -16,9 +16,11 @@ public:
     vector<Relation> relationSearch(string name, string column);
         // Returns vector containing relations to name
     void removePioneerRelation(int pioID);
-    // Sends pioneer information to RelationConnection, to remove all relations to that person
+        // Sends pioneer information to RelationConnection, to remove all relations to that person
     void removeRelation(int pioID, int compID);
+        // Send information to RelationConnection to remove a relation between pio and comp
     void removeComputerRelation(int compID);
+        // Sends computer information to RelationConnection to remove all relations to that computer
 private:
     RelationConnection connection;
     Pioneer pio;

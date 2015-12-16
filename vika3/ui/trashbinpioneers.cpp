@@ -35,7 +35,7 @@ void TrashBinPioneers::displayPioneers(){
     currentlyDisplayedPioneers = pio;
 }
 
-void TrashBinPioneers::on_table_pioneers_clicked(const QModelIndex &index){
+void TrashBinPioneers::on_table_pioneers_clicked(const QModelIndex &/* unused */){
     ui->button_restore_selected->setEnabled(true);
 }
 

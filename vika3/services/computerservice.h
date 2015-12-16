@@ -25,13 +25,15 @@ public:
     vector<Computer> getTrash();
         // Return list of computers in the trash
     void removeComputer();
+        // Calls ComputerConnection to remove computer
     void editComputer(Computer pio);
         // Sends information about a pioneer that needs to be edited
     int getHighestId();
         // Returns highest id in Pioneers table (most recently added entry)
-
     void computerToTrash(Computer comp);
+        // calls ComputerConnection to set delete flag on comp to "true"
     void removeSingleComputer(Computer comp);
+        // calls ComputerConnection to remove comp from SQL database
 private:
     Computer temp;                      // Temporary object to be used in various situations
     vector<Computer> tempList2;

@@ -22,7 +22,13 @@ void MoreInfoPioneer::setPioneer(Pioneer pioneer){
     //-------------------------- Printing info --------------------------
 
     ui->label_name->setText(QString::fromStdString(pioneer.getName()));
-    ui->label_sex->setText(QString::fromStdString(pioneer.getSex()));
+    if(pioneer.getSex() == constants::MALE){
+        ui->label_sex->setText(QString::fromStdString("Male"));
+    }
+    else{
+        ui->label_sex->setText(QString::fromStdString("Female"));
+    }
+
     ui->label_yearBorn->setText(QString::number(pioneer.getByear()));
     if(pioneer.getDyear() == 0){
         ui ->label_yearDied->setText(QString::fromStdString("Still alive!"));

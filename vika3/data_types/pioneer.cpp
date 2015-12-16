@@ -11,7 +11,7 @@ Pioneer::Pioneer(){
 }
 
 Pioneer::Pioneer(string pName, string s, int birthY, int deathY, string desc, QByteArray image){
-    id = NULL;
+    id = 0;
     name = pName;
     sex = s;
     bYear = birthY;
@@ -57,21 +57,6 @@ string Pioneer::getDescription(){
 QByteArray Pioneer::getImageByteArray(){
 
     return imageByteArray;
-}
-
-
-ostream& operator <<(ostream& out, Pioneer temp){
-    out << "Name: " << temp.getName() << endl;
-    out << "Sex: " << temp.getSex() << endl;
-    out << "Year of birth: " << temp.getByear() << endl;
-    if(temp.getDyear() == 0){
-        out << "Year of death: N/A" << endl;
-    }
-    else{
-        out << "Year of death: " << temp.getDyear() << endl;
-    }
-    out << "Description: " << temp.getDescription() << endl;
-    return out;
 }
 
 int Pioneer::getYear(int number){

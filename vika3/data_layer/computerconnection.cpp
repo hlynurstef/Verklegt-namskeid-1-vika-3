@@ -92,30 +92,6 @@ void ComputerConnection::addToCompTable(Computer computer){
         query2.exec();
 }
 
-vector<Computer> ComputerConnection::getComputerListAsc(){
-
-    // Read all information from the computers table and adds them to vector in ascending order
-    query2.exec("SELECT * FROM Computers ORDER by computer_name ASC");
-
-    while(query2.next()){
-        Computer C = getCompValuesFromDB(query2);
-        computers.push_back(C);
-    }
-    return computers;
-}
-
-vector<Computer> ComputerConnection::getComputerListDesc(){
-
-    // Read all information from the computers table and adds them to vector in descending order
-    query2.exec("SELECT * FROM Computers ORDER by computer_name DESC");
-
-    while(query2.next()){
-        Computer C = getCompValuesFromDB(query2);
-        computers.push_back(C);
-    }
-    return computers;
-}
-
 vector<Computer> ComputerConnection::printQuery(string built, string type, string orderCol, string order){
 
     // built can be: "true" or "false"
@@ -198,6 +174,7 @@ vector<Computer> ComputerConnection::searchComp(string searchWord, string search
 // ---------------------------------------------------------------------
 //                           DELETE FUNCTIONS
 // ---------------------------------------------------------------------
+
 void ComputerConnection::removeSingleComputer(Computer comp){
 
     stringstream sqlQuery;
@@ -210,7 +187,6 @@ void ComputerConnection::removeComputer(){
     query2.prepare("DELETE FROM Computers WHERE deleted = 'true'");
     query2.exec();
 }
-
 void ComputerConnection::computerToTrash(Computer comp){
     int id = comp.getId();
     string name = comp.getComputerName();
@@ -241,9 +217,6 @@ void ComputerConnection::computerToTrash(Computer comp){
     query2.prepare("UPDATE Computers SET id = "+ editId +", computer_name = '"+ editName +"', was_built = '"+ editBuilt +"', build_year = '"+ editYear +"', computer_type = '"+ editType +"', description = '"+ editcompDesc+"', deleted = '"+ editDeleted +"' WHERE id = "+ editId +"");
     query2.exec();
 }
-
-
-
 void ComputerConnection::editComputer(Computer comp){
     int id = comp.getId();
     string name = comp.getComputerName();

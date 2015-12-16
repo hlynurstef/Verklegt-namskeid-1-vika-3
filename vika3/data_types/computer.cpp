@@ -57,21 +57,3 @@ QByteArray Computer::getImageByteArray(){
 
     return imageByteArray;
 }
-
-ostream& operator <<(ostream& out, Computer temp){
-    out << "Name: " << temp.getComputerName() << endl;
-
-    string built = temp.getWasItBuilt();
-    if(built == constants::DB_TRUE){
-        out << "Build year: " << temp.getBuildYear() << endl;
-    }
-    else{
-        out << "This computer was not built." << endl;
-    }
-
-    out << "Computer Type: " << temp.getComputerType() << endl;
-    out << "Description: " << temp.getComputerDescription() << endl;
-    return out;
-}
-
-

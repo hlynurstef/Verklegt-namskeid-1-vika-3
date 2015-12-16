@@ -23,7 +23,9 @@ public:
     ~AddPioneer();
 
     bool errorCheck(string name, string sex, string birthyear, string deathyear, string description);
+        // Displays error messages and returns true if there were any error messages displayed
     void emptyLines();
+        // Clears all error messages from the window
     void displayUnrelatedComputers(vector<Computer> unrelatedComputers);
         // Prints vector of computers in the unrelated computers list
     void displayRelatedComputers(vector<Computer> relatedComputers);
@@ -32,6 +34,7 @@ public:
         // Returns true if inputted string is a number, false if there is a letter or symbol in there
     string getCurrentSex();
         // Returns what is chosen in dropdown_sex
+
 private slots:
     void on_button_add_pioneer_clicked();
     void on_list_unrelated_computers_clicked(const QModelIndex &);
@@ -39,7 +42,6 @@ private slots:
     void on_button_pioneer_add_relation_clicked();
     void on_button_pioneer_remove_relation_clicked();
     void on_button_add_pioneer_cancel_clicked();
-
     void on_pushButton_browse_image_clicked();
 
 private:

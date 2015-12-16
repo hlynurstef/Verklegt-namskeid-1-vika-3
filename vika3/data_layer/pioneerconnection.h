@@ -39,20 +39,14 @@ public:
         // Edits information already in table
     int getHighestId();
         // Returns highest id in Pioneers table (most recently added entry)
-
-    // ---------------------------------------------------------------------
-    //                        PRINT QUERY FUNCTIONS:
-    // ---------------------------------------------------------------------
-
     vector<Pioneer> printQueryPioneers(string sex, string dYear, string orderCol, string order);
         // Gets input from Print menu in interface and returns what the user wants to see printed
     vector<Pioneer> searchPio(string searchWord, string searchBy, string sex, string vitalStatus, string orderBy, string direction);
         // Searches through database for a name of pioneer that matches a search word
-
-
     void pioneerToTrash(Pioneer pio);
-
+        // Sets delete flag to "true"
     void removeSinglePioneer(Pioneer pio);
+        // Removes pio from SQL database
 private:
     vector<Pioneer> pioneers;       // Vector that holds onto all information on runtime
     Pioneer temp;

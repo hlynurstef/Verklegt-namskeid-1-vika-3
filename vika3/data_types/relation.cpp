@@ -18,9 +18,3 @@ string Relation::getPioName(){
 
     return pName;
 }
-
-ostream& operator <<(ostream& out, Relation temp){
-    out << "Name of pioneer: " << temp.getPioName() << endl;
-    out << "Name of computer: " << temp.getCompName() << endl;
-    return out;
-}

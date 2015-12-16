@@ -18,7 +18,7 @@ public:
     ~TrashBinComputers();
 
 private slots:
-    void on_table_computers_clicked(const QModelIndex &index);
+    void on_table_computers_clicked(const QModelIndex &);
 
     void on_button_restore_selected_clicked();
 

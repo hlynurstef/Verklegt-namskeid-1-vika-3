@@ -17,8 +17,6 @@ public:
         // Returns the name of the computer
     string getPioName();
         // Returns the name of the pioneer
-    friend ostream& operator <<(ostream& out, Relation temp);
-        // Overloaded cout operator
 
 private:
     string cName;

@@ -29,7 +29,6 @@ public:
         // receives a vector with search results from service and sends vector to interface
     vector<Pioneer> printQuery(string sex, string dYear, string sortBy, string direction);
         // Sends query from user into Connection and returns the result of that query as a vector of Pioneer
-    friend ostream& operator <<(ostream& out, Pioneer temp);
     void removePioneer();
         // Sends a name of the person to delete into PioneerConnection
     void deleteAllPioneers();
@@ -38,10 +37,11 @@ public:
         // Sends information about a pioneer that needs to be edited
     int getHighestId();
         // Returns highest id in Pioneers table (most recently added entry)
-
     void pioneerToTrash(Pioneer pio);
-
+        // Calls PioneerConnection to set delete flag on pio to "true"
     void removeSinglePioneer(Pioneer pio);
+        // Calls PioneerConnection to remove pio from SQL database
+
 private:
     PioneerConnection data;         // This object will hold onto all runtime information
     Pioneer temp;                   // Temporary object to be used in various situations

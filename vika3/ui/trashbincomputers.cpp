@@ -35,7 +35,7 @@ void TrashBinComputers::displayComputers(){
     currentlyDisplayedComputers = comp;
 }
 
-void TrashBinComputers::on_table_computers_clicked(const QModelIndex &index){
+void TrashBinComputers::on_table_computers_clicked(const QModelIndex &/* unused */){
     ui->button_restore_selected->setEnabled(true);
 }
 

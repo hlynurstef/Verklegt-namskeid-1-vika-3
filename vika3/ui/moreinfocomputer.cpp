@@ -23,14 +23,26 @@ void MoreInfoComputer::setComputer(Computer computer){
     // ------------------- Printing info -------------------
 
     ui->label_name->setText(QString::fromStdString(computer.getComputerName()));
-    ui->label_type->setText(QString::fromStdString(computer.getComputerType()));
+    if(computer.getComputerType() == constants::MECHANICAL){
+        ui->label_type->setText(QString::fromStdString("Mechanical"));
+    }
+    else if(computer.getComputerType() == constants::ELECTRONIC){
+        ui->label_type->setText(QString::fromStdString("Electronic"));
+    }
+    else if(computer.getComputerType() == constants::TRANSISTOR){
+        ui->label_type->setText(QString::fromStdString("Transistor"));
+    }
+    else if(computer.getComputerType() == "other"){
+        ui->label_type->setText(QString::fromStdString("Other"));
+    }
+
 
     // Check if the computer was built or not and return yes/no
     if(computer.getWasItBuilt() == "true"){
-        ui->label_built->setText(QString::fromStdString("yes"));
+        ui->label_built->setText(QString::fromStdString("Yes"));
     }
     else if(computer.getWasItBuilt() == "false"){
-        ui->label_built->setText(QString::fromStdString("no"));
+        ui->label_built->setText(QString::fromStdString("No"));
     }
     ui->label_buildYear->setText(QString::number(computer.getBuildYear()));
     ui->label_description->setText(QString::fromStdString(computer.getComputerDescription()));

@@ -22,9 +22,13 @@ public:
     ~editComputer();
 
     void setComputer(Computer computer);
+        // Sets the information from computer to the edit window
     bool errorCheck(string name, string wasBuilt, string buildYear, string type, string description);
+        // Checks for errors and displays them, return true if error was displayed
     void displayUnrelatedPioneers();
+        // Displays vector of unrelated Pioneers
     void displayRelatedPioneers();
+        // Displays vector of related Pioneers
     string getCurrentType();
         // Returns current type chosen in dropdown list
     string getCurrentWasItBuilt();
@@ -39,15 +43,11 @@ private slots:
 
 
     void on_pushButton_editcomputer_clicked();
-
     void on_button_cancel_clicked();
-
     void on_list_related_pioneers_clicked(const QModelIndex &);
     void on_list_unrelated_pioneers_clicked(const QModelIndex &);
     void on_button_remove_relation_clicked();
-
     void on_button_add_relation_clicked();
-
     void on_pushButton_image_clicked();
 
 private:
