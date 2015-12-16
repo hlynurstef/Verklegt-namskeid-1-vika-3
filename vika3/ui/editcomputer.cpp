@@ -11,6 +11,17 @@ editComputer::editComputer(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // type dropdown list
+    ui->edit_dropdown_type->addItem("");
+    ui->edit_dropdown_type->addItem("Mechanical");
+    ui->edit_dropdown_type->addItem("Electronic");
+    ui->edit_dropdown_type->addItem("Transistor");
+    ui->edit_dropdown_type->addItem("Other");
+
+    // was it built dropdown list
+    ui->edit_dropdown_was_it_built->addItem("");
+    ui->edit_dropdown_was_it_built->addItem("Yes");
+    ui->edit_dropdown_was_it_built->addItem("No");
 }
 
 editComputer::~editComputer(){
@@ -18,13 +29,35 @@ editComputer::~editComputer(){
 }
 
 void editComputer::setComputer(Computer comp){
+    string type;
+    string wasBuilt;
 
     compID = comp.getId();
 
+    if(comp.getComputerType() == constants::MECHANICAL){
+        type = "Mechanical";
+    }
+    else if(comp.getComputerType() == constants::ELECTRONIC){
+        type = "Electronic";
+    }
+    else if(comp.getComputerType() == constants::TRANSISTOR){
+        type = "Transistor";
+    }
+    else{
+        type = "Other";
+    }
+
+    if(comp.getWasItBuilt() == constants::DB_TRUE){
+        wasBuilt = "Yes";
+    }
+    else{
+        wasBuilt = "No";
+    }
+
     // Printing info
     ui->edit_name->setText(QString::fromStdString(comp.getComputerName()));
-    ui->edit_type->setText(QString::fromStdString(comp.getComputerType()));
-    ui->edit_wasbuilt->setText(QString::fromStdString(comp.getWasItBuilt()));
+    ui->edit_dropdown_type->setCurrentText(QString::fromStdString(type));
+    ui->edit_dropdown_was_it_built->setCurrentText(QString::fromStdString(wasBuilt));
     ui->edit_buildyear->setText(QString::number(comp.getBuildYear()));
     ui->edit_description->setText(QString::fromStdString(comp.getComputerDescription()));
 
@@ -72,8 +105,8 @@ void editComputer::setComputer(Computer comp){
 void editComputer::on_pushButton_editcomputer_clicked()
 {
     string name = ui->edit_name->text().toStdString();
-    string built = ui->edit_wasbuilt->text().toStdString();
-    string type = ui->edit_type->text().toStdString();
+    string built = getCurrentWasItBuilt();
+    string type = getCurrentType();
     string buildYear = ui->edit_buildyear->text().toStdString();
     string description = ui->edit_description->toPlainText().toStdString();
 
@@ -90,9 +123,16 @@ void editComputer::on_pushButton_editcomputer_clicked()
 
     Computer comp(compID, name, bYear, type, built, description);
 
-    compService.editComputer(comp);
+    int answer = QMessageBox::question(this, "Save Changes", "Are you sure you want to save changes?");
 
-    this->done(1);
+    if(answer == QMessageBox::No){
+        return;
+    }
+    else{
+        compService.editComputer(comp);
+
+        this->done(1);
+    }
 }
 
 bool editComputer::errorCheck(string name, string wasBuilt, string buildYear, string type, string description)
@@ -184,4 +224,44 @@ void editComputer::on_button_add_relation_clicked(){
     relService.addRelations(pioID, compID);
 
     ui->button_add_relation->setEnabled(false);
+}
+
+string editComputer::getCurrentType(){
+    string type = ui->edit_dropdown_type->currentText().toStdString();
+
+    if(type == ""){
+        return "";
+    }
+    else if(type == "Mechanical"){
+        return constants::MECHANICAL;
+    }
+    else if(type == "Electronic"){
+        return constants::ELECTRONIC;
+    }
+    else if(type == "Transistor"){
+        return constants::TRANSISTOR;
+    }
+    else if(type == "Other"){
+        return "other";
+    }
+    else{
+        return "";
+    }
+}
+
+string editComputer::getCurrentWasItBuilt(){
+    string wasBuilt = ui->edit_dropdown_was_it_built->currentText().toStdString();
+
+    if(wasBuilt == ""){
+        return "";
+    }
+    else if(wasBuilt == "Yes"){
+        return constants::DB_TRUE;
+    }
+    else if(wasBuilt == "No"){
+        return constants::DB_FALSE;
+    }
+    else{
+        return "";
+    }
 }

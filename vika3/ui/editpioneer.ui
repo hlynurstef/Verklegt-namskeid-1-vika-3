@@ -227,7 +227,7 @@
      <item>
       <widget class="QPushButton" name="button_edit_pioneer">
        <property name="text">
-        <string>Edit Pioneer</string>
+        <string>Save Changes</string>
        </property>
       </widget>
      </item>
