@@ -92,8 +92,11 @@ void editPioneer::setPioneer(Pioneer pio){
 }
 
 
-void editPioneer::on_button_edit_pioneer_clicked()
-{
+void editPioneer::on_button_edit_pioneer_clicked(){
+
+    // empty error messages
+    emptyLines();
+
     string name = ui->edit_name->text().toStdString();
     string sex = getCurrentSex();
     string birthyear = ui->edit_birth_year->text().toStdString();
@@ -123,6 +126,14 @@ void editPioneer::on_button_edit_pioneer_clicked()
 
         this->done(1);
     }
+}
+
+void editPioneer::emptyLines(){
+    ui->label_name_error->setText("");
+    ui->label_sex_error->setText("");
+    ui->label_birth_year_error->setText("");
+    ui->label_description_error->setText("");
+    ui->label_death_year_error->setText("");
 }
 
 bool editPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
