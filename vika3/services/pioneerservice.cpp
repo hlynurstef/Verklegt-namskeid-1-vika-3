@@ -22,8 +22,7 @@ vector<Pioneer> PioneerService::getList(){
     return list;
 }
 
-vector<Pioneer> PioneerService::getTrash()
-{
+vector<Pioneer> PioneerService::getTrash(){
     vector<Pioneer> trash = data.getPioneerTrash();
     return trash;
 }

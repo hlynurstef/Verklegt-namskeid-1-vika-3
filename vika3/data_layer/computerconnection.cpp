@@ -3,18 +3,15 @@
 #include <QDebug>
 #include <QMessageBox>
 
-ComputerConnection::ComputerConnection()
-{
+ComputerConnection::ComputerConnection(){
     QSqlDatabase db2;
     QString connectionName = "name2";
     QString dbName = "computer_science_db.sqlite";
 
-    if(QSqlDatabase::contains(connectionName))
-        {
+    if(QSqlDatabase::contains(connectionName)){
             db2 = QSqlDatabase::database(connectionName);
         }
-        else
-        {
+        else{
             db2 = QSqlDatabase::addDatabase("QSQLITE", connectionName);
             db2.setDatabaseName(dbName);
 
@@ -249,8 +246,7 @@ void ComputerConnection::computerToTrash(Computer comp){
 
 
 
-void ComputerConnection::editComputer(Computer comp)
-{
+void ComputerConnection::editComputer(Computer comp){
     int id = comp.getId();
     string name = comp.getComputerName();
     string built = comp.getWasItBuilt();

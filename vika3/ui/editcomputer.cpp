@@ -7,8 +7,7 @@
 
 editComputer::editComputer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::editComputer)
-{
+    ui(new Ui::editComputer){
     ui->setupUi(this);
 
     // type dropdown list
@@ -277,8 +276,7 @@ void editComputer::on_button_add_relation_clicked(){
 }
 
 
-void editComputer::on_pushButton_image_clicked()
-{
+void editComputer::on_pushButton_image_clicked(){
     QString filePath = QFileDialog::getOpenFileName(
                     this,
                     "Search for images",
@@ -286,8 +284,8 @@ void editComputer::on_pushButton_image_clicked()
                     "Image files (*.jpg)"
                 );
 
-    if (filePath.length()) // File selected
-    {
+    if (filePath.length()){ // File selected
+
         QPixmap pixmap(filePath);
 
         ui->lineEdit_image->setText(filePath);

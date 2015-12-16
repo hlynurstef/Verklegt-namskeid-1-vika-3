@@ -10,8 +10,7 @@
 
 AddPioneer::AddPioneer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddPioneer)
-{
+    ui(new Ui::AddPioneer){
     ui->setupUi(this);
 
     // dropdown list for sex
@@ -21,13 +20,11 @@ AddPioneer::AddPioneer(QWidget *parent) :
 
 }
 
-AddPioneer::~AddPioneer()
-{
+AddPioneer::~AddPioneer(){
     delete ui;
 }
 
-void AddPioneer::on_button_add_pioneer_clicked()
-{
+void AddPioneer::on_button_add_pioneer_clicked(){
     // Empty all lines
     emptyLines();
 
@@ -194,8 +191,7 @@ void AddPioneer::on_button_pioneer_remove_relation_clicked(){
     ui->button_pioneer_remove_relation->setEnabled(false);
 }
 
-void AddPioneer::on_pushButton_browse_image_clicked()
-{
+void AddPioneer::on_pushButton_browse_image_clicked(){
     QString filePath = QFileDialog::getOpenFileName(
                     this,
                     "Search for images",
@@ -203,8 +199,8 @@ void AddPioneer::on_pushButton_browse_image_clicked()
                     "Image files (*.jpg)"
                 );
 
-    if (filePath.length()) // File selected
-    {
+    if (filePath.length()){ // File selected
+
         QPixmap pixmap(filePath);
 
         ui->input_image->setText(filePath);
@@ -222,13 +218,11 @@ void AddPioneer::on_pushButton_browse_image_clicked()
 
 }
 
-void AddPioneer::on_button_add_pioneer_cancel_clicked()
-{
+void AddPioneer::on_button_add_pioneer_cancel_clicked(){
     this->done(0);
 }
 
-string AddPioneer::getCurrentSex()
-{
+string AddPioneer::getCurrentSex(){
     string sex = ui->dropdown_pioneer_sex->currentText().toStdString();
 
     if(sex == ""){

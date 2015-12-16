@@ -9,14 +9,12 @@ using namespace std;
 
 MoreInfoComputer::MoreInfoComputer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::MoreInfoComputer)
-{
+    ui(new Ui::MoreInfoComputer){
     ui->setupUi(this);
 
 }
 
-MoreInfoComputer::~MoreInfoComputer()
-{
+MoreInfoComputer::~MoreInfoComputer(){
     delete ui;
 }
 
@@ -68,7 +66,6 @@ void MoreInfoComputer::getRelationList(Computer computer){
         ui -> label_relation -> setText(QString::fromStdString(relationList));
 }
 
-void MoreInfoComputer::on_pushButton_clicked()
-{
+void MoreInfoComputer::on_pushButton_clicked(){
     this->close();
 }

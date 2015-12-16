@@ -3,14 +3,12 @@
 
 TrashBinPioneers::TrashBinPioneers(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::TrashBinPioneers)
-{
+    ui(new Ui::TrashBinPioneers){
     ui->setupUi(this);
     displayPioneers();
 }
 
-TrashBinPioneers::~TrashBinPioneers()
-{
+TrashBinPioneers::~TrashBinPioneers(){
     delete ui;
 }
 
@@ -37,13 +35,11 @@ void TrashBinPioneers::displayPioneers(){
     currentlyDisplayedPioneers = pio;
 }
 
-void TrashBinPioneers::on_table_pioneers_clicked(const QModelIndex &index)
-{
+void TrashBinPioneers::on_table_pioneers_clicked(const QModelIndex &index){
     ui->button_restore_selected->setEnabled(true);
 }
 
-void TrashBinPioneers::on_button_restore_selected_clicked()
-{
+void TrashBinPioneers::on_button_restore_selected_clicked(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
@@ -64,8 +60,7 @@ void TrashBinPioneers::on_button_restore_selected_clicked()
     }
 }
 
-void TrashBinPioneers::on_button_take_out_the_trash_clicked()
-{
+void TrashBinPioneers::on_button_take_out_the_trash_clicked(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
@@ -80,7 +75,6 @@ void TrashBinPioneers::on_button_take_out_the_trash_clicked()
     }
 }
 
-void TrashBinPioneers::on_button_close_clicked()
-{
+void TrashBinPioneers::on_button_close_clicked(){
     this->close();
 }

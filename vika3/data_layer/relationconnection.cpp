@@ -10,12 +10,10 @@ RelationConnection::RelationConnection(){
     QSqlDatabase db3;
     QString dbN = "computer_science_db.sqlite";
 
-    if(QSqlDatabase::contains(connectionName))
-        {
+    if(QSqlDatabase::contains(connectionName)){
             db3 = QSqlDatabase::database(connectionName);
         }
-        else
-        {
+        else{
             db3 = QSqlDatabase::addDatabase("QSQLITE", connectionName);
             db3.setDatabaseName(dbN);
 

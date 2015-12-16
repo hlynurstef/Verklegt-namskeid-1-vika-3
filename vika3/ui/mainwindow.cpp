@@ -12,8 +12,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+    ui(new Ui::MainWindow){
     ui->setupUi(this);
 
     // Pioneer dropdown lists:
@@ -447,8 +446,7 @@ void MainWindow::on_pushButton_computers_add_new_entry_clicked(){
     int returnValue = addComp.exec();
 
 
-    if (returnValue == 1)
-    {
+    if (returnValue == 1){
         ui->dropdown_computers_filter_type->clear();
         ui->dropdown_computers_filter_built->clear();
         displayAllComputers();
@@ -470,14 +468,12 @@ void MainWindow::on_pushButton_pioneers_edit_clicked()
     editPio.setModal(true);
     int returnValue = editPio.exec();
 
-    if (returnValue == 1)
-    {
+    if (returnValue == 1){
         displayAllPioneers();
         disableButtonsForPioneer();
         ui->statusBar->showMessage("Pioneer has been modified", 2000);
     }
-    else
-    {
+    else{
         ui->statusBar->showMessage("Pioneer has not been modified", 2000);
     }
 }
@@ -488,8 +484,7 @@ vector<Computer> MainWindow::returnAllComputers(){
 }
 
 
-void MainWindow::on_pushButton_computers_edit_clicked()
-{
+void MainWindow::on_pushButton_computers_edit_clicked(){
     int currentlySelectedComputerIndex = ui->table_computers->currentIndex().row();
     currentlySelectedComp = currentlyDisplayedComputers[currentlySelectedComputerIndex];
 
@@ -499,14 +494,12 @@ void MainWindow::on_pushButton_computers_edit_clicked()
     int returnValue2 = editComp.exec();
 
 
-    if (returnValue2 == 1)
-    {
+    if (returnValue2 == 1){
         displayAllComputers();
         disableButtonsForComputer();
         ui->statusBar->showMessage("Computer has been modified", 2000);
     }
-    else
-    {
+    else{
         ui->statusBar->showMessage("Computer was not modified", 2000);
     }
 
@@ -524,15 +517,13 @@ void MainWindow::disableButtonsForComputer(){
     ui->pushButton_computers_edit->setEnabled(false);
 }
 
-void MainWindow::on_trash_button_pioneers_clicked()
-{
+void MainWindow::on_trash_button_pioneers_clicked(){
     TrashBinPioneers trash;
     trash.exec();
     displayAllPioneers();
 }
 
-void MainWindow::on_trash_button_computers_clicked()
-{
+void MainWindow::on_trash_button_computers_clicked(){
     TrashBinComputers trash;
     trash.exec();
     displayAllComputers();

@@ -12,12 +12,10 @@ PioneerConnection::PioneerConnection(){
     QSqlDatabase db;
     QString dbN = "computer_science_db.sqlite";
 
-    if(QSqlDatabase::contains(connectionName))
-        {
+    if(QSqlDatabase::contains(connectionName)){
             db = QSqlDatabase::database(connectionName);
         }
-        else
-        {
+        else{
             db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
             db.setDatabaseName(dbN);
 

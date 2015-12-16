@@ -3,14 +3,12 @@
 
 TrashBinComputers::TrashBinComputers(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::TrashBinComputers)
-{
+    ui(new Ui::TrashBinComputers){
     ui->setupUi(this);
     displayComputers();
 }
 
-TrashBinComputers::~TrashBinComputers()
-{
+TrashBinComputers::~TrashBinComputers(){
     delete ui;
 }
 
@@ -37,13 +35,11 @@ void TrashBinComputers::displayComputers(){
     currentlyDisplayedComputers = comp;
 }
 
-void TrashBinComputers::on_table_computers_clicked(const QModelIndex &index)
-{
+void TrashBinComputers::on_table_computers_clicked(const QModelIndex &index){
     ui->button_restore_selected->setEnabled(true);
 }
 
-void TrashBinComputers::on_button_restore_selected_clicked()
-{
+void TrashBinComputers::on_button_restore_selected_clicked(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
@@ -63,8 +59,7 @@ void TrashBinComputers::on_button_restore_selected_clicked()
     }
 }
 
-void TrashBinComputers::on_button_take_out_the_trash_clicked()
-{
+void TrashBinComputers::on_button_take_out_the_trash_clicked(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Message", "Are you sure?", QMessageBox::Yes|QMessageBox::No);
 
@@ -79,7 +74,6 @@ void TrashBinComputers::on_button_take_out_the_trash_clicked()
     }
 }
 
-void TrashBinComputers::on_button_close_clicked()
-{
+void TrashBinComputers::on_button_close_clicked(){
     this->close();
 }

@@ -9,8 +9,7 @@ using namespace std;
 
 MoreInfoPioneer::MoreInfoPioneer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::MoreInfoPioneer)
-{
+    ui(new Ui::MoreInfoPioneer){
     ui->setupUi(this);
 }
 
@@ -66,8 +65,7 @@ void MoreInfoPioneer::getRelationList(Pioneer pioneer){
 }
 
 
-void MoreInfoPioneer::on_pushButton_close_clicked()
-{
+void MoreInfoPioneer::on_pushButton_close_clicked(){
     this->close();
 }
 

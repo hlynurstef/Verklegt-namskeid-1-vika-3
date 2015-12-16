@@ -5,8 +5,7 @@
 
 editPioneer::editPioneer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::editPioneer)
-{
+    ui(new Ui::editPioneer){
     ui->setupUi(this);
 
     // dropdown list for sex
@@ -15,8 +14,7 @@ editPioneer::editPioneer(QWidget *parent) :
     ui->edit_dropdown_sex->addItem("Female");
 }
 
-editPioneer::~editPioneer()
-{
+editPioneer::~editPioneer() {
     delete ui;
 }
 
@@ -184,8 +182,7 @@ bool editPioneer::is_number(string& s){
     return !s.empty() && it == s.end();
 }
 
-void editPioneer::on_button_cancel_clicked()
-{
+void editPioneer::on_button_cancel_clicked(){
     this->done(0);
 }
 
@@ -214,8 +211,7 @@ void editPioneer::on_list_related_computers_clicked(const QModelIndex &/* unused
     ui->button_remove_relation->setEnabled(true);
 }
 
-void editPioneer::on_button_remove_relation_clicked()
-{
+void editPioneer::on_button_remove_relation_clicked(){
     int currentlySelectedComputerIndex = ui->list_related_computers->currentIndex().row();
 
     Computer selectedComputer = relatedComputers[currentlySelectedComputerIndex];
@@ -230,8 +226,7 @@ void editPioneer::on_button_remove_relation_clicked()
     ui->button_remove_relation->setEnabled(false);
 }
 
-void editPioneer::on_button_add_relation_clicked()
-{
+void editPioneer::on_button_add_relation_clicked(){
     int currentlySelectedComputerIndex = ui->list_unrelated_computers->currentIndex().row();
 
     Computer selectedComputer = unrelatedComputers[currentlySelectedComputerIndex];
@@ -246,8 +241,7 @@ void editPioneer::on_button_add_relation_clicked()
     ui->button_add_relation->setEnabled(false);
 }
 
-void editPioneer::on_pushButton_browse_image_clicked()
-{
+void editPioneer::on_pushButton_browse_image_clicked(){
     QString filePath = QFileDialog::getOpenFileName(
                     this,
                     "Search for images",

@@ -11,8 +11,7 @@
 
 addComputer::addComputer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::addComputer)
-{
+    ui(new Ui::addComputer){
     ui->setupUi(this);
 
     // type dropdown list
@@ -29,13 +28,11 @@ addComputer::addComputer(QWidget *parent) :
 
 }
 
-addComputer::~addComputer()
-{
+addComputer::~addComputer(){
     delete ui;
 }
 
-void addComputer::on_button_add_computer_clicked()
-{
+void addComputer::on_button_add_computer_clicked(){
     // Empty error messages
     emptyLines();
 
@@ -251,8 +248,8 @@ void addComputer::on_pushButton_image_clicked()
                     "Image files (*.jpg)"
                 );
 
-    if (filePath.length()) // File selected
-    {
+    if (filePath.length()){ // File selected
+
         QPixmap pixmap(filePath);
 
         ui->lineEdit_image->setText(filePath);
