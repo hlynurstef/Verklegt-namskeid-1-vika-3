@@ -60,6 +60,7 @@ private:
     Relation rel;
     vector<Pioneer> relatedPioneers, unrelatedPioneers;
     QByteArray image;
+    QByteArray currentImage;
 
     int compID;
 };

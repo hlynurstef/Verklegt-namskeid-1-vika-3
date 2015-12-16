@@ -45,6 +45,7 @@ void editPioneer::setPioneer(Pioneer pio){
     }
     ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
     if(!pio.getImageByteArray().isEmpty()){
+            currentImage = pio.getImageByteArray();
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
     }
 
@@ -113,6 +114,11 @@ void editPioneer::on_button_edit_pioneer_clicked(){
 
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
+
+    if(image.isEmpty() && !currentImage.isEmpty()){
+        image = currentImage;
+    }
+
     Pioneer pio(pioID, name, sex, byear, dyear, description, image);
 
     int answer = QMessageBox::question(this, "Save Changes", "Are you sure you want to save changes?");

@@ -54,6 +54,7 @@ private:
     ComputerService compService;
     Relation rel;
     vector<Computer> relatedComputers, unrelatedComputers;
+    QByteArray currentImage;
     QByteArray image;
 
     int pioID;

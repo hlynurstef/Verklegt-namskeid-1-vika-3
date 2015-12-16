@@ -64,6 +64,10 @@ void editComputer::setComputer(Computer comp){
         ui->edit_buildyear->setText(QString::number(comp.getBuildYear()));
     }
     ui->edit_description->setText(QString::fromStdString(comp.getComputerDescription()));
+    if(!comp.getImageByteArray().isEmpty()){
+            currentImage = comp.getImageByteArray();
+            ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + comp.getComputerName()));
+    }
 
     vector<Relation> allRelations = relService.displayRelations();
     vector<Pioneer> allPioneers = pioService.getList();
@@ -126,6 +130,10 @@ void editComputer::on_pushButton_editcomputer_clicked(){
     }
 
     int bYear = atoi(buildYear.c_str());
+
+    if(image.isEmpty() && !currentImage.isEmpty()){
+        image = currentImage;
+    }
 
     Computer comp(compID, name, bYear, type, built, description, image);
 
