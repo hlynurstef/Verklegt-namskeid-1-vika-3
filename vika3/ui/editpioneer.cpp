@@ -1,6 +1,7 @@
 #include "editpioneer.h"
 #include "ui_editpioneer.h"
 #include "utilities/constants.h"
+#include <QMessageBox>
 
 editPioneer::editPioneer(QWidget *parent) :
     QDialog(parent),
@@ -21,8 +22,8 @@ editPioneer::~editPioneer()
 
 void editPioneer::setPioneer(Pioneer pio){
 
-    string birthyear = std::to_string(pio.getByear());
-    string deathyear = std::to_string(pio.getDyear());
+//    string birthyear = std::to_string(pio.getByear());
+//    string deathyear = std::to_string(pio.getDyear());
     string sex;
 
     pioID = pio.getId();
@@ -36,9 +37,8 @@ void editPioneer::setPioneer(Pioneer pio){
 
     ui->edit_name->setText(QString::fromStdString(pio.getName()));
     ui->edit_dropdown_sex->setCurrentText(QString::fromStdString(sex));
-    //ui->edit_sex->setText(QString::fromStdString(pio.getSex()));
-    ui->edit_birth_year->setText(QString::fromStdString(birthyear));
-    ui->edit_death_year->setText(QString::fromStdString(deathyear));
+    ui->edit_birth_year->setText(QString::number(pio.getByear()));
+    ui->edit_death_year->setText(QString::number(pio.getDyear()));
     ui->edit_description->setText(QString::fromStdString(pio.getDescription())); 
     if(!pio.getImageByteArray().isEmpty()){
             ui->lineEdit_image->setText(QString::fromStdString("There is an image selected to " + pio.getName()));
@@ -104,16 +104,20 @@ void editPioneer::on_button_edit_pioneer_clicked()
         return;
     }
 
-
     int byear = atoi(birthyear.c_str());
     int dyear = atoi(deathyear.c_str());
-
     Pioneer pio(pioID, name, sex, byear, dyear, description, image);
 
-    pioService.editPioneer(pio);
+    int answer = QMessageBox::question(this, "Save Changes", "Are you sure you want to save changes?");
 
-    this->done(1);
+    if(answer == QMessageBox::No){
+        return;
+    }
+    else{
+        pioService.editPioneer(pio);
 
+        this->done(1);
+    }
 }
 
 bool editPioneer::errorCheck(string name, string sex, string birthyear, string deathyear, string description){
