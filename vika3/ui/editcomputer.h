@@ -23,7 +23,8 @@ public:
 
     void setComputer(Computer computer);
     bool errorCheck(string name, string wasBuilt, string buildYear, string type, string description);
-
+    bool is_number(string& s);
+    string getCurrentWasItBuilt();
     void displayUnrelatedPioneers();
     void displayRelatedPioneers();
 private slots:
