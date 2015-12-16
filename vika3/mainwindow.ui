@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>905</width>
+    <width>867</width>
     <height>543</height>
    </rect>
   </property>
@@ -97,7 +97,7 @@ alternate-background-color: rgb(233, 255, 255);</string>
                <enum>QAbstractItemView::SelectRows</enum>
               </property>
               <property name="sortingEnabled">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <attribute name="horizontalHeaderDefaultSectionSize">
                <number>185</number>
@@ -354,7 +354,7 @@ alternate-background-color: rgb(233, 255, 255);</string>
              <enum>QAbstractItemView::SelectRows</enum>
             </property>
             <property name="sortingEnabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <attribute name="horizontalHeaderDefaultSectionSize">
              <number>185</number>
@@ -557,7 +557,7 @@ alternate-background-color: rgb(233, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>905</width>
+     <width>867</width>
      <height>21</height>
     </rect>
    </property>
